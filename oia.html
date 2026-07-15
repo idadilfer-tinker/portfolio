@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Oia — Case Study · Ida Tinker</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:ital,wght@0,200;0,300;0,400;0,500;0,600;1,200;1,300;1,400&family=Tinos:ital,wght@0,400;0,700;1,400;1,700&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#18171A;--fg:#F2EEE8;--fg2:#C8C2BA;--fg3:#7A7570;--accent:#D97757;
+  --border:rgba(255,255,255,0.08);--border2:rgba(255,255,255,0.05);
+  --max:1100px;--gutter:clamp(24px,5vw,80px);
+  --font-body:'Libre Franklin',sans-serif;--font-display:'Tinos',serif;
+  /* Nia Medical Concierge brand */
+  --nia-bone:#fcf9f7;--nia-ink:#1b1c1b;--nia-terra:#99402b;--nia-terra-dk:#7a2916;
+  --nia-taupe:#56423e;--nia-outline:#89726d;--nia-line:rgba(27,28,27,.08);
+  --nia-glass:rgba(255,255,255,.4);--nia-glass-hi:rgba(255,255,255,.6);
+  --nia-rim:rgba(255,255,255,.7);--nia-shadow:0 10px 30px rgba(153,64,43,.08);
+  --nia-serif:'EB Garamond',serif;--nia-sans:'Work Sans',sans-serif;
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--fg);font-family:var(--font-body);font-size:16px;line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+
+.back-nav{position:fixed;top:0;left:0;right:0;z-index:100;height:60px;background:rgba(24,23,26,.9);backdrop-filter:blur(16px);border-bottom:1px solid var(--border2);display:flex;align-items:center;padding:0 var(--gutter);gap:16px}
+.back-link{display:inline-flex;align-items:center;gap:8px;color:var(--fg2);text-decoration:none;font-size:13px;transition:color .18s}
+.back-link:hover{color:var(--fg)}
+.back-link svg{width:16px;height:16px}
+.back-nav-title{font-size:13px;color:var(--fg3);font-style:italic}
+.back-nav-right{margin-left:auto}
+.visit-link{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);text-decoration:none;border:1px solid rgba(217,119,87,.3);padding:6px 14px;border-radius:6px;transition:background .18s}
+.visit-link:hover{background:rgba(217,119,87,.08)}
+.visit-link svg{width:11px;height:11px}
+
+.cs-hero{padding:120px var(--gutter) 80px;max-width:var(--max);margin:0 auto}
+.cs-eyebrow{font-size:10px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:20px}
+.cs-title{font-family:var(--font-display);font-size:clamp(2.5rem,6vw,5rem);font-weight:400;line-height:1.05;letter-spacing:-.03em;margin-bottom:24px}
+.cs-title em{font-style:italic}
+.cs-subtitle{font-size:clamp(15px,1.4vw,19px);line-height:1.75;color:var(--fg2);max-width:680px;margin-bottom:56px}
+.cs-meta{display:grid;grid-template-columns:repeat(4,auto);gap:40px;border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:28px 0;max-width:760px}
+.cs-meta-label{font-size:9px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--fg3);margin-bottom:6px}
+.cs-meta-value{font-size:15px;color:var(--fg)}
+.hero-in{opacity:0;transform:translateY(18px);animation:heroIn .8s ease forwards}
+.hero-in:nth-child(2){animation-delay:.1s}
+.hero-in:nth-child(3){animation-delay:.2s}
+.hero-in:nth-child(4){animation-delay:.32s}
+@keyframes heroIn{to{opacity:1;transform:none}}
+
+.cs-body{max-width:var(--max);margin:0 auto;padding:0 var(--gutter)}
+.cs-section{padding:72px 0;border-bottom:1px solid var(--border2)}
+.cs-section:last-child{border-bottom:none}
+.cs-section-label{font-size:9px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--fg3);margin-bottom:32px}
+.cs-h2{font-family:var(--font-display);font-size:clamp(1.8rem,3.5vw,3rem);font-weight:400;font-style:italic;line-height:1.15;letter-spacing:-.02em;margin-bottom:24px}
+.cs-p{font-size:16px;line-height:1.8;color:var(--fg2);margin-bottom:16px}
+.cs-p:last-child{margin-bottom:0}
+.cs-cols{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
+.cs-cols-3{display:grid;grid-template-columns:repeat(3,1fr);gap:32px}
+
+.cs-card{padding:28px;border:1px solid var(--border2);border-radius:12px;background:rgba(255,255,255,.025);transition:transform .35s ease,border-color .35s ease,background .35s ease}
+.cs-card:hover{transform:translateY(-4px);border-color:rgba(217,119,87,.35);background:rgba(255,255,255,.04)}
+.cs-card-num{font-family:var(--font-display);font-size:2.5rem;color:rgba(217,119,87,.25);line-height:1;margin-bottom:14px;font-style:italic}
+.cs-card-title{font-size:14px;font-weight:500;color:var(--fg);margin-bottom:8px}
+.cs-card p{font-size:14px;line-height:1.75;color:var(--fg2)}
+
+.cs-callout{border-left:2px solid var(--accent);padding:20px 28px;background:rgba(217,119,87,.05);border-radius:0 10px 10px 0;margin-top:40px}
+.cs-callout p{font-family:var(--font-display);font-style:italic;font-size:1.15rem;line-height:1.6;color:var(--fg)}
+
+.cs-steps{display:flex;flex-direction:column}
+.cs-step{display:grid;grid-template-columns:80px 1fr;border-top:1px solid var(--border2);padding:28px 0}
+.cs-step-num{font-family:var(--font-display);font-size:1.8rem;font-style:italic;color:rgba(217,119,87,.4);padding-top:2px}
+.cs-step h4{font-size:15px;font-weight:500;color:var(--fg);margin-bottom:8px}
+.cs-step p{font-size:14px;line-height:1.75;color:var(--fg2)}
+
+.cs-built-table{width:100%;border-collapse:collapse;margin-top:40px}
+.cs-built-table td{padding:20px 24px;border:1px solid var(--border2);font-size:14px;line-height:1.7;color:var(--fg2);vertical-align:top}
+.cs-built-table td:first-child{width:240px;white-space:nowrap;color:var(--fg);font-weight:500}
+.cs-built-table tr{transition:background .25s}
+.cs-built-table tr:hover{background:rgba(255,255,255,.02)}
+
+.cs-metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin:40px 0;border:1px solid var(--border2);border-radius:12px;overflow:hidden}
+.cs-metric{padding:32px 28px;border-right:1px solid var(--border2);position:relative}
+.cs-metric:nth-child(3n){border-right:none}
+.cs-metric:nth-child(n+4){border-top:1px solid var(--border2)}
+.cs-metric::after{content:'';position:absolute;left:28px;bottom:20px;height:1px;width:0;background:rgba(217,119,87,.5);transition:width 1.2s ease .3s}
+.reveal.in .cs-metric::after{width:36px}
+.cs-metric-num{font-family:var(--font-display);font-size:clamp(2rem,4vw,3.5rem);color:var(--accent);line-height:1;margin-bottom:8px}
+.cs-metric-label{font-size:13px;color:var(--fg2);line-height:1.5}
+.cs-metric-note{font-size:11px;color:var(--fg3);margin-top:6px;margin-bottom:12px}
+
+.cs-cta{text-align:center;padding:80px var(--gutter);border-top:1px solid var(--border2)}
+.cs-cta a{display:inline-flex;align-items:center;gap:10px;font-size:14px;font-weight:500;color:var(--bg);background:var(--accent);border-radius:8px;padding:14px 28px;text-decoration:none;transition:opacity .18s,transform .3s}
+.cs-cta a:hover{opacity:.9;transform:translateY(-2px)}
+.cs-cta a svg{width:16px;height:16px}
+
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
+.reveal.in{opacity:1;transform:none}
+.reveal .stag{opacity:0;transform:translateY(16px);transition:opacity .6s ease,transform .6s ease}
+.reveal.in .stag{opacity:1;transform:none}
+.reveal.in .stag:nth-child(1){transition-delay:.05s}
+.reveal.in .stag:nth-child(2){transition-delay:.15s}
+.reveal.in .stag:nth-child(3){transition-delay:.25s}
+.reveal.in .stag:nth-child(4){transition-delay:.35s}
+.reveal.in .stag:nth-child(5){transition-delay:.45s}
+.reveal.in .stag:nth-child(6){transition-delay:.55s}
+
+/* ══════════ PRINCIPLE MANIFESTO ══════════ */
+.manifesto{border:1px solid rgba(217,119,87,.3);border-radius:16px;padding:clamp(32px,5vw,56px);background:linear-gradient(160deg,rgba(217,119,87,.07),rgba(217,119,87,.02) 60%);position:relative;overflow:hidden;margin-top:8px}
+.manifesto::before{content:'⭑';position:absolute;top:-30px;right:10px;font-size:180px;color:rgba(217,119,87,.06);line-height:1}
+.manifesto h3{font-family:var(--font-display);font-style:italic;font-size:clamp(1.6rem,3vw,2.4rem);line-height:1.2;color:var(--fg);margin-bottom:18px}
+.manifesto p{font-size:16px;line-height:1.85;color:var(--fg2);max-width:720px}
+.manifesto b{color:var(--fg);font-weight:500}
+
+/* ══════════ OIA CHAT DEMO — Nia Medical Concierge brand ══════════ */
+.demo-wrap{display:grid;grid-template-columns:minmax(320px,420px) 1fr;gap:56px;align-items:start;margin-top:48px}
+.oia-app{width:100%;max-width:420px;border-radius:2.5rem;overflow:hidden;background:var(--nia-bone);box-shadow:0 24px 70px rgba(153,64,43,.16),0 30px 80px rgba(0,0,0,.35);border:1px solid var(--nia-rim);position:relative}
+.oia-app::before{content:'';position:absolute;inset:0;pointer-events:none;z-index:0;
+  background:radial-gradient(90% 70% at 88% -8%,rgba(153,64,43,.14),transparent 60%),
+             radial-gradient(80% 60% at -5% 108%,rgba(236,221,213,.9),transparent 60%);
+  animation:aura 9s ease-in-out infinite alternate}
+@keyframes aura{0%{opacity:.5;transform:scale(1)}100%{opacity:1;transform:scale(1.09)}}
+.oia-hd{position:relative;z-index:1;display:flex;align-items:center;gap:12px;padding:16px 20px;background:var(--nia-glass);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-bottom:1px solid var(--nia-rim)}
+.oia-mono{width:38px;height:38px;border-radius:9999px;background:var(--nia-terra);color:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--nia-serif);font-style:italic;font-size:19px;flex-shrink:0;box-shadow:var(--nia-shadow)}
+.oia-hd h6{font-family:var(--nia-serif);font-size:19px;letter-spacing:.04em;color:var(--nia-ink);font-weight:500}
+.oia-hd p{font-family:var(--nia-sans);font-size:9px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--nia-outline)}
+.oia-hd p .dot{display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--nia-terra);margin-right:5px;animation:pulse 2s infinite;vertical-align:1px}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
+.oia-chat{position:relative;z-index:1;height:560px;overflow-y:auto;padding:20px 16px;display:flex;flex-direction:column;gap:10px;background:transparent;scrollbar-width:none}
+.oia-chat::-webkit-scrollbar{display:none}
+.om{max-width:85%;padding:12px 15px;border-radius:1.25rem;font-family:var(--nia-sans);font-size:13.5px;line-height:1.6;opacity:0;transform:translateY(10px) scale(.97);animation:msgIn .35s ease forwards}
+@keyframes msgIn{to{opacity:1;transform:none}}
+.om.oia{background:var(--nia-glass-hi);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border:1px solid var(--nia-rim);color:var(--nia-ink);align-self:flex-start;border-top-left-radius:.5rem;box-shadow:var(--nia-shadow)}
+.om.pt{background:var(--nia-terra-dk);color:#fff;align-self:flex-end;border-top-right-radius:.5rem;box-shadow:0 8px 24px rgba(122,41,22,.2)}
+.om .oname{display:block;font-family:var(--nia-serif);font-style:italic;font-size:12.5px;color:var(--nia-terra);margin-bottom:4px;letter-spacing:.02em}
+.ochip-row{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.ochip{font-family:var(--nia-sans);font-size:9px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--nia-terra-dk);border:1px solid rgba(153,64,43,.35);padding:7px 14px;border-radius:9999px;background:rgba(255,255,255,.5)}
+.ochip.sel{background:var(--nia-terra);color:#fff;border-color:var(--nia-terra)}
+.osys{align-self:center;font-family:var(--nia-sans);font-size:9px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--nia-taupe);background:var(--nia-glass);backdrop-filter:blur(24px);border:1px solid var(--nia-rim);padding:6px 15px;border-radius:9999px;opacity:0;animation:msgIn .35s ease forwards;text-align:center}
+.otyping{background:var(--nia-glass-hi);backdrop-filter:blur(24px);border:1px solid var(--nia-rim);align-self:flex-start;border-radius:1.25rem;border-top-left-radius:.5rem;padding:13px 15px;display:flex;gap:4px;opacity:0;animation:msgIn .25s ease forwards;box-shadow:var(--nia-shadow)}
+.otyping i{width:6px;height:6px;border-radius:50%;background:var(--nia-terra);animation:tap 1.2s infinite}
+.otyping i:nth-child(2){animation-delay:.15s}
+.otyping i:nth-child(3){animation-delay:.3s}
+@keyframes tap{0%,60%,100%{transform:none;opacity:.4}30%{transform:translateY(-4px);opacity:1}}
+/* rich cards inside chat — glass cards */
+.ocard{margin-top:10px;border:1px solid var(--nia-rim);border-radius:1.5rem;overflow:hidden;background:var(--nia-glass-hi);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);box-shadow:var(--nia-shadow)}
+.ocard img{width:100%;height:110px;object-fit:cover;display:block}
+.ocard .oc-body{padding:12px 14px}
+.ocard .oc-top{display:flex;justify-content:space-between;align-items:baseline;gap:8px}
+.ocard h5{font-family:var(--nia-serif);font-size:16px;color:var(--nia-ink);font-weight:500}
+.ocard .star{font-family:var(--nia-sans);font-size:11px;color:var(--nia-terra);white-space:nowrap}
+.ocard .oc-sub{font-family:var(--nia-sans);font-size:10px;color:var(--nia-outline);letter-spacing:.03em;margin-top:1px}
+.ocard .oc-price{display:flex;justify-content:space-between;align-items:baseline;margin-top:9px;padding-top:9px;border-top:1px solid var(--nia-line)}
+.ocard .oc-price span{font-family:var(--nia-sans);font-size:8.5px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--nia-outline)}
+.ocard .oc-price b{font-family:var(--nia-serif);font-size:19px;color:var(--nia-ink);font-weight:500}
+.ocard .oc-badge{display:inline-block;font-family:var(--nia-sans);font-size:8px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--nia-terra);border:1px solid rgba(153,64,43,.35);padding:3px 10px;border-radius:9999px;margin-top:8px}
+/* gallery consent card — glass */
+.ogal{margin-top:10px;border:1px solid var(--nia-rim);border-radius:1.5rem;background:var(--nia-glass-hi);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);padding:13px 14px;box-shadow:var(--nia-shadow)}
+.ogal h5{font-family:var(--nia-serif);font-size:15px;color:var(--nia-ink);font-weight:500;margin-bottom:3px}
+.ogal p{font-family:var(--nia-sans);font-size:10.5px;color:var(--nia-outline);line-height:1.5;margin-bottom:10px}
+.ogal .thumbs{display:flex;gap:6px}
+.ogal .th{flex:1;height:64px;border-radius:.75rem;background:linear-gradient(150deg,#e8d8cf,#d9c2b6);position:relative;overflow:hidden}
+.ogal .th::after{content:'';position:absolute;inset:0;backdrop-filter:blur(7px);background:rgba(252,249,247,.25);transition:opacity .8s ease}
+.ogal.open .th::after{opacity:0}
+.ogal .th i{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:var(--nia-sans);font-size:8.5px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:rgba(86,66,62,.7);font-style:normal}
+.ogal .consent{margin-top:10px;font-family:var(--nia-sans);font-size:10px;color:var(--nia-outline);display:flex;align-items:center;gap:7px}
+.ogal .consent .cbox{width:14px;height:14px;border:1px solid var(--nia-terra);border-radius:.3rem;display:flex;align-items:center;justify-content:center;color:var(--nia-terra);font-size:9px;flex-shrink:0}
+/* compare strip in chat — glass */
+.ocompare{margin-top:10px;display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.ocompare .cc{border:1px solid var(--nia-rim);border-radius:1rem;padding:10px 12px;background:var(--nia-glass-hi);backdrop-filter:blur(24px);box-shadow:var(--nia-shadow)}
+.ocompare .cc.win{border-color:rgba(153,64,43,.5);background:rgba(153,64,43,.07)}
+.ocompare .cc b{display:block;font-family:var(--nia-serif);font-size:14px;color:var(--nia-ink);font-weight:500}
+.ocompare .cc span{font-family:var(--nia-sans);font-size:9px;color:var(--nia-outline);display:block;line-height:1.5}
+.ocompare .cc .pp{font-family:var(--nia-serif);font-size:17px;color:var(--nia-ink);margin-top:4px;font-weight:500}
+.ocompare .cc .pp s{font-size:10px;color:#b8a79f;margin-right:5px}
+.demo-notes{display:flex;flex-direction:column;gap:20px;position:sticky;top:90px}
+.demo-note{padding:22px 24px;border:1px solid var(--border2);border-left:2px solid rgba(217,119,87,.5);border-radius:0 10px 10px 0;background:rgba(255,255,255,.02)}
+.demo-note h5{font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:8px}
+.demo-note p{font-size:13.5px;line-height:1.7;color:var(--fg2)}
+
+/* ══════════ SMARTMATCH DIAGRAM ══════════ */
+.flow-svg{width:100%;height:auto;display:block;margin-top:40px}
+.flow-svg .lbl{font-family:'Libre Franklin';font-size:11px;fill:#C8C2BA}
+.flow-svg .lbl-sm{font-family:'Libre Franklin';font-size:9.5px;fill:#7A7570}
+.flow-svg .lbl-ac{font-family:'Libre Franklin';font-size:10px;font-weight:600;letter-spacing:.12em;fill:#D97757}
+.flow-svg .box{fill:rgba(255,255,255,.03);stroke:rgba(255,255,255,.14)}
+.flow-svg .box-ac{fill:rgba(217,119,87,.08);stroke:rgba(217,119,87,.45)}
+.flow-svg .box-gold{fill:rgba(153,64,43,.1);stroke:rgba(153,64,43,.55)}
+.dash{stroke-dasharray:5 5;animation:dashmove 1.4s linear infinite}
+@keyframes dashmove{to{stroke-dashoffset:-20}}
+figcaption{font-size:11px;color:var(--fg3);margin-top:10px;letter-spacing:.04em}
+
+/* ══════════ NEGOTIATION TIMELINE — Nia brand ══════════ */
+.nego{max-width:640px;margin:48px auto 0;border:1px solid var(--nia-rim);border-radius:2.5rem;position:relative;overflow:hidden;background:var(--nia-bone);box-shadow:0 24px 70px rgba(153,64,43,.14),0 30px 80px rgba(0,0,0,.3);padding:34px;font-family:var(--nia-sans)}
+.nego::before{content:'';position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(85% 65% at 92% -5%,rgba(153,64,43,.12),transparent 60%),
+             radial-gradient(70% 55% at -5% 105%,rgba(236,221,213,.85),transparent 60%);
+  animation:aura 9s ease-in-out infinite alternate}
+.nego>*{position:relative}
+.nego-hd{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px}
+.nego-hd h6{font-size:10px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--nia-taupe)}
+.nego-price{text-align:right}
+.nego-price b{font-family:var(--nia-serif);font-size:2.6rem;color:var(--nia-terra-dk);font-weight:500;line-height:1;letter-spacing:-.01em}
+.nego-price span{display:block;font-size:8.5px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--nia-outline);margin-top:3px}
+.nego-sub{font-size:11.5px;color:var(--nia-outline);margin-bottom:24px}
+.nstep{display:grid;grid-template-columns:28px 1fr;gap:14px;padding:14px 0;border-top:1px solid var(--nia-line);opacity:.28;transition:opacity .6s ease}
+.nstep.on{opacity:1}
+.nstep .nd{width:24px;height:24px;border-radius:9999px;border:1px solid rgba(153,64,43,.4);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:600;color:var(--nia-terra);background:rgba(255,255,255,.55);transition:background .4s,color .4s;box-shadow:var(--nia-shadow)}
+.nstep.on .nd{background:var(--nia-terra);color:#fff}
+.nstep h5{font-size:13.5px;font-weight:600;color:var(--nia-ink);display:flex;justify-content:space-between;gap:12px}
+.nstep h5 time{font-size:10px;color:var(--nia-outline);font-weight:400;white-space:nowrap}
+.nstep p{font-size:12px;line-height:1.65;color:var(--nia-taupe);margin-top:3px}
+.nstep .delta{font-size:9.5px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--nia-terra);margin-top:5px}
+
+/* ══════════ ONE THREAD — Nia web chat ↔ real WhatsApp ══════════ */
+.thread-grid{display:grid;grid-template-columns:1fr 60px 1fr;gap:0;align-items:center;margin-top:48px}
+.tg-frame{border-radius:1.5rem;overflow:hidden;font-family:var(--nia-sans)}
+.tg-frame.nia{border:1px solid var(--nia-rim);background:
+  radial-gradient(85% 60% at 90% -5%,rgba(153,64,43,.1),transparent 60%),var(--nia-bone);
+  box-shadow:0 16px 44px rgba(153,64,43,.12)}
+.tg-frame.wa{border:1px solid rgba(255,255,255,.14);background:#efeae2;box-shadow:0 16px 44px rgba(0,0,0,.3)}
+.tg-hd{padding:10px 16px;font-size:9px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;display:flex;align-items:center;gap:8px}
+.tg-frame.nia .tg-hd{color:var(--nia-outline);border-bottom:1px solid var(--nia-line);background:var(--nia-glass);backdrop-filter:blur(24px)}
+.tg-frame.wa .tg-hd{color:#54656f;border-bottom:1px solid rgba(84,101,111,.15);background:#f0f2f5}
+.tg-hd i{width:7px;height:7px;border-radius:50%;background:var(--nia-terra)}
+.tg-body{padding:16px;display:flex;flex-direction:column;gap:8px}
+.tg-msg{font-size:11px;line-height:1.55;padding:8px 11px;border-radius:1rem;max-width:88%}
+.tg-frame.nia .tg-msg.a{background:var(--nia-glass-hi);backdrop-filter:blur(24px);color:var(--nia-ink);align-self:flex-start;border:1px solid var(--nia-rim);border-top-left-radius:.4rem;box-shadow:var(--nia-shadow)}
+.tg-frame.nia .tg-msg.b{background:var(--nia-terra-dk);color:#fff;align-self:flex-end;border-top-right-radius:.4rem}
+.tg-frame.wa .tg-msg{border-radius:8px}
+.tg-frame.wa .tg-msg.a{background:#ffffff;color:#111b21;align-self:flex-start;box-shadow:0 1px 1px rgba(0,0,0,.08)}
+.tg-frame.wa .tg-msg.b{background:#d9fdd3;color:#111b21;align-self:flex-end;box-shadow:0 1px 1px rgba(0,0,0,.08)}
+.tg-frame.nia .tg-msg.ghost{opacity:.55;font-style:italic;font-size:9.5px;background:transparent;border:none;box-shadow:none;color:var(--nia-outline)}
+.tg-frame.wa .tg-msg.ghost{opacity:.7;font-style:italic;font-size:9.5px;background:transparent;box-shadow:none;color:#54656f}
+.tg-link{display:flex;flex-direction:column;align-items:center;gap:6px}
+.tg-link .ln{width:1px;height:44px;background:linear-gradient(180deg,transparent,rgba(217,119,87,.6),transparent);position:relative;overflow:visible}
+.tg-link .orb{width:7px;height:7px;border-radius:50%;background:var(--accent);position:absolute;left:-3px;animation:orb 2.6s ease-in-out infinite}
+@keyframes orb{0%,100%{top:0}50%{top:37px}}
+.tg-link span{font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--fg3);writing-mode:vertical-rl;text-orientation:mixed}
+
+/* decisions */
+.dec-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:40px}
+.dec-card{padding:28px;border:1px solid var(--border2);border-radius:12px;background:rgba(255,255,255,.02);transition:transform .35s ease,border-color .35s ease}
+.dec-card:hover{transform:translateY(-4px);border-color:rgba(217,119,87,.3)}
+.dec-card .dc-q{font-family:var(--font-display);font-style:italic;font-size:1.15rem;color:var(--fg);margin-bottom:12px;line-height:1.35}
+.dec-card .dc-row{font-size:13px;line-height:1.7;color:var(--fg2);padding:8px 0;border-top:1px solid var(--border2)}
+.dec-card .dc-row b{display:block;font-size:9px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--fg3);margin-bottom:3px}
+.dec-card .dc-row.oc b{color:var(--accent)}
+
+/* live product */
+.live-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:32px;align-items:start}
+.media-slot{position:relative;border-radius:12px;overflow:hidden;border:1px solid var(--border2);background:rgba(255,255,255,.02)}
+.media-slot video,.media-slot img{width:100%;display:block}
+.media-slot .slot-empty{display:none}
+.media-slot.empty video,.media-slot.empty img{display:none}
+.media-slot.empty .slot-empty{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;min-height:240px;border:1px dashed rgba(217,119,87,.35);border-radius:12px;text-align:center;padding:32px}
+.slot-empty .se-icon{width:44px;height:44px;border-radius:50%;border:1px solid rgba(217,119,87,.4);display:flex;align-items:center;justify-content:center;color:var(--accent);font-size:16px}
+.slot-empty p{font-size:12.5px;color:var(--fg3);max-width:340px;line-height:1.7}
+.slot-empty code{color:var(--accent);font-size:12px}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+  .reveal,.reveal .stag,.hero-in{opacity:1;transform:none}
+  .nstep{opacity:1}
+}
+@media(max-width:900px){
+  .demo-wrap{grid-template-columns:1fr}
+  .demo-notes{position:static}
+  .thread-grid{grid-template-columns:1fr}
+  .tg-link{flex-direction:row;padding:10px 0}
+  .tg-link .ln{width:44px;height:1px;background:linear-gradient(90deg,transparent,rgba(217,119,87,.6),transparent)}
+  .tg-link .orb{animation:orbH 2.6s ease-in-out infinite;top:-3px}
+  @keyframes orbH{0%,100%{left:0}50%{left:37px}}
+  .tg-link span{writing-mode:horizontal-tb}
+}
+@media(max-width:720px){
+  .cs-cols,.cs-cols-3,.dec-grid,.live-grid{grid-template-columns:1fr}
+  .cs-metrics{grid-template-columns:1fr 1fr}
+  .cs-metric{border-right:none}
+  .cs-metric:nth-child(n+3){border-top:1px solid var(--border2)}
+  .cs-meta{grid-template-columns:1fr 1fr}
+  .cs-built-table td:first-child{white-space:normal;width:auto}
+}
+</style>
+</head>
+<body>
+
+<nav class="back-nav">
+  <a href="https://idadilfer-tinker.github.io/portfolio/" class="back-link">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+    Back to portfolio
+  </a>
+  <span class="back-nav-title">Oia — Case Study</span>
+  <div class="back-nav-right">
+    <a href="https://heyoia.com" target="_blank" rel="noopener" class="visit-link">
+      Visit heyoia.com
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+    </a>
+  </div>
+</nav>
+
+<header class="cs-hero">
+  <p class="cs-eyebrow hero-in">Case Study · 2026 · Applied AI · Digital Health · Luxury Concierge</p>
+  <h1 class="cs-title hero-in">Oia —<br><em>The interface<br>is the agent.</em></h1>
+  <p class="cs-subtitle hero-in">A luxury AI concierge for planning cosmetic treatments and plastic surgery. There are no pages, forms, or dashboards — every journey, from intake to post-op check-ins, happens inside one conversation with Oia.</p>
+  <div class="cs-meta hero-in">
+    <div class="cs-meta-item"><p class="cs-meta-label">Role</p><p class="cs-meta-value">Founder &amp; Lead Product Designer</p></div>
+    <div class="cs-meta-item"><p class="cs-meta-label">Year</p><p class="cs-meta-value">2026 – Present</p></div>
+    <div class="cs-meta-item"><p class="cs-meta-label">Company</p><p class="cs-meta-value">Oia · heyoia.com</p></div>
+    <div class="cs-meta-item"><p class="cs-meta-label">Status</p><p class="cs-meta-value">Invite-only launch</p></div>
+  </div>
+</header>
+
+<main class="cs-body">
+
+  <!-- Context -->
+  <section class="cs-section reveal">
+    <p class="cs-section-label">Context</p>
+    <div class="cs-cols">
+      <div>
+        <h2 class="cs-h2">Taking the taboo out of looking after yourself.</h2>
+      </div>
+      <div>
+        <p class="cs-p">Cosmetic surgery — and treatments as everyday as botox — have lived behind closed doors: whispered about, quietly judged, priced opaquely. Oia exists to change that. Patients tell Oia what they long for in their own words; SmartMatch finds surgeons whose verified real-world results most closely resemble the patient's desired outcome; and Oia negotiates the price and package on the patient's behalf.</p>
+        <p class="cs-p">Matching is domestic-first: Oia matches patients with services in their own country, and offers cross-border options from its vetted international network — spanning the UK, Germany, Lithuania, Spain, Greece, Turkey and Lebanon — when domestic options exceed the patient's budget. One transparent, all-inclusive estimate. £0 hidden fees.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CORE PRINCIPLE -->
+  <section class="cs-section reveal">
+    <p class="cs-section-label">⭑ Core Product Principle</p>
+    <div class="manifesto">
+      <h3>The UI <em>is</em> Oia.</h3>
+      <p><b>The entire patient-facing product is the AI agent.</b> On the web and in the app, everything is conversational. Intake, results galleries, shortlists, quotes, negotiation updates, booking, travel itineraries, post-op check-ins — every journey happens <b>inside the conversation with Oia</b>, across web chat and WhatsApp as one continuous thread. If a feature can't be expressed conversationally, it doesn't ship patient-side.</p>
+    </div>
+    <div class="cs-cols-3" style="margin-top:24px;grid-template-columns:repeat(3,1fr)">
+      <div class="cs-card stag">
+        <div class="cs-card-num">01</div>
+        <div class="cs-card-title">Rich responses, not pages</div>
+        <p>Shortlists, quotes, itineraries, and before/after galleries render as rich cards, carousels, and selection buttons within the conversation. The "personalised shortlist link" opens a conversational view — never a listings page.</p>
+      </div>
+      <div class="cs-card stag">
+        <div class="cs-card-num">02</div>
+        <div class="cs-card-title">Structured input inside chat</div>
+        <p>Selection buttons, list messages, and photo prompts carry the intake and every decision point. Free-text is always available, never required.</p>
+      </div>
+      <div class="cs-card stag">
+        <div class="cs-card-num">03</div>
+        <div class="cs-card-title">One thread, every channel</div>
+        <p>Web chat and WhatsApp are the same conversation with Oia — state and history follow the patient across channels, mid-journey, without repetition.</p>
+      </div>
+      <div class="cs-card stag">
+        <div class="cs-card-num">04</div>
+        <div class="cs-card-title">Consent lives in the conversation</div>
+        <p>Sensitive-imagery confirmation, photo-sharing consent, and offer acceptances are conversational moments with logged, explicit confirmations — designed to be as legally robust as any form.</p>
+      </div>
+      <div class="cs-card stag">
+        <div class="cs-card-num">05</div>
+        <div class="cs-card-title">Conversation-first specs</div>
+        <p>Every feature must be expressed as a conversation — what Oia says, what the patient sees and taps — before it is built. The spec format is the design gate.</p>
+      </div>
+      <div class="cs-card stag">
+        <div class="cs-card-num">06</div>
+        <div class="cs-card-title">Conventional UI where it earns it</div>
+        <p>The principle governs the patient side only. The internal curation and approval cockpit and clinic tooling use conventional UI where that's faster to operate.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- LIVE DEMO -->
+  <section class="cs-section reveal">
+    <p class="cs-section-label">The Experience — Live</p>
+    <h2 class="cs-h2">One conversation, from longing to a held date.</h2>
+    <p class="cs-p" style="max-width:680px">A working recreation of the shipped conversation architecture — intake, consent-gated results, SmartMatch with domestic-first logic, and Oia negotiating on the patient's behalf. Watch it play.</p>
+
+    <div class="demo-wrap">
+      <div class="oia-app">
+        <div class="oia-hd">
+          <div class="oia-mono">O</div>
+          <div>
+            <h6>OIA</h6>
+            <p><span class="dot"></span>Online now · your concierge</p>
+          </div>
+        </div>
+        <div class="oia-chat" id="oiaChat"></div>
+      </div>
+
+      <div class="demo-notes">
+        <div class="demo-note">
+          <h5>01 · A conversation, not a form</h5>
+          <p>Intake happens in the patient's own words, at 2am if that's when courage arrives. Selection chips structure the data underneath — free-text is always available, never required.</p>
+        </div>
+        <div class="demo-note">
+          <h5>02 · Consent as a conversational moment</h5>
+          <p>Real patient results are sensitive imagery. The gallery arrives blurred; viewing requires an explicit, logged confirmation inside the thread — as legally robust as any form, without breaking the conversation.</p>
+        </div>
+        <div class="demo-note">
+          <h5>03 · Domestic-first, honestly priced</h5>
+          <p>Oia matches at home first. Cross-border options appear only when domestic prices exceed the patient's budget — side by side, with all-inclusive figures, so the choice is always the patient's.</p>
+        </div>
+        <div class="demo-note">
+          <h5>04 · The agent works for the patient</h5>
+          <p>"Oia is negotiating on your behalf" is the product's signature moment — the concierge leaves the room and comes back with a better package. Negotiation updates arrive in the same thread.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SMARTMATCH -->
+  <section class="cs-section reveal">
+    <p class="cs-section-label">SmartMatch</p>
+    <h2 class="cs-h2">Matched on evidence, not advertising.</h2>
+    <p class="cs-p" style="max-width:680px">SmartMatch ranks surgeons by how closely their verified real-world results resemble the patient's desired outcome — alongside accreditation, specialism fit, and verified reviews. No mystery scores, no sponsored placements, and every match explains its reasons.</p>
+
+    <svg class="flow-svg" viewBox="0 0 920 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="SmartMatch domestic-first matching flow">
+      <!-- inputs -->
+      <rect class="box" x="20" y="30" width="170" height="62" rx="10"/>
+      <text class="lbl" x="105" y="56" text-anchor="middle">Desired outcome</text>
+      <text class="lbl-sm" x="105" y="72" text-anchor="middle">reference photos · goals · budget</text>
+      <rect class="box" x="20" y="120" width="170" height="62" rx="10"/>
+      <text class="lbl" x="105" y="146" text-anchor="middle">Verified results library</text>
+      <text class="lbl-sm" x="105" y="162" text-anchor="middle">consent-signed, real patients</text>
+      <rect class="box" x="20" y="210" width="170" height="62" rx="10"/>
+      <text class="lbl" x="105" y="236" text-anchor="middle">Trust signals</text>
+      <text class="lbl-sm" x="105" y="252" text-anchor="middle">accreditation · reviews · caseload</text>
+      <path class="dash" d="M190 61 C 250 61, 260 120, 320 130" stroke="rgba(255,255,255,.25)" fill="none"/>
+      <path class="dash" d="M190 151 H 320" stroke="rgba(255,255,255,.25)" fill="none"/>
+      <path class="dash" d="M190 241 C 250 241, 260 180, 320 172" stroke="rgba(255,255,255,.25)" fill="none"/>
+      <!-- engine -->
+      <rect class="box box-ac" x="320" y="112" width="180" height="80" rx="12"/>
+      <text class="lbl-ac" x="410" y="144" text-anchor="middle">SMARTMATCH</text>
+      <text class="lbl-sm" x="410" y="162" text-anchor="middle">outcome-similarity ranking,</text>
+      <text class="lbl-sm" x="410" y="176" text-anchor="middle">reasons shown for every match</text>
+      <!-- domestic first -->
+      <path class="dash" d="M500 152 H 560" stroke="rgba(217,119,87,.5)" fill="none"/>
+      <rect class="box" x="560" y="118" width="160" height="68" rx="10"/>
+      <text class="lbl" x="640" y="144" text-anchor="middle">Domestic first</text>
+      <text class="lbl-sm" x="640" y="160" text-anchor="middle">surgeons in the patient's</text>
+      <text class="lbl-sm" x="640" y="173" text-anchor="middle">own country</text>
+      <!-- budget gate -->
+      <path class="dash" d="M720 140 C 760 130, 770 80, 810 72" stroke="rgba(111,211,166,.45)" fill="none"/>
+      <rect class="box" x="810" y="40" width="96" height="60" rx="10" style="stroke:rgba(111,211,166,.4)"/>
+      <text class="lbl" x="858" y="66" text-anchor="middle">Within budget</text>
+      <text class="lbl-sm" x="858" y="82" text-anchor="middle">shortlist at home</text>
+      <path class="dash" d="M720 168 C 760 178, 770 220, 810 228" stroke="rgba(153,64,43,.6)" fill="none"/>
+      <rect class="box box-gold" x="810" y="200" width="96" height="72" rx="10"/>
+      <text class="lbl" x="858" y="224" text-anchor="middle">Over budget</text>
+      <text class="lbl-sm" x="858" y="240" text-anchor="middle">+ cross-border options</text>
+      <text class="lbl-sm" x="858" y="253" text-anchor="middle">from the vetted network</text>
+      <text class="lbl-sm" x="640" y="228" text-anchor="middle" style="font-style:italic;font-family:'Tinos';font-size:11px;fill:#C8C2BA">The choice is always the patient's.</text>
+    </svg>
+    <figcaption>Domestic-first by design — cross-border is an honest answer to budget, never a default funnel.</figcaption>
+  </section>
+
+  <!-- NEGOTIATION -->
+  <section class="cs-section reveal">
+    <p class="cs-section-label">The Negotiation Layer</p>
+    <h2 class="cs-h2">A concierge who leaves the room and comes back with more.</h2>
+    <p class="cs-p" style="max-width:680px">When a preferred surgeon sits above budget, Oia negotiates price and package with the clinic on the patient's behalf — and reports back in the same thread. This is the timeline the patient sees, replayed.</p>
+
+    <div class="nego" id="nego">
+      <div class="nego-hd">
+        <h6>Mr. Whitfield · Manchester — package</h6>
+        <div class="nego-price"><b id="negoPrice">£12,400</b><span>all-inclusive</span></div>
+      </div>
+      <p class="nego-sub">Tummy tuck + contouring · patient budget £8–11k · every figure includes surgery, hospital, aftercare</p>
+      <div class="nstep" data-price="12400">
+        <div class="nd">1</div>
+        <div>
+          <h5>Initial quote received <time>Tue 14:02</time></h5>
+          <p>Clinic's standard package — £1,400 above the top of the patient's stated range.</p>
+        </div>
+      </div>
+      <div class="nstep" data-price="11600">
+        <div class="nd">2</div>
+        <div>
+          <h5>Oia counters with a June date <time>Tue 14:31</time></h5>
+          <p>Flexible scheduling into the clinic's quiet period, offered against a reduced rate.</p>
+          <p class="delta">−£800 · date flexibility</p>
+        </div>
+      </div>
+      <div class="nstep" data-price="11600">
+        <div class="nd">3</div>
+        <div>
+          <h5>Package upgraded, price held <time>Tue 16:05</time></h5>
+          <p>Six months of post-op check-ins and a full recovery kit added at no cost.</p>
+          <p class="delta">+ aftercare bundle · £0</p>
+        </div>
+      </div>
+      <div class="nstep" data-price="10900">
+        <div class="nd">✓</div>
+        <div>
+          <h5>Final offer — inside budget <time>Wed 09:12</time></h5>
+          <p>£10,900 all-inclusive, confirmed in writing. Patient accepts inside the conversation — the acceptance is logged as a conversational consent moment.</p>
+          <p class="delta">−£1,500 total · now within range</p>
+        </div>
+      </div>
+    </div>
+    <figcaption style="text-align:center">Recreated timeline — representative negotiation. Patients see progress; clinics deal with one professional counterpart.</figcaption>
+  </section>
+
+  <!-- ONE THREAD -->
+  <section class="cs-section reveal">
+    <p class="cs-section-label">One Thread, Every Channel</p>
+    <h2 class="cs-h2">Start on the sofa, continue at the airport.</h2>
+    <p class="cs-p" style="max-width:680px">Web chat and WhatsApp are the same conversation. State, history, consents, and held bookings follow the patient — a journey that spans months and borders can't afford to reset at a channel switch.</p>
+    <div class="thread-grid">
+      <div class="tg-frame nia">
+        <div class="tg-hd"><i></i>Web chat · heyoia.com · Tuesday 21:40</div>
+        <div class="tg-body">
+          <div class="tg-msg a">Your final offer from Mr. Whitfield is in: £10,900 all-inclusive. Shall I hold June 22nd?</div>
+          <div class="tg-msg b">I need to think about it overnight 💭</div>
+          <div class="tg-msg a">Of course. It's your decision — the offer stands for 14 days. I'm here whenever.</div>
+        </div>
+      </div>
+      <div class="tg-link">
+        <div class="ln"><i class="orb"></i></div>
+        <span>same thread</span>
+      </div>
+      <div class="tg-frame wa">
+        <div class="tg-hd"><i style="background:#25d366"></i>WhatsApp · Wednesday 08:15</div>
+        <div class="tg-body">
+          <div class="tg-msg b">Ok — I slept on it. Let's do it. Hold June 22nd! 🙌</div>
+          <div class="tg-msg a">Wonderful, Maya. June 22nd is held with Mr. Whitfield — your coordinator Ana will confirm the deposit details today. Nothing to fill in; I have everything from our conversation.</div>
+          <div class="tg-msg a ghost">Consent &amp; offer acceptance logged · 08:16</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DESIGN DECISIONS -->
+  <section class="cs-section reveal">
+    <p class="cs-section-label">Key Design Decisions</p>
+    <h2 class="cs-h2">Four calls that made the agent trustworthy.</h2>
+    <div class="dec-grid">
+      <div class="dec-card stag">
+        <p class="dc-q">Why is the entire patient UI a conversation?</p>
+        <div class="dc-row"><b>The tension</b>Marketplaces default to listings, filters, and comparison tables — and every stakeholder instinct pulled that way.</div>
+        <div class="dc-row"><b>The call</b>People don't shop for surgery the way they shop for flights. They confide, hesitate, and return. A conversation holds ambivalence; a listings page pressures it. The constraint became the spec gate: if it can't be said, it doesn't ship.</div>
+        <div class="dc-row oc"><b>Outcome</b>One design surface to perfect instead of dozens — and an intake patients describe as "asking Oia things I'd never say out loud in a consultation room."</div>
+      </div>
+      <div class="dec-card stag">
+        <p class="dc-q">Why domestic-first when cross-border margins are better?</p>
+        <div class="dc-row"><b>The tension</b>The business model is strongest when patients travel; the honest recommendation is often local.</div>
+        <div class="dc-row"><b>The call</b>Match at home first, always. Cross-border appears only when domestic options exceed the patient's budget — presented side by side with real prices for both.</div>
+        <div class="dc-row oc"><b>Outcome</b>Trust as the moat. "Prefer to stay closer to home? The choice is always yours" is a line of product copy that doubles as strategy.</div>
+      </div>
+      <div class="dec-card stag">
+        <p class="dc-q">How can consent be robust without a single form?</p>
+        <div class="dc-row"><b>The tension</b>Sensitive imagery, photo sharing, and offer acceptance legally demand explicit, auditable consent — the natural home of forms.</div>
+        <div class="dc-row"><b>The call</b>Consent became a designed conversational moment: the gallery arrives blurred, the confirmation is explicit and unambiguous, and every acceptance is timestamped and logged to the patient's privacy record.</div>
+        <div class="dc-row oc"><b>Outcome</b>Legal robustness without breaking the thread — and consent moments that patients actually read.</div>
+      </div>
+      <div class="dec-card stag">
+        <p class="dc-q">Why conventional UI for the internal cockpit?</p>
+        <div class="dc-row"><b>The tension</b>If conversation is the product philosophy, shouldn't operations be conversational too?</div>
+        <div class="dc-row"><b>The call</b>No. The principle serves patients, not ideology. Curation, clinic approval, and negotiation oversight are high-volume operator tasks — tables, queues, and bulk actions are simply faster.</div>
+        <div class="dc-row oc"><b>Outcome</b>A two-speed design system: a single conversational surface patient-side, a pragmatic cockpit inside — each measured by what it's for.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- What I built -->
+  <section class="cs-section reveal">
+    <p class="cs-section-label">What I Built</p>
+    <h2 class="cs-h2">Everything the conversation needs — and the machinery behind it.</h2>
+    <table class="cs-built-table">
+      <tr>
+        <td>Conversation architecture</td>
+        <td>The full patient journey — intake, education, matching, quotes, negotiation, booking, travel, recovery — expressed as conversation design across web chat and WhatsApp as one continuous thread.</td>
+      </tr>
+      <tr>
+        <td>Rich in-chat card system</td>
+        <td>Clinic cards, before/after galleries, itineraries, quotes, comparison strips, and recovery kits designed as conversational components — a card library, not a page library.</td>
+      </tr>
+      <tr>
+        <td>SmartMatch UX</td>
+        <td>Outcome-similarity matching surfaced with reasons for every match — no mystery scores, no sponsored placements — and the domestic-first, budget-gated presentation logic.</td>
+      </tr>
+      <tr>
+        <td>Consent &amp; gating moments</td>
+        <td>Sensitive-imagery confirmation, photo-sharing consent, and offer acceptance designed as logged conversational moments — legally robust without a single form.</td>
+      </tr>
+      <tr>
+        <td>Negotiation experience</td>
+        <td>The "Oia is negotiating on your behalf" pattern — status, counters, and final offers reported inside the thread, with acceptance as a conversational commitment.</td>
+      </tr>
+      <tr>
+        <td>Internal cockpit &amp; clinic tooling</td>
+        <td>Conventional UI where speed matters: curation and approval workflows, clinic verification, results-library management, and negotiation oversight.</td>
+      </tr>
+      <tr>
+        <td>Brand &amp; voice</td>
+        <td>The Oia identity and tone — warm, unhurried, never judging — carried from marketing site through every product utterance. "The decision of a lifetime, held gently."</td>
+      </tr>
+    </table>
+  </section>
+
+  <!-- Numbers -->
+  <section class="cs-section reveal">
+    <p class="cs-section-label">The Product, In Numbers</p>
+    <h2 class="cs-h2">Principles you can count.</h2>
+    <div class="cs-metrics">
+      <div class="cs-metric">
+        <div class="cs-metric-num">0</div>
+        <div class="cs-metric-label">Forms, page flows, or dashboards patient-side</div>
+        <div class="cs-metric-note">Every journey is expressed inside the conversation with Oia</div>
+      </div>
+      <div class="cs-metric">
+        <div class="cs-metric-num">1</div>
+        <div class="cs-metric-label">Continuous thread across web and WhatsApp</div>
+        <div class="cs-metric-note">State, history, and consents follow the patient across channels</div>
+      </div>
+      <div class="cs-metric">
+        <div class="cs-metric-num">7</div>
+        <div class="cs-metric-label">Countries in the vetted clinic network</div>
+        <div class="cs-metric-note">UK, Germany, Lithuania, Spain, Greece, Turkey, Lebanon — new destinations only after clearing the vetting bar</div>
+      </div>
+      <div class="cs-metric">
+        <div class="cs-metric-num">£0</div>
+        <div class="cs-metric-label">Hidden fees in any estimate</div>
+        <div class="cs-metric-note">Surgery, hospital, hotel, transfers and aftercare in one all-inclusive figure — next to the at-home price</div>
+      </div>
+      <div class="cs-metric">
+        <div class="cs-metric-num">15+</div>
+        <div class="cs-metric-label">Procedures covered across face, breast, and body</div>
+        <div class="cs-metric-note">From rhinoplasty to mommy makeover — every plan bespoke, never from a rate card</div>
+      </div>
+      <div class="cs-metric">
+        <div class="cs-metric-num">100%</div>
+        <div class="cs-metric-label">Of patient features specced as conversations first</div>
+        <div class="cs-metric-note">What Oia says, what the patient sees and taps — the design gate before anything is built</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LIVE PRODUCT -->
+  <section class="cs-section reveal">
+    <p class="cs-section-label">The Live Product</p>
+    <h2 class="cs-h2">Oia in the wild.</h2>
+    <p class="cs-p" style="max-width:680px">From the live site — the brand promise and the product carrying it. Bespoke surgical journeys, managed by intelligence.</p>
+    <div class="live-grid">
+      <figure style="margin:0">
+        <div class="media-slot">
+          <img src="https://heyoia.com/screens/why-oia-women.jpg" alt="Oia brand imagery — four women of different ages together, relaxed and smiling" loading="lazy">
+          <div class="slot-empty">
+            <div class="se-icon">✚</div>
+            <p>Loads from <code>heyoia.com</code> when online — or drop <code>oia-brand.jpg</code> beside this file.</p>
+          </div>
+        </div>
+        <figcaption>Brand — "Wanting to feel at home in your body isn't vanity."</figcaption>
+      </figure>
+      <figure style="margin:0">
+        <div class="media-slot">
+          <video src="oia_demo.mp4" autoplay loop muted playsinline></video>
+          <div class="slot-empty">
+            <div class="se-icon">▶</div>
+            <p>Drop <code>oia_demo.mp4</code> beside this file — a screen recording of a live Oia conversation will autoplay here.</p>
+          </div>
+        </div>
+        <figcaption>Live conversation — product recording</figcaption>
+      </figure>
+    </div>
+    <div class="cs-callout">
+      <p>"I asked Oia things at 2am I would never have said out loud in a consultation room. By the time I flew, there were no surprises left." — Amara T., Manchester</p>
+    </div>
+  </section>
+
+</main>
+
+<div class="cs-cta reveal">
+  <a href="https://www.linkedin.com/in/idatinker" target="_blank" rel="noopener">
+    Get in touch
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+  </a>
+</div>
+
+<script>
+/* reveal */
+const obs = new IntersectionObserver(es => {
+  es.forEach(e => { if(e.isIntersecting){ e.target.classList.add('in'); obs.unobserve(e.target); }});
+},{threshold:.08});
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+/* media slots */
+document.querySelectorAll('.media-slot').forEach(slot => {
+  slot.querySelectorAll('video,img').forEach(m => {
+    m.addEventListener('error', () => slot.classList.add('empty'));
+    m.addEventListener('load', () => slot.classList.remove('empty'));
+    if (m.tagName === 'VIDEO') m.addEventListener('canplay', () => slot.classList.remove('empty'));
+    if (m.tagName === 'IMG' && m.complete && m.naturalWidth === 0) slot.classList.add('empty');
+  });
+});
+
+/* ── Oia conversation demo ── */
+const chat = document.getElementById('oiaChat');
+const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+const CLINIC_IMG = 'https://heyoia.com/screens/clinic.webp';
+
+const script = [
+  {t:'oia', typing:1200, html:'<span class="oname">Oia</span>Hi, I’m Oia. What are you hoping to achieve? No forms — just tell me in your own words. Nothing is too small, too early, or “too vain.”'},
+  {t:'pt', html:'I’ve had two kids and I feel great! I’d just love a tummy tuck and a bit of contouring. Around £8–11k, and summer works best.'},
+  {t:'oia', typing:1600, html:'<span class="oname">Oia</span>And that’s the best reason of all — doing this for you. Before I show what our surgeons achieve, these are real patients’ consent-signed photos, so I need your explicit ok to display sensitive imagery.<div class="ochip-row"><span class="ochip sel">Yes, show me</span><span class="ochip">Not right now</span></div>'},
+  {t:'sys', html:'Sensitive-imagery consent logged · 21:42 · saved to your privacy record'},
+  {t:'oia', typing:1400, gallery:true, html:'<span class="oname">Oia</span>Thank you. Here are body-contouring results from surgeons whose outcomes most closely match your goals:'},
+  {t:'oia', typing:1700, html:'<span class="oname">Oia</span>Your closest match at home is Mr. Whitfield in Manchester — his verified results are the nearest fit to your reference. His package is £12,400, just above your range, so I’ve also matched a vetted option from our international network:<div class="ocard"><img src="' + CLINIC_IMG + '" alt="Estetik International clinic" loading="lazy" onerror="this.style.display=\'none\'"><div class="oc-body"><div class="oc-top"><h5>Estetik International</h5><span class="star">★ 4.9</span></div><p class="oc-sub">Istanbul · JCI Accredited · 1,200+ body contouring cases</p><div class="oc-price"><span>All-inclusive from</span><b>£6,800</b></div><span class="oc-badge">Flights + hotel + aftercare included</span></div></div><div class="ochip-row"><span class="ochip sel">Ask Oia to negotiate with Manchester</span><span class="ochip">Tell me about Istanbul</span></div>'},
+  {t:'sys', html:'✦ Oia is negotiating on your behalf…'},
+  {t:'oia', typing:2100, html:'<span class="oname">Oia</span>Good news. Mr. Whitfield’s clinic will do £10,900 for a June date — with six months of post-op check-ins and your recovery kit included. That’s now inside your range. Side by side:<div class="ocompare"><div class="cc win"><b>Mr. Whitfield</b><span>Manchester · at home</span><div class="pp"><s>£12,400</s>£10,900</div><span>6-month aftercare included</span></div><div class="cc"><b>Estetik Int’l</b><span>Istanbul · 4h flight</span><div class="pp">£6,800</div><span>travel + hotel included</span></div></div>The choice is always yours — happy to talk either through.'},
+  {t:'pt', html:'Manchester. Hold June 22nd please! 🙌'},
+  {t:'oia', typing:1300, html:'<span class="oname">Oia</span>Held. June 22nd with Mr. Whitfield — your coordinator Ana will send deposit details today, fully refundable for 14 days. I have everything from our conversation; there’s nothing to fill in. 🤍'},
+  {t:'sys', html:'Offer acceptance logged · booking held · continues on WhatsApp'}
+];
+
+function addTyping(){
+  const el = document.createElement('div');
+  el.className = 'otyping';
+  el.innerHTML = '<i></i><i></i><i></i>';
+  chat.appendChild(el);
+  chat.scrollTop = chat.scrollHeight;
+  return el;
+}
+function galleryCard(){
+  const el = document.createElement('div');
+  el.className = 'ogal';
+  el.style.maxWidth = '85%';
+  el.style.alignSelf = 'flex-start';
+  el.innerHTML = '<h5>Body-contouring results</h5><p>Every photo consent-signed by the patient · shared privately</p><div class="thumbs"><span class="th"><i>before</i></span><span class="th"><i>after</i></span><span class="th"><i>after</i></span></div><div class="consent"><span class="cbox">✓</span>Viewing confirmed in this conversation</div>';
+  chat.appendChild(el);
+  setTimeout(() => el.classList.add('open'), 700);
+  chat.scrollTop = chat.scrollHeight;
+}
+function addMsg(step){
+  const el = document.createElement('div');
+  el.className = step.t === 'sys' ? 'osys' : 'om ' + step.t;
+  el.innerHTML = step.html;
+  chat.appendChild(el);
+  chat.scrollTop = chat.scrollHeight;
+  if (step.gallery) galleryCard();
+}
+function playDemo(){
+  chat.innerHTML = '';
+  let delay = 600;
+  script.forEach(step => {
+    if (step.typing && !reduced){
+      setTimeout(() => { window._ot = addTyping(); }, delay);
+      delay += step.typing;
+      setTimeout(() => { if(window._ot){window._ot.remove();window._ot=null;} addMsg(step); }, delay);
+    } else {
+      setTimeout(() => addMsg(step), delay);
+    }
+    delay += (step.t === 'pt' ? 1200 : step.t === 'sys' ? 1400 : 2400);
+  });
+  setTimeout(playDemo, delay + 6000);
+}
+const demoObs = new IntersectionObserver(es => {
+  es.forEach(e => { if(e.isIntersecting){ playDemo(); demoObs.disconnect(); }});
+},{threshold:.2});
+demoObs.observe(chat);
+
+/* ── negotiation timeline loop ── */
+const nego = document.getElementById('nego');
+const priceEl = document.getElementById('negoPrice');
+const steps = nego.querySelectorAll('.nstep');
+function animPrice(to, ms){
+  const from = parseInt(priceEl.textContent.replace(/[£,]/g,''), 10);
+  const t0 = performance.now();
+  function tick(t){
+    const p = Math.min(1, (t - t0) / ms);
+    const v = Math.round(from + (to - from) * (1 - Math.pow(1 - p, 3)));
+    priceEl.textContent = '£' + v.toLocaleString('en-GB');
+    if (p < 1) requestAnimationFrame(tick);
+  }
+  requestAnimationFrame(tick);
+}
+function playNego(){
+  steps.forEach(s => s.classList.remove('on'));
+  priceEl.textContent = '£12,400';
+  if (reduced){ steps.forEach(s => s.classList.add('on')); priceEl.textContent = '£10,900'; return; }
+  let d = 600;
+  steps.forEach(s => {
+    setTimeout(() => {
+      s.classList.add('on');
+      animPrice(parseInt(s.dataset.price, 10), 900);
+    }, d);
+    d += 1900;
+  });
+  setTimeout(playNego, d + 5000);
+}
+const nObs = new IntersectionObserver(es => {
+  es.forEach(e => { if(e.isIntersecting){ playNego(); nObs.disconnect(); }});
+},{threshold:.3});
+nObs.observe(nego);
+</script>
+</body>
+</html>
