@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portfolio Admin · Ida Tinker</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Tinos:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#18171A;--panel:#1f1e22;--panel2:#131216;--fg:#F2EEE8;--fg2:#C8C2BA;--fg3:#7A7570;
+  --accent:#D97757;--green:#6fd3a6;--red:#e26d6d;
+  --border:rgba(255,255,255,.09);--border2:rgba(255,255,255,.05);
+  --font-body:'Libre Franklin',sans-serif;--font-display:'Tinos',serif;
+}
+body{background:var(--bg);color:var(--fg);font-family:var(--font-body);font-size:14px;line-height:1.6;-webkit-font-smoothing:antialiased;min-height:100vh}
+button{font-family:var(--font-body);cursor:pointer;border:none}
+input,textarea,select{font-family:var(--font-body);background:var(--panel2);border:1px solid var(--border);border-radius:8px;color:var(--fg);font-size:13px;padding:9px 12px;width:100%}
+input:focus,textarea:focus{outline:none;border-color:rgba(217,119,87,.5)}
+textarea{resize:vertical;min-height:60px;line-height:1.55}
+a{color:var(--accent)}
+
+/* header */
+.hd{position:sticky;top:0;z-index:50;display:flex;align-items:center;gap:16px;height:58px;padding:0 24px;background:rgba(24,23,26,.92);backdrop-filter:blur(14px);border-bottom:1px solid var(--border2)}
+.hd h1{font-family:var(--font-display);font-style:italic;font-size:19px;font-weight:400}
+.hd .conn{font-size:11px;color:var(--fg3);display:flex;align-items:center;gap:7px}
+.hd .conn i{width:8px;height:8px;border-radius:50%;background:var(--fg3)}
+.hd .conn.ok i{background:var(--green)}
+.hd .conn.ok{color:var(--green)}
+.hd .sp{flex:1}
+.tabs{display:flex;gap:4px}
+.tab{background:transparent;color:var(--fg3);font-size:12px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;padding:8px 16px;border-radius:8px;transition:all .18s}
+.tab:hover{color:var(--fg2)}
+.tab.on{background:rgba(217,119,87,.12);color:var(--accent)}
+
+.wrap{max-width:1060px;margin:0 auto;padding:32px 24px 120px}
+.view{display:none}
+.view.on{display:block}
+.lbl{font-size:9px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--fg3);margin-bottom:8px}
+.card{background:var(--panel);border:1px solid var(--border2);border-radius:14px;padding:24px;margin-bottom:16px}
+.card h3{font-family:var(--font-display);font-style:italic;font-weight:400;font-size:20px;margin-bottom:14px}
+.hint{font-size:12px;color:var(--fg3);line-height:1.7}
+.hint code{color:var(--accent);font-size:11px}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.frow{margin-bottom:14px}
+.btn{display:inline-flex;align-items:center;gap:8px;background:var(--accent);color:#fff;font-size:12px;font-weight:600;letter-spacing:.06em;padding:11px 20px;border-radius:8px;transition:opacity .18s,transform .2s}
+.btn:hover{opacity:.9;transform:translateY(-1px)}
+.btn.ghost{background:transparent;border:1px solid var(--border);color:var(--fg2)}
+.btn.ghost:hover{border-color:var(--fg3)}
+.btn:disabled{opacity:.4;cursor:default;transform:none}
+.btn.sm{padding:7px 13px;font-size:11px}
+
+/* pages grid */
+.pgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.pcard{background:var(--panel);border:1px solid var(--border2);border-radius:14px;padding:22px;cursor:pointer;transition:transform .25s,border-color .25s;text-align:left}
+.pcard:hover{transform:translateY(-3px);border-color:rgba(217,119,87,.4)}
+.pcard h4{font-family:var(--font-display);font-style:italic;font-weight:400;font-size:18px;margin-bottom:4px}
+.pcard p{font-size:11.5px;color:var(--fg3)}
+.pcard .file{font-size:10px;color:var(--accent);margin-top:10px;letter-spacing:.06em}
+
+/* editor */
+.ed-hd{display:flex;align-items:center;gap:14px;margin-bottom:22px;flex-wrap:wrap}
+.ed-hd h2{font-family:var(--font-display);font-style:italic;font-weight:400;font-size:26px}
+.ed-hd .dirty{font-size:11px;color:var(--accent)}
+.sec{background:var(--panel);border:1px solid var(--border2);border-radius:14px;margin-bottom:12px;overflow:hidden}
+.sec-hd{display:flex;align-items:center;gap:10px;padding:15px 20px;cursor:pointer;user-select:none}
+.sec-hd:hover{background:rgba(255,255,255,.02)}
+.sec-hd .cnt{font-size:10px;color:var(--fg3);margin-left:auto}
+.sec-hd .chev{color:var(--fg3);transition:transform .25s;font-size:11px}
+.sec.open .sec-hd .chev{transform:rotate(90deg)}
+.sec-hd b{font-size:12px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--fg2)}
+.sec-bd{display:none;padding:6px 20px 20px;border-top:1px solid var(--border2)}
+.sec.open .sec-bd{display:block}
+.fld{margin:14px 0}
+.fld .flabel{font-size:10px;color:var(--fg3);letter-spacing:.08em;text-transform:uppercase;margin-bottom:5px;display:flex;gap:8px;align-items:center}
+.fld .flabel .tag{font-size:9px;color:var(--accent);border:1px solid rgba(217,119,87,.3);border-radius:4px;padding:1px 6px}
+.fld.changed textarea,.fld.changed input{border-color:rgba(217,119,87,.55)}
+.imgfld{display:flex;gap:14px;align-items:flex-start}
+.imgfld .thumb{width:120px;height:80px;border-radius:8px;background:var(--panel2);border:1px solid var(--border2);object-fit:cover;flex-shrink:0;display:flex;align-items:center;justify-content:center;color:var(--fg3);font-size:10px;overflow:hidden}
+.imgfld .thumb img{width:100%;height:100%;object-fit:cover}
+.imgfld .ictl{flex:1}
+.imgfld .up{margin-top:8px}
+.filepick{display:none}
+
+/* assets */
+.agrid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:16px}
+.acard{background:var(--panel);border:1px solid var(--border2);border-radius:10px;overflow:hidden}
+.acard .ath{height:90px;background:var(--panel2);display:flex;align-items:center;justify-content:center;color:var(--fg3);font-size:22px;overflow:hidden}
+.acard .ath img{width:100%;height:100%;object-fit:cover}
+.acard .abd{padding:8px 10px;font-size:10.5px;color:var(--fg2);word-break:break-all}
+.acard .asz{color:var(--fg3);font-size:9.5px}
+.drop{border:1px dashed rgba(217,119,87,.4);border-radius:12px;padding:34px;text-align:center;color:var(--fg3);font-size:12.5px;transition:background .2s;cursor:pointer}
+.drop.over{background:rgba(217,119,87,.06)}
+
+/* footer bar */
+.pubbar{position:fixed;bottom:0;left:0;right:0;z-index:60;display:none;align-items:center;gap:14px;padding:14px 24px;background:rgba(24,23,26,.95);backdrop-filter:blur(14px);border-top:1px solid var(--border)}
+.pubbar.on{display:flex}
+.pubbar .msg{flex:1}
+.pubbar input{max-width:420px}
+
+/* toast */
+.toast{position:fixed;top:70px;right:24px;z-index:100;background:var(--panel);border:1px solid var(--border);border-left:3px solid var(--green);border-radius:10px;padding:13px 18px;font-size:12.5px;max-width:380px;box-shadow:0 16px 44px rgba(0,0,0,.5);display:none}
+.toast.err{border-left-color:var(--red)}
+.toast.show{display:block;animation:tIn .3s ease}
+@keyframes tIn{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:none}}
+.spin{display:inline-block;width:12px;height:12px;border:2px solid rgba(255,255,255,.25);border-top-color:#fff;border-radius:50%;animation:sp .7s linear infinite;vertical-align:-2px}
+@keyframes sp{to{transform:rotate(360deg)}}
+
+@media(max-width:800px){.pgrid{grid-template-columns:1fr}.row2{grid-template-columns:1fr}.agrid{grid-template-columns:1fr 1fr}}
+</style>
+</head>
+<body>
+
+<header class="hd">
+  <h1>Portfolio <em style="color:var(--accent)">Admin</em></h1>
+  <span class="conn" id="conn"><i></i><span id="connTxt">Not connected</span></span>
+  <span class="sp"></span>
+  <nav class="tabs">
+    <button class="tab on" data-v="pages">Pages</button>
+    <button class="tab" data-v="assets">Assets</button>
+    <button class="tab" data-v="settings">Settings</button>
+  </nav>
+</header>
+
+<div class="wrap">
+
+  <!-- SETTINGS -->
+  <div class="view" id="v-settings">
+    <div class="card">
+      <h3>Connect to GitHub</h3>
+      <p class="hint" style="margin-bottom:18px">
+        This dashboard talks directly to the GitHub API from your browser — nothing is stored anywhere except on this device.
+        You need a <b>fine-grained personal access token</b>: GitHub → Settings → Developer settings →
+        Fine-grained tokens → Generate new token → under <i>Repository access</i> choose <b>only your portfolio repo</b> →
+        under <i>Permissions → Repository permissions</i> set <b>Contents: Read and write</b> → Generate, then paste it below.
+      </p>
+      <div class="row2">
+        <div class="frow"><div class="lbl">Repo owner</div><input id="s-owner" placeholder="e.g. idadilfer-tinker"></div>
+        <div class="frow"><div class="lbl">Repo name</div><input id="s-repo" placeholder="e.g. portfolio"></div>
+      </div>
+      <div class="row2">
+        <div class="frow"><div class="lbl">Branch</div><input id="s-branch" value="main"></div>
+        <div class="frow"><div class="lbl">Folder inside repo (blank = root)</div><input id="s-path" placeholder=""></div>
+      </div>
+      <div class="frow"><div class="lbl">Personal access token</div><input id="s-token" type="password" placeholder="github_pat_…"></div>
+      <button class="btn" id="btnConnect">Save &amp; test connection</button>
+      <p class="hint" style="margin-top:14px">Tip: keep <code>admin.html</code> on your computer rather than in the public repo. It contains no secrets, but there's no reason to publish your admin door.</p>
+    </div>
+  </div>
+
+  <!-- PAGES -->
+  <div class="view on" id="v-pages">
+    <p class="lbl">Your pages</p>
+    <div class="pgrid" id="pgrid"></div>
+  </div>
+
+  <!-- EDITOR -->
+  <div class="view" id="v-editor">
+    <div class="ed-hd">
+      <button class="btn ghost sm" id="btnBack">← All pages</button>
+      <h2 id="edTitle">—</h2>
+      <span class="dirty" id="edDirty"></span>
+      <span class="sp" style="flex:1"></span>
+      <button class="btn ghost sm" id="btnPreview">Preview in new tab</button>
+    </div>
+    <div id="edSections"></div>
+  </div>
+
+  <!-- ASSETS -->
+  <div class="view" id="v-assets">
+    <div class="card">
+      <h3>Upload assets</h3>
+      <p class="hint" style="margin-bottom:14px">Images and videos land in your site folder and are committed immediately. To replace an existing asset (e.g. <code>img01.png</code> or <code>aida_recording.mp4</code>), upload a file with <b>exactly the same name</b>.</p>
+      <div class="drop" id="drop">Drop files here, or click to choose</div>
+      <input type="file" id="filepick" class="filepick" multiple accept="image/*,video/mp4,video/webm">
+      <div id="upQueue" style="margin-top:12px"></div>
+    </div>
+    <p class="lbl" style="margin-top:24px">In the repo</p>
+    <div class="agrid" id="agrid"></div>
+  </div>
+
+</div>
+
+<!-- PUBLISH BAR -->
+<div class="pubbar" id="pubbar">
+  <div class="msg"><input id="commitMsg" placeholder="Describe this change… (commit message)"></div>
+  <button class="btn ghost sm" id="btnDiscard">Discard changes</button>
+  <button class="btn" id="btnPublish">Publish to GitHub</button>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+/* ═══════════════ state & helpers ═══════════════ */
+const $ = s => document.querySelector(s);
+const PAGES = [
+  {file:'index.html',    name:'Homepage',   desc:'Hero, recent work carousel, library, about'},
+  {file:'oia.html',      name:'Oia',        desc:'Luxury AI concierge — conversational product'},
+  {file:'aida.html',     name:'Aida AI',    desc:'AI care journeys via WhatsApp + Nia console'},
+  {file:'connectd.html', name:'Connectd',   desc:'Three-sided professional marketplace'},
+  {file:'fidelity.html', name:'Fidelity',   desc:'Investment search redesign'},
+  {file:'vccp.html',     name:'VCCP',       desc:'Three regulated clients, one system'},
+];
+const IMG_EXT = ['png','jpg','jpeg','webp','gif','svg'];
+const VID_EXT = ['mp4','webm','mov'];
+const cfg = {
+  get owner(){return localStorage.pa_owner||''}, set owner(v){localStorage.pa_owner=v},
+  get repo(){return localStorage.pa_repo||''},   set repo(v){localStorage.pa_repo=v},
+  get branch(){return localStorage.pa_branch||'main'}, set branch(v){localStorage.pa_branch=v},
+  get path(){return localStorage.pa_path||''},   set path(v){localStorage.pa_path=v},
+  get token(){return localStorage.pa_token||''}, set token(v){localStorage.pa_token=v},
+};
+let state = {
+  page:null, doc:null, originalText:'', fields:[], stagedAssets:[], dirty:0, projects:null
+};
+
+function toast(msg, err){
+  const t = $('#toast');
+  t.textContent = msg; t.className = 'toast show' + (err?' err':'');
+  clearTimeout(t._h); t._h = setTimeout(()=>t.classList.remove('show'), err?7000:4000);
+}
+function sitePath(f){ return (cfg.path ? cfg.path.replace(/\/$/,'') + '/' : '') + f; }
+function rawUrl(f){ return `https://raw.githubusercontent.com/${cfg.owner}/${cfg.repo}/${cfg.branch}/${sitePath(f)}`; }
+
+/* ═══════════════ GitHub API (Git Data — atomic multi-file commits) ═══════════════ */
+async function gh(url, opts={}){
+  const r = await fetch('https://api.github.com'+url, {
+    ...opts,
+    headers:{
+      'Authorization':'Bearer '+cfg.token,
+      'Accept':'application/vnd.github+json',
+      'X-GitHub-Api-Version':'2022-11-28',
+      ...(opts.headers||{})
+    }
+  });
+  if(!r.ok){
+    let d={}; try{d=await r.json()}catch(e){}
+    throw new Error(`GitHub ${r.status}: ${d.message||r.statusText}`);
+  }
+  return r.status===204 ? null : r.json();
+}
+async function ghRaw(path){
+  const r = await fetch(`https://api.github.com/repos/${cfg.owner}/${cfg.repo}/contents/${encodeURIComponent(path).replace(/%2F/g,'/')}?ref=${cfg.branch}`, {
+    headers:{'Authorization':'Bearer '+cfg.token,'Accept':'application/vnd.github.raw+json'}
+  });
+  if(!r.ok) throw new Error(`Could not load ${path} (${r.status})`);
+  return r.text();
+}
+/* files: [{path, content (utf8 string) | base64}] */
+async function commitFiles(files, message){
+  const base = `/repos/${cfg.owner}/${cfg.repo}`;
+  const ref = await gh(`${base}/git/ref/heads/${cfg.branch}`);
+  const headSha = ref.object.sha;
+  const headCommit = await gh(`${base}/git/commits/${headSha}`);
+  const tree = [];
+  for(const f of files){
+    const blob = await gh(`${base}/git/blobs`,{method:'POST',body:JSON.stringify(
+      f.base64 ? {content:f.base64, encoding:'base64'} : {content:f.content, encoding:'utf-8'}
+    )});
+    tree.push({path:f.path, mode:'100644', type:'blob', sha:blob.sha});
+  }
+  const newTree = await gh(`${base}/git/trees`,{method:'POST',body:JSON.stringify({base_tree:headCommit.tree.sha, tree})});
+  const commit = await gh(`${base}/git/commits`,{method:'POST',body:JSON.stringify({message, tree:newTree.sha, parents:[headSha]})});
+  await gh(`${base}/git/ref/heads/${cfg.branch}`,{method:'PATCH',body:JSON.stringify({sha:commit.sha})});
+  return commit;
+}
+async function listDir(path){
+  try{
+    return await gh(`/repos/${cfg.owner}/${cfg.repo}/contents/${path?path:''}?ref=${cfg.branch}`);
+  }catch(e){ return []; }
+}
+
+/* ═══════════════ connection ═══════════════ */
+async function testConnection(silent){
+  if(!cfg.token||!cfg.owner||!cfg.repo){ setConn(false); return false; }
+  try{
+    await gh(`/repos/${cfg.owner}/${cfg.repo}/branches/${cfg.branch}`);
+    setConn(true); if(!silent) toast('Connected to '+cfg.owner+'/'+cfg.repo);
+    return true;
+  }catch(e){ setConn(false); if(!silent) toast(e.message, true); return false; }
+}
+function setConn(ok){
+  $('#conn').className = 'conn'+(ok?' ok':'');
+  $('#connTxt').textContent = ok ? cfg.owner+'/'+cfg.repo+' · '+cfg.branch : 'Not connected';
+}
+
+/* ═══════════════ views ═══════════════ */
+function show(v){
+  document.querySelectorAll('.view').forEach(x=>x.classList.remove('on'));
+  $('#v-'+v).classList.add('on');
+  document.querySelectorAll('.tab').forEach(t=>t.classList.toggle('on', t.dataset.v===v));
+  if(v==='assets') loadAssets();
+}
+document.querySelectorAll('.tab').forEach(t=>t.addEventListener('click',()=>{
+  if(state.dirty && !confirm('You have unpublished changes. Leave anyway?')) return;
+  show(t.dataset.v);
+}));
+
+/* pages grid */
+function renderPages(){
+  $('#pgrid').innerHTML = PAGES.map(p=>`
+    <button class="pcard" data-f="${p.file}">
+      <h4>${p.name}</h4><p>${p.desc}</p><div class="file">${p.file}</div>
+    </button>`).join('');
+  document.querySelectorAll('.pcard').forEach(c=>c.addEventListener('click',()=>openPage(c.dataset.f)));
+}
+
+/* ═══════════════ page editor ═══════════════ */
+async function openPage(file){
+  if(!(await testConnection(true))){ toast('Connect to GitHub first (Settings tab)', true); show('settings'); return; }
+  toast('Loading '+file+'…');
+  let text;
+  try{ text = await ghRaw(sitePath(file)); }
+  catch(e){ toast(e.message,true); return; }
+  state = {page:file, originalText:text, fields:[], stagedAssets:[], dirty:0, projects:null};
+  state.doc = new DOMParser().parseFromString(text,'text/html');
+  $('#edTitle').textContent = (PAGES.find(p=>p.file===file)||{}).name || file;
+  buildEditor();
+  show('editor');
+  updateDirty();
+}
+
+const TEXT_SEL = '.cs-eyebrow,.cs-title,.cs-subtitle,.cs-h2,.cs-h3,.cs-p,.cs-card-title,.cs-card>p,.cs-step h4,.cs-step p,.cs-metric-num,.cs-metric-label,.cs-metric-note,figcaption,.cs-callout p,.demo-note h5,.demo-note p,.dec-card .dc-q,.manifesto h3,.manifesto p,.cs-meta-value,.cs-meta-label,.ba-h,.ba-desc,.sec-lbl';
+const SHORT = new Set(['cs-eyebrow','cs-metric-num','cs-card-title','cs-meta-value','cs-meta-label']);
+
+function labelFor(el){
+  const c = [...el.classList][0] || el.tagName.toLowerCase();
+  return c.replace(/^cs-/,'').replace(/-/g,' ');
+}
+function buildEditor(){
+  const doc = state.doc, host = $('#edSections');
+  host.innerHTML = '';
+  state.fields = [];
+
+  /* --- special: homepage Recent Work projects (lives in a script) --- */
+  if(state.page==='index.html'){
+    const scripts=[...doc.querySelectorAll('script')];
+    for(const s of scripts){
+      const m = s.textContent.match(/const projects\s*=\s*\[([\s\S]*?)\];/);
+      if(m){
+        const items=[]; const re=/\{n:'((?:[^'\\]|\\')*)',st:'(\w+)',d:'((?:[^'\\]|\\')*)',img:'([^']*)'\}/g;
+        let mm; while((mm=re.exec(m[1]))) items.push({n:mm[1],st:mm[2],d:mm[3],img:mm[4]});
+        if(items.length){ state.projects={script:s, items}; }
+        break;
+      }
+    }
+    if(state.projects){
+      const sec = mkSection('Recent Work — project cards', state.projects.items.length+' projects');
+      state.projects.items.forEach((p,i)=>{
+        const w = document.createElement('div');
+        w.className='fld';
+        w.innerHTML = `
+          <div class="flabel">Project ${i+1} <span class="tag">${p.st}</span></div>
+          <div class="row2" style="margin-bottom:8px">
+            <input data-proj="${i}" data-k="n" value="${esc(p.n)}" placeholder="Name">
+            <select data-proj="${i}" data-k="st">
+              ${['live','ongoing','soon'].map(s=>`<option ${s===p.st?'selected':''}>${s}</option>`).join('')}
+            </select>
+          </div>
+          <textarea data-proj="${i}" data-k="d" rows="2">${esc(p.d)}</textarea>
+          <div style="margin-top:8px"><input data-proj="${i}" data-k="img" value="${esc(p.img)}" placeholder="Image file or URL"></div>`;
+        sec.bd.appendChild(w);
+      });
+      sec.bd.addEventListener('input', e=>{
+        const t=e.target; if(t.dataset.proj===undefined) return;
+        state.projects.items[+t.dataset.proj][t.dataset.k]=t.value;
+        markDirty(t.closest('.fld'));
+      });
+    }
+  }
+
+  /* --- generic sections --- */
+  let blocks;
+  if(state.page==='index.html'){
+    blocks = [...doc.querySelectorAll('section, header')].filter(b=>b.querySelector('h1,h2,h3,p'));
+  } else {
+    blocks = [...doc.querySelectorAll('.cs-hero, .cs-section, .cs-cta')];
+  }
+  blocks.forEach((block,bi)=>{
+    const els = [...block.querySelectorAll(TEXT_SEL)].filter(el=>{
+      if(el.closest('script,style')) return null;
+      const t = el.textContent.trim();
+      return t.length>0 && t.length<2000 && !el.querySelector('div,section,table');
+    });
+    const imgs = [...block.querySelectorAll('img')].filter(im=>im.getAttribute('src') && !im.getAttribute('src').startsWith('data:'));
+    const vids = [...block.querySelectorAll('video')].filter(v=>v.getAttribute('src'));
+    if(!els.length && !imgs.length && !vids.length) return;
+
+    let name = block.querySelector('.cs-section-label,.sec-lbl')?.textContent.trim()
+      || block.querySelector('h1,h2,.cs-title')?.textContent.trim().slice(0,44)
+      || 'Section '+(bi+1);
+    const sec = mkSection(name, els.length + imgs.length + vids.length + ' fields');
+
+    els.forEach(el=>{
+      const f = {el, kind:'text'};
+      state.fields.push(f);
+      const w = document.createElement('div');
+      w.className='fld';
+      const cls=[...el.classList][0]||'';
+      const short = SHORT.has(cls) || el.textContent.trim().length<40;
+      w.innerHTML = `<div class="flabel">${labelFor(el)}</div>` +
+        (short ? `<input value="${esc(el.innerHTML)}">`
+               : `<textarea rows="${Math.min(8, Math.ceil(el.innerHTML.length/90)+1)}">${esc(el.innerHTML)}</textarea>`);
+      const inp = w.querySelector('input,textarea');
+      inp.addEventListener('input', ()=>{ el.innerHTML = inp.value; markDirty(w); });
+      sec.bd.appendChild(w);
+    });
+
+    [...imgs.map(m=>({m,tag:'img'})), ...vids.map(m=>({m,tag:'video'}))].forEach(({m,tag})=>{
+      const w = document.createElement('div');
+      w.className='fld';
+      const src = m.getAttribute('src');
+      const isRemote = /^https?:/i.test(src);
+      w.innerHTML = `
+        <div class="flabel">${tag==='img'?'Image':'Video'} <span class="tag">${tag}</span></div>
+        <div class="imgfld">
+          <div class="thumb">${tag==='img'?`<img src="${isRemote?src:rawUrl(src)}" onerror="this.remove()">`:'▶ video'}</div>
+          <div class="ictl">
+            <input value="${esc(src)}" placeholder="file name or URL">
+            <div class="up">
+              <button class="btn ghost sm">Upload replacement…</button>
+              <input type="file" class="filepick" accept="${tag==='img'?'image/*':'video/*'}">
+              <span class="hint" style="margin-left:8px;font-size:10.5px"></span>
+            </div>
+          </div>
+        </div>`;
+      const inp = w.querySelector('.ictl > input');
+      inp.addEventListener('input', ()=>{ m.setAttribute('src', inp.value); markDirty(w); });
+      const pick = w.querySelector('input[type=file]');
+      w.querySelector('.up .btn').addEventListener('click', ()=>pick.click());
+      pick.addEventListener('change', async ()=>{
+        const file = pick.files[0]; if(!file) return;
+        const b64 = await fileToB64(file);
+        state.stagedAssets.push({path:sitePath(file.name), base64:b64, name:file.name});
+        m.setAttribute('src', file.name);
+        inp.value = file.name;
+        w.querySelector('.up .hint').textContent = '✓ '+file.name+' will be uploaded on publish';
+        markDirty(w);
+      });
+      sec.bd.appendChild(w);
+    });
+  });
+
+  if(!host.children.length) host.innerHTML = '<div class="card hint">No editable fields detected on this page.</div>';
+}
+function mkSection(name, count){
+  const s = document.createElement('div');
+  s.className='sec';
+  s.innerHTML = `<div class="sec-hd"><span class="chev">▶</span><b>${esc(name)}</b><span class="cnt">${count}</span></div><div class="sec-bd"></div>`;
+  s.querySelector('.sec-hd').addEventListener('click',()=>s.classList.toggle('open'));
+  $('#edSections').appendChild(s);
+  return {el:s, bd:s.querySelector('.sec-bd')};
+}
+function esc(s){ return String(s).replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;'); }
+function markDirty(w){ if(w && !w.classList.contains('changed')){ w.classList.add('changed'); } state.dirty++; updateDirty(); }
+function updateDirty(){
+  const n = document.querySelectorAll('.fld.changed').length;
+  $('#edDirty').textContent = n ? n+' field'+(n>1?'s':'')+' changed' : '';
+  $('#pubbar').classList.toggle('on', n>0 || state.stagedAssets.length>0);
+}
+
+/* serialize page with edits */
+function serializePage(){
+  if(state.projects){
+    const arr = state.projects.items.map(p=>
+      `  {n:'${p.n.replace(/'/g,'’')}',st:'${p.st}',d:'${p.d.replace(/'/g,'’')}',img:'${p.img}'}`
+    ).join(',\n');
+    state.projects.script.textContent = state.projects.script.textContent.replace(
+      /const projects\s*=\s*\[[\s\S]*?\];/, 'const projects=[\n'+arr+',\n];'
+    );
+  }
+  return '<!DOCTYPE html>\n'+state.doc.documentElement.outerHTML;
+}
+
+/* preview */
+$('#btnPreview').addEventListener('click', ()=>{
+  const blob = new Blob([serializePage()], {type:'text/html'});
+  window.open(URL.createObjectURL(blob), '_blank');
+});
+$('#btnBack').addEventListener('click', ()=>{
+  if(state.dirty && !confirm('You have unpublished changes. Leave anyway?')) return;
+  state.dirty=0; state.stagedAssets=[]; $('#pubbar').classList.remove('on');
+  show('pages');
+});
+$('#btnDiscard').addEventListener('click', ()=>{
+  if(!confirm('Discard all changes on this page?')) return;
+  openPage(state.page);
+});
+
+/* publish */
+$('#btnPublish').addEventListener('click', async ()=>{
+  const btn = $('#btnPublish');
+  const msg = $('#commitMsg').value.trim() || ('Update '+state.page+' via portfolio admin');
+  btn.disabled = true; btn.innerHTML = '<span class="spin"></span> Publishing…';
+  try{
+    const files = [{path:sitePath(state.page), content:serializePage()}, ...state.stagedAssets.map(a=>({path:a.path, base64:a.base64}))];
+    const c = await commitFiles(files, msg);
+    toast('Published ✓ — GitHub Pages will update in ~1 minute. Commit '+c.sha.slice(0,7));
+    document.querySelectorAll('.fld.changed').forEach(f=>f.classList.remove('changed'));
+    state.dirty=0; state.stagedAssets=[]; $('#commitMsg').value='';
+    updateDirty();
+  }catch(e){ toast(e.message, true); }
+  btn.disabled=false; btn.textContent='Publish to GitHub';
+});
+
+/* ═══════════════ assets ═══════════════ */
+async function loadAssets(){
+  if(!(await testConnection(true))) { $('#agrid').innerHTML='<p class="hint">Connect first (Settings).</p>'; return; }
+  const items = await listDir(cfg.path);
+  const media = (items||[]).filter(i=>i.type==='file' && [...IMG_EXT,...VID_EXT].includes(i.name.split('.').pop().toLowerCase()));
+  $('#agrid').innerHTML = media.map(m=>{
+    const ext = m.name.split('.').pop().toLowerCase();
+    const isImg = IMG_EXT.includes(ext);
+    return `<div class="acard">
+      <div class="ath">${isImg?`<img loading="lazy" src="${rawUrl(m.name)}">`:'▶'}</div>
+      <div class="abd">${m.name}<div class="asz">${(m.size/1024).toFixed(0)} KB</div></div>
+    </div>`;
+  }).join('') || '<p class="hint">No media files found in the site folder yet.</p>';
+}
+function fileToB64(file){
+  return new Promise((res,rej)=>{
+    const r = new FileReader();
+    r.onload = ()=>res(r.result.split(',')[1]);
+    r.onerror = rej;
+    r.readAsDataURL(file);
+  });
+}
+const drop = $('#drop'), fp = $('#filepick');
+drop.addEventListener('click', ()=>fp.click());
+;['dragover','dragenter'].forEach(ev=>drop.addEventListener(ev,e=>{e.preventDefault();drop.classList.add('over')}));
+;['dragleave','drop'].forEach(ev=>drop.addEventListener(ev,e=>{e.preventDefault();drop.classList.remove('over')}));
+drop.addEventListener('drop', e=>uploadFiles([...e.dataTransfer.files]));
+fp.addEventListener('change', ()=>uploadFiles([...fp.files]));
+async function uploadFiles(files){
+  if(!files.length) return;
+  if(!(await testConnection(true))){ toast('Connect first (Settings)', true); return; }
+  const q = $('#upQueue');
+  for(const f of files){
+    const row = document.createElement('div');
+    row.className='hint'; row.style.padding='4px 0';
+    row.innerHTML = '<span class="spin"></span> Uploading '+f.name+'…';
+    q.appendChild(row);
+    try{
+      const b64 = await fileToB64(f);
+      await commitFiles([{path:sitePath(f.name), base64:b64}], 'Upload '+f.name+' via portfolio admin');
+      row.innerHTML = '✓ '+f.name+' uploaded';
+    }catch(e){ row.innerHTML = '✕ '+f.name+' — '+e.message; }
+  }
+  loadAssets();
+}
+
+/* ═══════════════ settings wiring ═══════════════ */
+function loadSettings(){
+  $('#s-owner').value=cfg.owner; $('#s-repo').value=cfg.repo;
+  $('#s-branch').value=cfg.branch; $('#s-path').value=cfg.path; $('#s-token').value=cfg.token;
+}
+$('#btnConnect').addEventListener('click', async ()=>{
+  cfg.owner=$('#s-owner').value.trim(); cfg.repo=$('#s-repo').value.trim();
+  cfg.branch=$('#s-branch').value.trim()||'main'; cfg.path=$('#s-path').value.trim().replace(/^\/|\/$/g,'');
+  cfg.token=$('#s-token').value.trim();
+  if(await testConnection()) show('pages');
+});
+
+/* init */
+renderPages(); loadSettings();
+if(cfg.token) testConnection(true); else show('settings');
+</script>
+</body>
+</html>
