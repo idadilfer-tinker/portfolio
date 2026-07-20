@@ -175,10 +175,11 @@ header{
 .ework[data-name="Oia"]:hover .ework-media img{transform:none}
 .ework-media img{width:100%;height:100%;object-fit:cover;display:block;
   transition:transform .8s cubic-bezier(.2,.7,.2,1)}
-.ework:hover .ework-media img{transform:scale(1.045)}
-.ework-media img.aida-cover{animation:aidaKen 18s ease-in-out infinite alternate;transform-origin:52% 40%;will-change:transform}
+.ework-embed{position:absolute;inset:0;width:100%;height:100%;border:0;pointer-events:none;z-index:1;background:#e7e4dd}
+.ework:hover .ework-media img{transform:none}
+.ework-media img.aida-cover{}
 @keyframes aidaKen{0%{transform:scale(1.03)}100%{transform:scale(1.1) translate(-1.5%,-2%)}}
-.ework:hover .ework-media img.aida-cover{transform:scale(1.1)}
+.ework:hover .ework-media img.aida-cover{transform:none}
 @media(prefers-reduced-motion:reduce){.ework-media img.aida-cover{animation:none}}
 .ework-ph{width:100%;height:100%;display:flex;align-items:center;justify-content:center;
   color:var(--fg3);font-size:12px;letter-spacing:.08em}
@@ -1109,7 +1110,7 @@ window.addEventListener('resize',()=>{resize();mkPts()});
 // ── PROJECTS ──
 const projects=[
   {n:'Oia',st:'live',d:'A luxury AI concierge for cosmetic treatment journeys — the entire interface is the agent. SmartMatch pairs patients with surgeons by verified results, and Oia negotiates the package on their behalf.',img:'https://heyoia.com/screens/why-oia-women.jpg'},
-  {n:'Journey Fertility',st:'ongoing',d:'A platform that helps women search and navigate their fertility options.',img:'journeyfertilitycover.jpg'},
+  {n:'Journey Fertility',st:'ongoing',d:'A platform that helps women search and navigate their fertility options.',img:'journeyfertilitycover.jpg',embed:'journeyfertilitycover.html'},
   {n:'Unilever Sustainability',st:'ongoing',d:'A crowdsourced platform empowering communities to drive Unilever sustainability initiatives.',img:'img08.png'},
   {n:'Aida AI',st:'live',d:'Helping international patients navigate cosmetic treatment with confidence. Designing an AI-assisted care journey that balances automation with human expertise.',img:'aida-cover.png'},
   {n:'Connectd',st:'live',d:'A three-sided professional marketplace connecting founders, investors, and advisors — where trust is the product.',img:'img02.png'},
@@ -1155,7 +1156,7 @@ projects.forEach((p, i) => {
   const num = String(i + 1).padStart(2, '0');
   const tags = (eworkTags[p.n] || []).map(t => `<span class="ework-tag">${t}</span>`).join('');
   const imgAttrs = p.n === 'Aida AI' ? ` class="aida-cover" onerror="this.onerror=null;this.src='img01.png'"` : '';
-  const media = p.img ? `<img src="${p.img}" alt="${p.n}"${imgAttrs}>` : `<div class="ework-ph">${p.n}</div>`;
+  const media = p.embed ? `<img src="${p.img}" alt="${p.n}"><iframe class="ework-embed" src="${p.embed}" loading="lazy" scrolling="no" tabindex="-1" title="${p.n}"></iframe>` : (p.img ? `<img src="${p.img}" alt="${p.n}"${imgAttrs}>` : `<div class="ework-ph">${p.n}</div>`);
   const pill = p.n === 'Aida AI' ? `<div class="ework-pill">✦ Currently being rebranded as Nia</div>` : '';
   const oiaOverlay = p.n === 'Oia' ? `<div class="oia-ov"><div class="oia-b u">Hey Oia 👋 I want a rhinoplasty — where do I even start?</div><div class="oia-b a">Hi! Just tell me in your own words — no forms. I'll match you to the right surgeon 🤍</div></div>` : '';
   const row = document.createElement('article');
