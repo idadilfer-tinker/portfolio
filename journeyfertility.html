@@ -130,6 +130,76 @@ background:radial-gradient(34% 40% at 40% 42%,#f7b657 0,transparent 70%),radial-
 figure{margin:0}
 figcaption{font-size:11px;color:var(--fg3);margin-top:10px;letter-spacing:.04em}
 
+/* ── animated product demos (brand: warm aura gradients, Inter Tight) ── */
+.jf-demo{position:relative;aspect-ratio:4/3;border-radius:12px;overflow:hidden;border:1px solid var(--border2);background:linear-gradient(158deg,#fdfcfa,#f3eee6);font-family:var(--jf-sans);color:var(--jf-ink);isolation:isolate}
+.jf-demo .aura{position:absolute;width:66%;height:66%;filter:blur(46px);border-radius:50%;opacity:.42;z-index:-1;animation:auraDrift 15s ease-in-out infinite}
+.jf-demo .aura.a1{top:-16%;right:-10%;background:radial-gradient(circle,#f7b657,transparent 66%)}
+.jf-demo .aura.a2{bottom:-18%;left:-14%;background:radial-gradient(circle,#F4A28C,transparent 66%);animation-delay:-5s}
+.jf-demo .aura.a3{bottom:-16%;right:-12%;background:radial-gradient(circle,#8f9fe0,transparent 66%);animation-delay:-9s}
+@keyframes auraDrift{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(-5%,5%) scale(1.14)}}
+.jf-demo .d-pad{position:absolute;inset:0;padding:20px;display:flex;flex-direction:column}
+.jf-demo .d-brand{font-size:9.5px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#c07f52;margin-bottom:13px}
+/* search */
+.d-search .s-bar{display:flex;align-items:center;gap:9px;background:#fff;border:1px solid #ece1d4;border-radius:12px;padding:11px 13px;box-shadow:0 8px 20px rgba(51,48,46,.07);position:relative}
+.d-search .s-bar::after{content:'';position:absolute;inset:-1.5px;border-radius:13px;border:1.5px solid #F4A28C;opacity:0;pointer-events:none;animation:sRing 4.5s ease-in-out infinite}
+@keyframes sRing{0%,72%,100%{opacity:0}14%,58%{opacity:.85}}
+.d-search .s-mag{color:#e0714a;font-size:15px;line-height:1}
+.d-search .s-q{font-size:13.5px;color:#33302E;white-space:nowrap;overflow:hidden;border-right:2px solid #e0714a;width:0;animation:sType 4.5s steps(12,end) infinite,sBlink .85s step-end infinite}
+@keyframes sType{0%{width:0}26%{width:6.6em}72%{width:6.6em}92%,100%{width:0}}
+@keyframes sBlink{50%{border-color:transparent}}
+.d-search .s-list{margin-top:12px;display:flex;flex-direction:column;gap:8px}
+.d-search .s-row{display:flex;align-items:center;justify-content:space-between;gap:10px;background:rgba(255,255,255,.72);border:1px solid #efe6da;border-radius:10px;padding:9px 12px;opacity:0;animation:sRow 4.5s ease infinite}
+.d-search .s-row:nth-child(1){animation-delay:1.35s}
+.d-search .s-row:nth-child(2){animation-delay:1.65s}
+.d-search .s-row:nth-child(3){animation-delay:1.95s}
+@keyframes sRow{0%{opacity:0;transform:translateY(9px)}8%,82%{opacity:1;transform:none}94%,100%{opacity:0;transform:translateY(-5px)}}
+.d-search .s-clinic{font-size:12px;font-weight:600;color:#33302E}
+.d-search .s-sub{font-size:10px;color:#9a938b;margin-top:2px}
+.d-search .s-price{font-size:12px;font-weight:700;color:#e0714a;background:#fdeee6;border-radius:100px;padding:5px 10px;white-space:nowrap}
+/* costs */
+.d-costs .c-head{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:6px}
+.d-costs .c-title{font-size:13px;font-weight:600;color:#33302E}
+.d-costs .c-from{font-size:10px;color:#9a938b}
+.d-costs .c-list{display:flex;flex-direction:column}
+.d-costs .c-row{display:flex;align-items:center;justify-content:space-between;font-size:11.5px;padding:8px 0;border-bottom:1px dashed #e7ddd0;opacity:0;transform:translateX(-6px);animation:cIn .7s ease forwards}
+.d-costs .c-row .cl{color:#6f675f;display:flex;align-items:center;gap:7px}
+.d-costs .c-row .cv{font-weight:600;color:#33302E}
+.d-costs .hid{font-style:normal;font-size:8px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:#e0714a;background:#fdeae0;border-radius:100px;padding:2px 6px}
+@keyframes cIn{to{opacity:1;transform:none}}
+.d-costs .c-total{margin-top:12px;display:flex;align-items:center;justify-content:space-between;background:#33302E;color:#fbfaf7;border-radius:11px;padding:12px 14px;font-size:12.5px;font-weight:600;opacity:0;transform:scale(.96);animation:cTotal .6s ease forwards 1.5s,cPulse 3s ease-in-out infinite 2.2s}
+.d-costs .c-total .tv{color:#F4A28C;font-size:15px}
+@keyframes cTotal{to{opacity:1;transform:none}}
+@keyframes cPulse{0%,100%{box-shadow:0 0 0 0 rgba(244,162,140,0)}50%{box-shadow:0 0 0 4px rgba(244,162,140,.14)}}
+/* geo compare */
+.d-geo .g-row{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+.d-geo .g-loc{width:88px;flex-shrink:0;font-size:11.5px;font-weight:500;color:#4a443e;display:flex;align-items:center;gap:7px}
+.d-geo .g-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.d-geo .g-track{flex:1;height:28px;background:rgba(255,255,255,.62);border:1px solid #efe6da;border-radius:8px;position:relative;overflow:hidden}
+.d-geo .g-fill{position:absolute;left:0;top:0;bottom:0;width:0;border-radius:8px;animation:gGrow 1.2s cubic-bezier(.2,.7,.2,1) forwards}
+.d-geo .g-row:nth-child(2) .g-fill{animation-delay:.15s}
+.d-geo .g-row:nth-child(3) .g-fill{animation-delay:.3s}
+@keyframes gGrow{to{width:var(--w)}}
+.d-geo .g-price{position:absolute;right:9px;top:50%;transform:translateY(-50%);font-size:11px;font-weight:700;color:#33302E}
+.d-geo .g-tag{margin-top:auto;font-size:10.5px;font-weight:600;color:#e0714a;background:#fdeee6;border:1px solid #f7d8c8;border-radius:100px;padding:8px 12px;align-self:flex-start;animation:gPulse 2.8s ease-in-out infinite}
+@keyframes gPulse{0%,100%{transform:translateY(0);box-shadow:0 0 0 0 rgba(224,113,74,0)}50%{transform:translateY(-1px);box-shadow:0 4px 12px rgba(224,113,74,.16)}}
+/* quiz / persona */
+.d-quiz .q-title{font-size:13.5px;font-weight:700;color:#33302E}
+.d-quiz .q-sub{font-size:10.5px;color:#9a938b;margin:3px 0 13px}
+.d-quiz .q-cards{display:flex;flex-direction:column;gap:8px}
+.d-quiz .q-card{display:flex;align-items:center;gap:10px;background:rgba(255,255,255,.6);border:1.5px solid #efe6da;border-radius:11px;padding:10px 12px;font-size:12px;font-weight:500;color:#4a443e;animation:qPick 6.4s ease-in-out infinite}
+.d-quiz .q-card:nth-child(2){animation-delay:-1.6s}
+.d-quiz .q-card:nth-child(3){animation-delay:-3.2s}
+.d-quiz .q-card:nth-child(4){animation-delay:-4.8s}
+@keyframes qPick{0%,20%{border-color:#F4A28C;background:#fff;transform:translateX(3px);box-shadow:0 8px 18px rgba(224,113,74,.13)}25%,100%{border-color:#efe6da;background:rgba(255,255,255,.6);transform:none;box-shadow:none}}
+.d-quiz .q-ic{width:26px;height:26px;flex-shrink:0;border-radius:50%;background:#f4ede3;display:flex;align-items:center;justify-content:center;font-size:13px;color:#c07f52}
+@media (prefers-reduced-motion:reduce){
+.jf-demo *{animation:none!important}
+.jf-demo .s-q{width:auto!important;border-right:none}
+.jf-demo .s-row,.jf-demo .c-row,.jf-demo .c-total{opacity:1!important;transform:none!important}
+.jf-demo .g-fill{width:var(--w)!important}
+.jf-demo .d-quiz .q-card:first-child{border-color:#F4A28C;background:#fff}
+}
+
 .cs-cta{text-align:center;padding:80px var(--gutter);border-top:1px solid var(--border2)}
 .cs-cta a{display:inline-flex;align-items:center;gap:10px;font-size:14px;font-weight:500;color:var(--bg);background:var(--accent);border-radius:8px;padding:14px 28px;text-decoration:none;transition:opacity .18s,transform .3s}
 .cs-cta a:hover{opacity:.9;transform:translateY(-2px)}
@@ -173,7 +243,7 @@ Product &amp; brand · 2025
 
 <header class="cs-hero">
 <p class="cs-eyebrow hero-in">Case Study · 2025 · Health-tech · Marketplace · Research + Product + Brand</p>
-<h1 class="cs-title hero-in">Journey Fertility —<br><em>Understand, plan, and<br>compare your fertility.</em></h1>
+<h1 class="cs-title hero-in">Journey Fertility —<br><em>Understand, plan, and<br>keep track of your fertility.</em></h1>
 <p class="cs-subtitle hero-in">A platform to make sense of fertility. Journey helps people understand their options — fertility testing, egg freezing, IVF and embryo freezing — see the true, all-in cost of each, and compare clinics across cities and countries. So the biggest decisions of a lifetime are made with clarity, not anxiety.</p>
 <div class="cs-meta hero-in">
 <div><p class="cs-meta-label">Role</p><p class="cs-meta-value">Research, Product Design &amp; Brand</p></div>
@@ -260,10 +330,74 @@ Product &amp; brand · 2025
 <h2 class="cs-h2">Search, compare, decide.</h2>
 <p class="cs-p" style="max-width:720px">The core loop: understand the options, see them priced honestly, and compare across locations — with warmth carried through every screen.</p>
 <div class="shots">
-<figure><div class="media-slot"><img src="jf-search.png" alt="Search and compare fertility options" loading="lazy"><div class="slot-empty"><div class="se-icon">⌕</div><p>Drop <code>jf-search.png</code> — the search &amp; compare screen.</p></div></div><figcaption>Search &amp; compare — one entry point</figcaption></figure>
-<figure><div class="media-slot"><img src="jf-costs.png" alt="True all-in cost comparison" loading="lazy"><div class="slot-empty"><div class="se-icon">£</div><p>Drop <code>jf-costs.png</code> — the true all-in cost view.</p></div></div><figcaption>True all-in costs — nothing hidden</figcaption></figure>
-<figure><div class="media-slot"><img src="jf-countries.png" alt="Compare clinics across countries" loading="lazy"><div class="slot-empty"><div class="se-icon">◍</div><p>Drop <code>jf-countries.png</code> — cross-location / country comparison.</p></div></div><figcaption>Compare across cities &amp; countries</figcaption></figure>
-<figure><div class="media-slot"><img src="jf-quiz.png" alt="Where are you right now — persona routing" loading="lazy"><div class="slot-empty"><div class="se-icon">☺</div><p>Drop <code>jf-quiz.png</code> — the "Where are you right now?" step.</p></div></div><figcaption>"Where are you right now?" — meeting people where they are</figcaption></figure>
+
+<figure>
+<div class="jf-demo d-search" role="img" aria-label="Search and compare fertility options across clinics">
+<span class="aura a1"></span><span class="aura a2"></span>
+<div class="d-pad">
+<div class="d-brand">Journey · Search</div>
+<div class="s-bar"><span class="s-mag">⌕</span><span class="s-q">egg freezing</span></div>
+<div class="s-list">
+<div class="s-row"><div><div class="s-clinic">Harley Street Fertility</div><div class="s-sub">London · ★ 4.8</div></div><span class="s-price">£4,900</span></div>
+<div class="s-row"><div><div class="s-clinic">Eugin Clinic</div><div class="s-sub">Barcelona · ★ 4.7</div></div><span class="s-price">£3,600</span></div>
+<div class="s-row"><div><div class="s-clinic">Reprofit</div><div class="s-sub">Brno · ★ 4.6</div></div><span class="s-price">£2,900</span></div>
+</div>
+</div>
+</div>
+<figcaption>Search &amp; compare — one entry point</figcaption>
+</figure>
+
+<figure>
+<div class="jf-demo d-costs" role="img" aria-label="True all-in cost breakdown with usually-hidden extras">
+<span class="aura a1"></span><span class="aura a3"></span>
+<div class="d-pad">
+<div class="d-brand">Journey · True cost</div>
+<div class="c-head"><span class="c-title">Egg freezing</span><span class="c-from">all-in estimate</span></div>
+<div class="c-list">
+<div class="c-row" style="animation-delay:.2s"><span class="cl">Treatment cycle</span><span class="cv">£3,200</span></div>
+<div class="c-row" style="animation-delay:.5s"><span class="cl">Medication <i class="hid">often hidden</i></span><span class="cv">£1,100</span></div>
+<div class="c-row" style="animation-delay:.8s"><span class="cl">Consultation &amp; scans</span><span class="cv">£250</span></div>
+<div class="c-row" style="animation-delay:1.1s"><span class="cl">Freezing &amp; storage <i class="hid">often hidden</i></span><span class="cv">£990</span></div>
+</div>
+<div class="c-total"><span>All-in cost</span><span class="tv">£5,540</span></div>
+</div>
+</div>
+<figcaption>True all-in costs — nothing hidden</figcaption>
+</figure>
+
+<figure>
+<div class="jf-demo d-geo" role="img" aria-label="Compare clinics across cities and countries by cost">
+<span class="aura a2"></span><span class="aura a3"></span>
+<div class="d-pad">
+<div class="d-brand">Journey · Compare locations</div>
+<div class="g-list">
+<div class="g-row"><div class="g-loc"><span class="g-dot" style="background:#8f9fe0"></span>London</div><div class="g-track"><span class="g-fill" style="--w:94%;background:linear-gradient(90deg,#f7b657,#F4A28C)"></span><span class="g-price">£5,540</span></div></div>
+<div class="g-row"><div class="g-loc"><span class="g-dot" style="background:#c39ad8"></span>Barcelona</div><div class="g-track"><span class="g-fill" style="--w:70%;background:linear-gradient(90deg,#f7b657,#F4A28C)"></span><span class="g-price">£4,100</span></div></div>
+<div class="g-row"><div class="g-loc"><span class="g-dot" style="background:#e0714a"></span>Prague</div><div class="g-track"><span class="g-fill" style="--w:54%;background:linear-gradient(90deg,#f7b657,#F4A28C)"></span><span class="g-price">£3,200</span></div></div>
+</div>
+<div class="g-tag">✦ Best value · Prague — comparable care, ~40% less</div>
+</div>
+</div>
+<figcaption>Compare across cities &amp; countries</figcaption>
+</figure>
+
+<figure>
+<div class="jf-demo d-quiz" role="img" aria-label="Where are you right now — plain-language persona routing">
+<span class="aura a1"></span><span class="aura a2"></span>
+<div class="d-pad">
+<div class="q-title">Where are you right now?</div>
+<div class="q-sub">Pick what sounds like you — we'll tailor the rest.</div>
+<div class="q-cards">
+<div class="q-card"><span class="q-ic">◔</span>Just starting to think about it</div>
+<div class="q-card"><span class="q-ic">◑</span>Actively trying to conceive</div>
+<div class="q-card"><span class="q-ic">❄</span>Exploring egg freezing</div>
+<div class="q-card"><span class="q-ic">♡</span>Been through treatment before</div>
+</div>
+</div>
+</div>
+<figcaption>"Where are you right now?" — meeting people where they are</figcaption>
+</figure>
+
 </div>
 </section>
 
