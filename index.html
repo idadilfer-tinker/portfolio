@@ -840,7 +840,7 @@ footer{position:relative;z-index:1;border-top:1px solid var(--border2);padding:5
       </button>
       <button class="btn-ask" id="chatBtn">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
-        Ask me questions
+        Ask Glitch
       </button>
     </div>
   </div>
@@ -939,7 +939,7 @@ footer{position:relative;z-index:1;border-top:1px solid var(--border2);padding:5
     <p class="stmt-body">These agents support user research, competitive analysis, journey mapping, content generation, prototyping, and validation — enabling me to explore more possibilities, surface insights faster, and reduce delivery friction.<br><br>By combining over a decade of product design experience with AI-assisted workflows, I can work across strategy, design, and execution with the speed and scale of a small studio — while maintaining the critical human judgement required for high-stakes healthcare and patient experiences.</p>
     <button id="agentBtn" style="margin-top:28px;display:inline-flex;align-items:center;gap:8px;background:none;border:1px solid rgba(217,119,87,.4);color:#D97757;font-family:'Libre Franklin',sans-serif;font-size:13px;font-weight:500;letter-spacing:.06em;padding:11px 22px;border-radius:8px;cursor:pointer;transition:background .18s,border-color .18s" onmouseover="this.style.background='rgba(217,119,87,.08)';this.style.borderColor='rgba(217,119,87,.7)'" onmouseout="this.style.background='none';this.style.borderColor='rgba(217,119,87,.4)'">
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
-      Speak to my agent to discover more
+      Meet Glitch — my AI agent
     </button>
   </div>
 </section>
@@ -1337,7 +1337,7 @@ const chatWrap=document.getElementById('chatWrap');
 document.getElementById('chatBtn').onclick=()=>{
   chatWrap.classList.add('open');
   const f=document.getElementById('chatFrame');
-  if(f.src==='about:blank')f.src='https://widget-frdv.vercel.app/widget.html';
+  if(f.getAttribute('src')==='about:blank')f.src='glitch.html';
 };
 document.getElementById('chatClose').onclick=()=>chatWrap.classList.remove('open');
 

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Glitch — Ida's AI agent</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#0e0d11;--fg:#F2EEE8;--fg2:#B0ABA4;--fg3:#7a756f;
+--cyan:#22e0ff;--mag:#ff2bd6;--border:rgba(255,255,255,.1)}
+html,body{height:100%}
+body{background:var(--bg);color:var(--fg);font-family:'Libre Franklin',system-ui,sans-serif;
+font-size:14px;overflow:hidden;display:flex;flex-direction:column;height:100vh}
+.stage{position:relative;height:220px;flex:0 0 auto;overflow:hidden;
+background:radial-gradient(120% 100% at 50% 40%,#1a1822 0%,#0e0d11 72%)}
+.aura{position:absolute;inset:0;z-index:0;pointer-events:none;opacity:.8}
+.aura::before,.aura::after{content:'';position:absolute;border-radius:50%;filter:blur(52px)}
+.aura::before{width:240px;height:190px;left:6%;top:14%;background:radial-gradient(circle,rgba(34,224,255,.28),transparent 66%)}
+.aura::after{width:230px;height:190px;right:4%;top:6%;background:radial-gradient(circle,rgba(255,43,214,.26),transparent 66%)}
+.halo{position:absolute;z-index:1;left:50%;top:52%;width:210px;height:210px;transform:translate(-50%,-50%);
+border-radius:50%;filter:blur(8px);animation:halo 4.5s ease-in-out infinite;
+background:radial-gradient(circle,rgba(255,255,255,.18),rgba(180,120,255,.10) 55%,transparent 72%)}
+@keyframes halo{0%,100%{opacity:.85;transform:translate(-50%,-50%) scale(1)}50%{opacity:1;transform:translate(-50%,-50%) scale(1.06)}}
+.catcard{position:absolute;z-index:2;left:50%;top:52%;transform:translate(-50%,-50%);
+width:206px;animation:float 3.6s ease-in-out infinite;will-change:transform}
+.catcard img{width:100%;display:block;filter:drop-shadow(0 0 10px rgba(120,90,200,.35))}
+@keyframes float{0%,100%{transform:translate(-50%,-50%)}50%{transform:translate(-50%,calc(-50% - 6px))}}
+.catcard.react{animation:react .5s steps(2) 1, float 3.6s ease-in-out infinite}
+@keyframes react{0%{transform:translate(-50%,-50%)}25%{transform:translate(calc(-50% - 4px),-50%) skewX(-3deg)}
+50%{transform:translate(calc(-50% + 4px),-50%) skewX(3deg)}75%{transform:translate(calc(-50% - 2px),-50%)}100%{transform:translate(-50%,-50%)}}
+.badge{position:absolute;z-index:4;left:16px;top:14px;display:flex;align-items:center;gap:8px}
+.badge .nm{position:relative;font-family:'Space Mono',monospace;font-size:13px;font-weight:700;letter-spacing:.06em;color:var(--fg)}
+.badge .nm::before,.badge .nm::after{content:attr(data-t);position:absolute;left:0;top:0;width:100%;overflow:hidden;pointer-events:none;opacity:0;animation:gl 5s infinite steps(2)}
+.badge .nm::before{color:var(--cyan);clip-path:inset(0 0 55% 0)}
+.badge .nm::after{color:var(--mag);clip-path:inset(55% 0 0 0);animation-delay:.4s}
+@keyframes gl{0%,94%,100%{opacity:0;transform:none}95%{opacity:.9;transform:translateX(-2px)}97%{opacity:.9;transform:translateX(2px)}}
+.badge .st{font-size:10px;color:var(--fg3);display:flex;align-items:center;gap:5px}
+.dot{width:6px;height:6px;border-radius:50%;background:var(--cyan);box-shadow:0 0 8px var(--cyan);animation:dotf 3s infinite}
+@keyframes dotf{0%,92%,100%{opacity:1}94%{opacity:.2}96%{opacity:1;background:var(--mag)}}
+.tagline{position:absolute;z-index:4;left:16px;bottom:12px;right:16px;font-size:11px;color:var(--fg2)}
+.chat{flex:1 1 auto;overflow-y:auto;padding:16px 16px 6px;display:flex;flex-direction:column;gap:10px;
+scrollbar-width:thin;scrollbar-color:rgba(255,255,255,.14) transparent}
+.chat::-webkit-scrollbar{width:6px}.chat::-webkit-scrollbar-thumb{background:rgba(255,255,255,.14);border-radius:3px}
+.msg{max-width:86%;font-size:13px;line-height:1.55;padding:10px 13px;border-radius:14px;animation:pop .28s ease}
+@keyframes pop{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.msg.p{align-self:flex-start;background:#17161b;border:1px solid var(--border);border-bottom-left-radius:5px;color:var(--fg)}
+.msg.u{align-self:flex-end;background:#ECECEE;color:#161619;border-bottom-right-radius:5px;font-weight:500}
+.msg a{color:var(--cyan);font-weight:600}
+.msg.typing{display:flex;gap:4px;padding:13px 14px}
+.msg.typing i{width:6px;height:6px;border-radius:50%;background:var(--fg3);animation:blink 1.2s infinite}
+.msg.typing i:nth-child(2){animation-delay:.2s}.msg.typing i:nth-child(3){animation-delay:.4s}
+@keyframes blink{0%,60%,100%{opacity:.3}30%{opacity:1}}
+.chips{flex:0 0 auto;padding:10px 14px 14px;display:flex;flex-wrap:wrap;gap:7px;border-top:1px solid var(--border);background:var(--bg)}
+.chip{font-family:inherit;font-size:12px;color:var(--fg);background:rgba(255,255,255,.05);
+border:1px solid var(--border);border-radius:100px;padding:8px 13px;cursor:pointer;
+transition:background .18s,border-color .18s,transform .12s,box-shadow .18s}
+.chip:hover{background:rgba(34,224,255,.1);border-color:rgba(34,224,255,.5);box-shadow:0 0 12px rgba(34,224,255,.18)}
+.chip:active{transform:scale(.96)}
+.chip.cta{background:linear-gradient(135deg,rgba(255,43,214,.18),rgba(34,224,255,.14));border-color:rgba(255,255,255,.22);color:#fff;font-weight:600}
+.chip.cta:hover{box-shadow:0 0 14px rgba(255,43,214,.28)}
+</style>
+</head>
+<body>
+
+<div class="stage">
+  <div class="aura"></div>
+  <div class="halo"></div>
+  <div class="catcard" id="catcard"><img src="glitchcat.png" alt="Glitch — a glitching cat"></div>
+  <div class="badge"><span class="nm" data-t="GLITCH">GLITCH</span><span class="st"><span class="dot"></span>Ida's AI agent</span></div>
+  <div class="tagline">Ida's AI familiar — a cat that glitches 🐾</div>
+</div>
+
+<div class="chat" id="chat"></div>
+<div class="chips" id="chips"></div>
+
+<script>
+function react(){const c=document.getElementById('catcard');c.classList.remove('react');void c.offsetWidth;c.classList.add('react');setTimeout(()=>c.classList.remove('react'),520);}
+
+const QA=[
+ {q:"What's Ida's experience?",
+  a:"Ida's a product designer with 10+ years across healthcare, fintech and marketplaces. She works end-to-end — research, strategy, UX and brand — and now folds an AI-agent workflow into her practice, so she moves at studio speed while keeping the human judgement high-stakes products need."},
+ {q:"Show me her best work",
+  a:"Start with <b>Oia</b> — a luxury AI concierge for cosmetic-treatment journeys — and <b>Journey Fertility</b>, a 0→1 platform she researched and branded to help people navigate fertility with clarity. There's also Aida, Connectd, Fidelity and VCCP. Tap any project on the page to dive in! 🐾"},
+ {q:"How does she work with AI?",
+  a:"She designs <i>with</i> AI, not just for it — building agent ecosystems (CrewAI, local models) that support research, competitive analysis, journey mapping and prototyping. The result: strategy-to-validation at the speed of a small studio, with the human bits kept human. (I'm one of the experiments.)"},
+ {q:"What makes her different?",
+  a:"She pairs a decade of craft with real AI fluency, and she designs for <b>trust</b> — disclosure, confidence signalling, escalation UX — the layers that make automation feel safe when the stakes are high (think healthcare and regulated products)."},
+ {q:"Is she available to hire?",
+  a:"She is! Ida's open to <b>principal, staff or lead</b> roles at the intersection of AI product design and innovation — especially healthcare, regulated industries, or AI-native teams. Easiest way to reach her: <a href='https://www.linkedin.com/in/idadilfer/' target='_blank' rel='noopener'>LinkedIn ↗</a>"},
+ {q:"Why do you glitch? ⚡",
+  a:"Occupational hazard of being a homemade AI cat. 😼 Ida named me <b>Glitch</b> because she likes that the calm and the chaos live in the same creature — a bit of colour flickering through the black and white."}
+];
+const chat=document.getElementById('chat'),chips=document.getElementById('chips'),asked=new Set();
+function bubble(cls,html){const d=document.createElement('div');d.className='msg '+cls;d.innerHTML=html;chat.appendChild(d);chat.scrollTop=chat.scrollHeight;return d;}
+function renderChips(){chips.innerHTML='';
+  QA.forEach((qa,i)=>{if(asked.has(i))return;const b=document.createElement('button');b.className='chip';b.textContent=qa.q;b.onclick=()=>ask(i);chips.appendChild(b);});
+  const cta=document.createElement('button');cta.className='chip cta';cta.textContent='Get in touch ↗';
+  cta.onclick=()=>window.open('https://www.linkedin.com/in/idadilfer/','_blank');chips.appendChild(cta);}
+function ask(i){asked.add(i);renderChips();bubble('u',QA[i].q);
+  const typing=bubble('p typing','<i></i><i></i><i></i>');
+  setTimeout(()=>{typing.remove();bubble('p',QA[i].a);react();},650);}
+setTimeout(()=>{bubble('p',"Hi — I'm <b>Glitch</b>, Ida's AI agent (and resident glitchy cat). Ask me anything about her work. 🐾");renderChips();},400);
+</script>
+</body>
+</html>
