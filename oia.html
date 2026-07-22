@@ -95,6 +95,22 @@ body{background:var(--bg);color:var(--fg);font-family:var(--font-body);font-size
 .voice{border:1px solid var(--border2);border-radius:12px;padding:22px;background:rgba(255,255,255,.02);margin-top:16px}
 .voice .tt{font-family:var(--font-display);font-size:22px;color:var(--fg)}
 .voice p{font-size:13px;color:var(--fg2);margin-top:8px}
+/* technical luxury — glass over living gradient */
+.tlux{position:relative;border-radius:20px;overflow:hidden;padding:48px;margin-top:24px;min-height:300px;display:flex;align-items:center;justify-content:center;isolation:isolate;border:1px solid var(--border2)}
+.tlux-bg{position:absolute;inset:-25%;z-index:-1;background:radial-gradient(38% 48% at 30% 34%,rgba(193,90,56,.95),transparent 60%),radial-gradient(44% 54% at 74% 28%,rgba(224,145,111,.8),transparent 60%),radial-gradient(52% 60% at 62% 80%,rgba(112,96,110,.6),transparent 62%),radial-gradient(46% 56% at 20% 76%,rgba(232,223,211,.85),transparent 60%);background-color:#b0472b;animation:tluxDrift 20s ease-in-out infinite}
+@keyframes tluxDrift{0%,100%{transform:scale(1) translate(0,0)}33%{transform:scale(1.09) translate(2%,-2%)}66%{transform:scale(1.06) translate(-2%,1.5%)}}
+.glass-card{width:100%;max-width:380px;background:rgba(255,255,255,.16);backdrop-filter:blur(24px) saturate(1.3);-webkit-backdrop-filter:blur(24px) saturate(1.3);border:1px solid rgba(255,255,255,.4);border-radius:20px;padding:26px;box-shadow:0 24px 60px rgba(70,26,12,.34),inset 0 1px 0 rgba(255,255,255,.5)}
+.gc-head{display:flex;align-items:center;gap:10px;margin-bottom:16px}
+.gc-av{width:26px;height:26px;flex:none}
+.gc-name{font-size:10px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:#fff}
+.gc-greet{font-family:var(--font-display);font-size:18px;line-height:1.45;color:#fff;margin-bottom:20px;text-shadow:0 1px 12px rgba(60,20,10,.25)}
+.gc-btns{display:flex;gap:10px;flex-wrap:wrap}
+.gc-btns span{font-size:13px;font-weight:500;border-radius:10px;padding:10px 16px;cursor:default}
+.gc-primary{background:#fff;color:#8a3a28}
+.gc-ghost{background:rgba(255,255,255,.14);color:#fff;border:1px solid rgba(255,255,255,.45)}
+.brand-status{margin-top:32px;padding-top:22px;border-top:1px solid var(--border2);font-size:13px;line-height:1.75;color:var(--fg2)}
+.brand-status b{color:var(--fg);font-weight:600}
+@media(prefers-reduced-motion:reduce){.tlux-bg{animation:none}}
 /* outcome band */
 .cs-metrics{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--border2);border-radius:12px;overflow:hidden;margin-top:36px}
 .cs-metric{padding:30px 26px;border-right:1px solid var(--border2)}
@@ -204,10 +220,10 @@ Back to portfolio</a>
 <section class="cs-section reveal">
 <p class="cs-section-label">Context</p>
 <div class="cs-cols">
-<div><h2 class="cs-h2">A high-stakes decision, sold like a used car.</h2></div>
+<div><h2 class="cs-h2">A high-stakes, emotionally heavy decision.</h2></div>
 <div>
-<p class="cs-p">Choosing a cosmetic surgeon is one of the most personal, high-stakes decisions someone can make — and the journey to it is broken. People wade through directories, aggressive lead-gen, unverifiable before-and-afters and opaque pricing, usually while feeling vulnerable.</p>
-<p class="cs-p">Oia's bet: replace the directory with a <b>concierge</b>. An agent that does the searching, vetting, comparing and negotiating for you — so the patient stays in a calm conversation instead of a marketplace. <b>The interface isn't a website with a chatbot bolted on; the conversation is the product.</b></p>
+<p class="cs-p">Choosing to have cosmetic surgery is one of the most personal, high-stakes decisions someone can make — and it's rarely only about appearance. It touches identity, confidence and self-worth, and it's usually made quietly, while feeling exposed and unsure who to trust.</p>
+<p class="cs-p">The journey there only adds to the weight: endless directories, unverifiable before-and-afters, pressure and opaque pricing. Oia's bet is to replace all of that with a <b>concierge</b> — an agent that does the searching, vetting, comparing and negotiating, so the person stays in a calm, one-to-one conversation instead of a marketplace. <b>The interface isn't a website with a chatbot bolted on; the conversation is the product.</b></p>
 </div>
 </div>
 </section>
@@ -239,19 +255,19 @@ Back to portfolio</a>
 </div>
 </section>
 
-<!-- INTELLIGENCE / DOCTOR BRAIN -->
+<!-- INTELLIGENCE -->
 <section class="cs-section reveal">
 <p class="cs-section-label">The Intelligence</p>
-<h2 class="cs-h2">We gave Oia a doctor's brain.</h2>
+<h2 class="cs-h2">An intelligence that never stops learning.</h2>
 <div class="cs-cols">
 <div>
-<p class="cs-p">An AI concierge is only as trustworthy as what sits behind it. So the design work went far beyond screens — I helped shape Oia's <b>clinical mind</b>: a structured <b>"doctor-brain" (an MD-level medical knowledge and reasoning layer)</b> that grounds every match, comparison and answer she gives.</p>
-<p class="cs-p">We trained and grounded that brain on <b>3,500+ real plastic-surgery cases</b>, so Oia reasons from evidence and genuine outcomes rather than generic AI guesswork. Designing what the agent should know, how confidently she should speak, and when she should defer to a human, was as much a design problem as any interface — and it's what lets her lead with verified results instead of marketing.</p>
+<p class="cs-p">An AI concierge is only as trustworthy as what sits behind it — so the work went far beyond screens. Oia's intelligence is built to keep evolving: it's shaped and continually refined <b>in conversation with practising surgeons and patient coordinators</b> — the people who actually know how these journeys unfold — rather than frozen at launch.</p>
+<p class="cs-p">The design question was what Oia should know, how confidently she should speak, and where she must always hand off. She guides, matches and compares on <b>verified results</b> — she never gives advice or opinions on treatment itself; anything in that territory is always passed to a qualified human. That boundary is a core part of the design, and it's what lets her lead with evidence instead of marketing.</p>
 </div>
 <div class="cs-metrics" style="grid-template-columns:1fr;margin-top:0">
 <div class="cs-metric" style="border-right:none"><div class="cs-metric-num">30+</div><div class="cs-metric-label">patients &amp; surgeons interviewed, and iterated with</div></div>
-<div class="cs-metric" style="border-right:none;border-top:1px solid var(--border2)"><div class="cs-metric-num">3,500+</div><div class="cs-metric-label">plastic-surgery cases used to train Oia's doctor-brain</div></div>
-<div class="cs-metric" style="border-right:none;border-top:1px solid var(--border2)"><div class="cs-metric-num">MD</div><div class="cs-metric-label">a structured medical reasoning layer behind every answer</div></div>
+<div class="cs-metric" style="border-right:none;border-top:1px solid var(--border2)"><div class="cs-metric-num">3,500+</div><div class="cs-metric-label">real cases reviewed with surgeons to ground her in evidence</div></div>
+<div class="cs-metric" style="border-right:none;border-top:1px solid var(--border2)"><div class="cs-metric-num">Always</div><div class="cs-metric-label">learning — refined in conversation with surgeons &amp; coordinators, never fixed</div></div>
 </div>
 </div>
 </section>
@@ -370,8 +386,20 @@ Back to portfolio</a>
 <!-- BRAND -->
 <section class="cs-section reveal">
 <p class="cs-section-label">Brand · a discipline I love</p>
-<h2 class="cs-h2">Naming the calm.</h2>
+<h2 class="cs-h2">Naming the calm and confident.</h2>
 <p class="cs-p">Brand is the part of the craft I love most, and on Oia I owned it end to end — the name, the wordmark, the palette and the agent's voice. In a category that shouts, Oia had to feel like a quiet, expert friend: a warm terracotta and cream palette, a classical serif wordmark, and a voice that's plain-spoken, unhurried and never salesy. It's what makes talking to software feel human.</p>
+<p class="cs-p">This design system evolves the concierge experience into <b>Technical Luxury</b> — a living interface of luminous, semi-frosty glass over organic, pulsating gradients. Authoritative yet empathetic: high-science intelligence with high-touch human care. The page you're reading is built in the system itself.</p>
+<div class="tlux">
+<div class="tlux-bg"></div>
+<div class="glass-card">
+<div class="gc-head">
+<svg class="gc-av" viewBox="0 0 60 60" aria-hidden="true"><defs><clipPath id="gcav"><circle cx="26" cy="30" r="19"/></clipPath></defs><circle cx="26" cy="30" r="19" fill="#a44b34"/><circle cx="38" cy="30" r="15" fill="#8a3a28"/><circle cx="38" cy="30" r="15" fill="#fff" clip-path="url(#gcav)"/></svg>
+<span class="gc-name">Oia</span>
+</div>
+<p class="gc-greet">Hi, I'm Oia — your personal concierge for planning treatment. There's no rush. When you're ready, I'll set everything up.</p>
+<div class="gc-btns"><span class="gc-primary">Yes, let's go</span><span class="gc-ghost">I have a question first</span></div>
+</div>
+</div>
 <div class="brand-grid">
 <div>
 <div class="brand-logo"><img src="oia-logo.jpg" alt="OIA wordmark" loading="lazy"></div>
@@ -384,6 +412,7 @@ Back to portfolio</a>
 <p>The Oia voice — a calm concierge who has already done the work, offered as a next step rather than a sales pitch.</p>
 </div>
 </div>
+<p class="brand-status"><b>Status.</b> Palette, type, glassmorphic system and components are the ratified v1.0 system; the logo is v1.2 — the all-terracotta eclipse speech mark with six avatar behaviour states and the expanded icon library. Compliance rules are hard and final.</p>
 </section>
 
 <!-- VOICE & MOTION -->
@@ -393,7 +422,7 @@ Back to portfolio</a>
 <div class="voice-wrap">
 <div>
 <p class="cs-p">Oia speaks — so she needed a presence, but not a face. I built her identity from a single idea: <b>two circles that meet and move — an eclipse — one voice reaching another.</b> The larger terracotta circle is Oia; the deeper one is the patient. Where they overlap it turns to light — the whole idea of a personal concierge living in that intersection.</p>
-<p class="cs-p">It's a living system, not a logo. The mark <b>breathes</b> when idle, the patient's sliver <b>swells</b> as they type, the arcs <b>open and close</b> while Oia speaks, dots <b>pulse</b> as she thinks, and everything <b>closes into a full circle</b> to confirm — then goes deliberately <b>still</b> for consent and medical moments.</p>
+<p class="cs-p">It's a living system, not a logo. The mark <b>breathes</b> when idle, the patient's sliver <b>swells</b> as they type, the arcs <b>open and close</b> while Oia speaks, dots <b>pulse</b> as she thinks, and everything <b>closes into a full circle</b> to confirm — then goes deliberately <b>still</b> for consent and sensitive moments.</p>
 <p class="cs-p" style="font-size:13px;color:var(--fg3)">Motion stays small and slow by rule — ≤2% scale, ≤5% shift, 3s+ cycles — respecting reduced-motion and falling back to a static mark below 32px. <em>Calm is the luxury.</em></p>
 </div>
 <div class="orb-card">
@@ -413,7 +442,7 @@ Back to portfolio</a>
 <div class="vstate"><svg class="mini" viewBox="0 0 60 60"><defs><clipPath id="m3"><circle cx="23" cy="30" r="19"/></clipPath></defs><circle cx="23" cy="30" r="19" fill="#a44b34"/><circle cx="40" cy="30" r="15" fill="#8a3a28"/><circle cx="40" cy="30" r="15" fill="#FCF9F7" clip-path="url(#m3)"/></svg><h4>Speaking</h4><p>The two circles open and close as she composes.</p></div>
 <div class="vstate"><svg class="mini" viewBox="0 0 60 60"><defs><clipPath id="m4"><circle cx="26" cy="30" r="19"/></clipPath></defs><circle cx="26" cy="30" r="19" fill="#a44b34"/><circle cx="37" cy="30" r="15" fill="#8a3a28"/><circle cx="37" cy="30" r="15" fill="#FCF9F7" clip-path="url(#m4)"/><circle cx="30" cy="46" r="1.8" fill="#FCF9F7"/><circle cx="35" cy="46" r="1.8" fill="#FCF9F7"/><circle cx="40" cy="46" r="1.8" fill="#FCF9F7"/></svg><h4>Thinking</h4><p>Dots pulse between them while she matches.</p></div>
 <div class="vstate"><svg class="mini" viewBox="0 0 60 60"><circle cx="30" cy="30" r="20" fill="#a44b34"/></svg><h4>Confirming</h4><p>The two close into a single full circle.</p></div>
-<div class="vstate"><svg class="mini" viewBox="0 0 60 60"><defs><clipPath id="m5"><circle cx="26" cy="30" r="19"/></clipPath></defs><circle cx="26" cy="30" r="19" fill="#a44b34"/><circle cx="38" cy="30" r="15" fill="#8a3a28"/><circle cx="38" cy="30" r="15" fill="#FCF9F7" clip-path="url(#m5)"/></svg><h4>Still</h4><p>Motionless for consent &amp; medical moments.</p></div>
+<div class="vstate"><svg class="mini" viewBox="0 0 60 60"><defs><clipPath id="m5"><circle cx="26" cy="30" r="19"/></clipPath></defs><circle cx="26" cy="30" r="19" fill="#a44b34"/><circle cx="38" cy="30" r="15" fill="#8a3a28"/><circle cx="38" cy="30" r="15" fill="#FCF9F7" clip-path="url(#m5)"/></svg><h4>Still</h4><p>Motionless for consent &amp; sensitive moments.</p></div>
 </div>
 </section>
 
