@@ -9,7 +9,8 @@
 <link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Tinos:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{--bg:#18171A;--fg:#F2EEE8;--fg2:#C8C2BA;--fg3:#7A7570;--accent:#D97757;--accent2:#e0916f;
+:root{--bg:#18171A;--fg:#F2EEE8;--fg2:#C8C2BA;--fg3:#7A7570;--accent:#9DBEAC;--accent2:#B8D5C5;
+--sage:136,167,149;
 --border:rgba(255,255,255,0.08);--border2:rgba(255,255,255,0.05);
 --max:1100px;--gutter:clamp(24px,5vw,80px);
 --font-body:'Libre Franklin',sans-serif;--font-display:'Tinos',serif;}
@@ -23,7 +24,7 @@ body{background:var(--bg);color:var(--fg);font-family:var(--font-body);font-size
 .cs-eyebrow{font-size:10px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:20px}
 .cs-title{font-family:var(--font-display);font-size:clamp(2.5rem,6vw,5rem);font-weight:400;line-height:1.05;letter-spacing:-.03em;margin-bottom:24px}
 .cs-title em{font-style:italic}
-.cs-subtitle{font-size:clamp(15px,1.4vw,19px);line-height:1.75;color:var(--fg2);max-width:720px;margin-bottom:52px}
+.cs-subtitle{font-size:clamp(15px,1.4vw,19px);line-height:1.75;color:var(--fg2);max-width:740px;margin-bottom:52px}
 .cs-meta{display:grid;grid-template-columns:repeat(4,auto);gap:40px;border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:28px 0;max-width:900px}
 .cs-meta-label{font-size:9px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--fg3);margin-bottom:6px}
 .cs-meta-value{font-size:15px;color:var(--fg)}
@@ -45,8 +46,9 @@ body{background:var(--bg);color:var(--fg);font-family:var(--font-body);font-size
 /* problem cards */
 .cards6{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:28px}
 .pcard{padding:24px;border:1px solid var(--border2);border-radius:12px;background:rgba(255,255,255,.02)}
-.pcard .n{font-family:var(--font-display);font-style:italic;font-size:1.8rem;color:rgba(217,119,87,.35);margin-bottom:12px;line-height:1}
-.pcard p{font-size:13.5px;line-height:1.7;color:var(--fg2)}
+.pcard .n{font-size:9px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:11px}
+.pcard b{display:block;font-size:14px;color:var(--fg);font-weight:600;margin-bottom:7px}
+.pcard p{font-size:13px;line-height:1.65;color:var(--fg2)}
 /* process steps */
 .proc-diamonds{display:flex;gap:6px;flex-wrap:wrap;margin-top:28px}
 .dia{flex:1;min-width:180px;position:relative;border:1px solid var(--border2);border-radius:12px;padding:22px 18px;background:rgba(255,255,255,.02)}
@@ -54,35 +56,32 @@ body{background:var(--bg);color:var(--fg);font-family:var(--font-body);font-size
 .dia .dn{font-size:9px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-bottom:8px}
 .dia .dt{font-size:14px;font-weight:600;color:var(--fg);margin-bottom:6px}.dia p{font-size:12.5px;line-height:1.65;color:var(--fg2)}
 /* laptop frame */
-.device-laptop{width:100%;max-width:760px;margin:0 auto}
+.device-laptop{width:100%;max-width:780px;margin:0 auto}
 .dl-lid{background:#0e0e10;border-radius:16px;padding:12px 12px 0;box-shadow:0 40px 80px rgba(0,0,0,.55),inset 0 0 0 1px rgba(255,255,255,.05)}
-.dl-screen{position:relative;height:440px;border-radius:8px;overflow:hidden;background:#F5F6F8}
+.dl-screen{position:relative;height:450px;border-radius:8px;overflow:hidden;background:#F5F6F8}
 .dl-bar{height:30px;background:#eceae6;display:flex;align-items:center;gap:6px;padding:0 12px;position:relative;z-index:2;border-bottom:1px solid #dcd8d0}
 .dl-bar i{width:9px;height:9px;border-radius:50%;background:#cfcabf;flex:0 0 auto}
 .dl-bar .u{margin-left:12px;height:16px;flex:1;max-width:320px;background:#fff;border-radius:6px;border:1px solid #dcd8d0}
 .dl-view{position:absolute;inset:30px 0 0;overflow:hidden}
-.dl-view img{width:100%;display:block;animation:lpScroll 40s ease-in-out infinite alternate}
+.dl-view img{width:100%;display:block;animation:lpScroll 44s ease-in-out infinite alternate}
 .dl-foot{height:14px;background:linear-gradient(#17171a,#0a0a0c);border-radius:0 0 10px 10px;margin:0 4px}
 .dl-hinge{height:8px;width:16%;margin:0 auto;background:linear-gradient(#000,#242424);border-radius:0 0 7px 7px}
-@keyframes lpScroll{0%,4%{transform:translateY(0)}96%,100%{transform:translateY(calc(-100% + 410px))}}
+@keyframes lpScroll{0%,5%{transform:translateY(0)}95%,100%{transform:translateY(calc(-100% + 420px))}}
 .scrollhint{display:inline-flex;align-items:center;gap:7px;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--fg3)}
 .scrollhint::before{content:'';width:12px;height:18px;border:1.5px solid var(--fg3);border-radius:6px;display:inline-block}
-/* dashboard feature browser cards */
-.dfeatures{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:36px}
-.dcard{border-radius:12px;overflow:hidden;border:1px solid var(--border2);background:#fff;box-shadow:0 24px 55px rgba(0,0,0,.4)}
-.dcard .db{height:28px;background:#eceae6;display:flex;align-items:center;gap:6px;padding:0 12px;border-bottom:1px solid #dcd8d0}
-.dcard .db i{width:8px;height:8px;border-radius:50%;background:#cfcabf}
-.dcard img{width:100%;display:block}
-.dcap{margin-top:13px}
-.dcap b{display:block;font-size:14px;color:var(--fg);font-weight:600;margin-bottom:4px}
-.dcap span{font-size:12.5px;color:var(--fg3);line-height:1.55}
+/* prominent real-screen browser figure */
+.browserfig{margin:34px 0 0;border-radius:14px;overflow:hidden;border:1px solid var(--border2);background:#0f0e11;box-shadow:0 34px 80px rgba(0,0,0,.5)}
+.browserfig .bbar{height:36px;background:#eceae6;display:flex;align-items:center;gap:7px;padding:0 15px;border-bottom:1px solid #dcd8d0}
+.browserfig .bbar i{width:10px;height:10px;border-radius:50%;background:#cfcabf;flex:0 0 auto}
+.browserfig .bbar .u{margin-left:14px;height:19px;flex:1;max-width:360px;background:#fff;border-radius:6px;border:1px solid #dcd8d0;display:flex;align-items:center;padding:0 11px;font-size:10px;color:#a29d94;letter-spacing:.02em;white-space:nowrap;overflow:hidden}
+.browserfig img{width:100%;display:block}
 /* principle chips */
 .chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:32px}
-.chip{font-size:11px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;background:rgba(255,255,255,.05);color:var(--fg2);padding:8px 14px;border-radius:6px;border:1px solid var(--border2)}
+.chip{font-size:11px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;background:rgba(var(--sage),.10);color:var(--accent2);padding:8px 14px;border-radius:6px;border:1px solid rgba(var(--sage),.22)}
 /* callout box */
-.cs-callout{border-left:2px solid var(--accent);padding:20px 28px;background:rgba(217,119,87,.05);border-radius:0 10px 10px 0;margin-top:36px}
+.cs-callout{border-left:2px solid var(--accent);padding:20px 28px;background:rgba(var(--sage),.08);border-radius:0 10px 10px 0;margin-top:36px}
 .cs-callout p{font-family:var(--font-display);font-style:italic;font-size:1.15rem;line-height:1.6;color:var(--fg)}
-.labbox{padding:24px 26px;border:1px solid rgba(217,119,87,.22);background:rgba(217,119,87,.06);border-radius:12px;margin-top:24px}
+.labbox{padding:24px 26px;border:1px solid rgba(var(--sage),.28);background:rgba(var(--sage),.07);border-radius:12px;margin-top:24px}
 .labbox .lb{font-size:10px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:10px}
 .labbox p{font-size:13.5px;color:var(--fg2);line-height:1.7}
 /* built cols */
@@ -115,8 +114,8 @@ body{background:var(--bg);color:var(--fg);font-family:var(--font-body);font-size
 .cs-cta a:hover{opacity:.9;transform:translateY(-2px)}.cs-cta a svg{width:16px;height:16px}
 .note{color:var(--fg3);font-style:normal}
 @media(max-width:860px){
-.cs-cols,.dfeatures,.nia-grid{grid-template-columns:1fr}
-.cards6,.built{grid-template-columns:1fr}.built .bcol{border-right:none;border-bottom:1px solid var(--border2)}
+.cs-cols,.nia-grid{grid-template-columns:1fr}
+.cards6{grid-template-columns:1fr}.built{grid-template-columns:1fr}.built .bcol{border-right:none;border-bottom:1px solid var(--border2)}
 .cs-metrics{grid-template-columns:1fr}.cs-metric{border-right:none;border-top:1px solid var(--border2)}
 .proc-diamonds{flex-direction:column}.cs-meta{grid-template-columns:1fr 1fr;gap:24px}}
 </style>
@@ -132,8 +131,8 @@ Back to portfolio</a>
 
 <header class="cs-hero">
 <p class="cs-eyebrow hero-in">Case Study · Health-tech · Applied AI · Product Design</p>
-<h1 class="cs-title hero-in">AIDA —<br><em>designing trust into medical tourism.</em></h1>
-<p class="cs-subtitle hero-in">An AI platform that guides overseas patients through cosmetic-treatment journeys over WhatsApp — while giving clinics a SaaS dashboard to monitor, escalate and book every AI-assisted conversation. A two-sided product where safety, not novelty, is the design brief. I led product design end to end.</p>
+<h1 class="cs-title hero-in">AIDA —<br><em>clarity, pulled out of an impossible mess of data.</em></h1>
+<p class="cs-subtitle hero-in">A medical-tourism coordinator juggles travel logistics, operating-room availability, surgeon calendars, patient timelines, consultation bookings and hundreds of never-ending chats — all at once, all in their head. AIDA is the AI platform I designed to absorb that chaos and hand a clinic one calm screen. I led product design end to end, and set a visual system built on a single idea: less is more.</p>
 <div class="cs-meta hero-in">
 <div><p class="cs-meta-label">Role</p><p class="cs-meta-value">Lead Product Designer</p></div>
 <div><p class="cs-meta-label">Year</p><p class="cs-meta-value">2025 – Present</p></div>
@@ -146,11 +145,11 @@ Back to portfolio</a>
 <div class="device-laptop">
 <div class="dl-lid"><div class="dl-screen">
 <div class="dl-bar"><i></i><i></i><i></i><span class="u"></span></div>
-<div class="dl-view"><img src="aida-dashboard.jpg" alt="AIDA clinic dashboard — live conversation queue, AI confidence, escalations and bookings"></div>
+<div class="dl-view"><img src="aida-overview.jpg" alt="AIDA clinic overview — escalated conversations, new requests, post-op tracking and upcoming bookings on one screen"></div>
 </div></div>
 <div class="dl-foot"></div><div class="dl-hinge"></div>
 </div>
-<p class="cap" style="margin-top:22px">The AIDA clinic dashboard — the SaaS control room where clinics watch AI-assisted patient conversations, step in when confidence drops, and turn enquiries into booked consultations. <span class="scrollhint">Scrolls on its own</span></p>
+<p class="cap" style="margin-top:22px">The clinic command centre — one screen that answers "what needs me right now?" the moment it loads. <span class="scrollhint">Scrolls on its own</span></p>
 </div>
 
 <main class="cs-body">
@@ -159,10 +158,10 @@ Back to portfolio</a>
 <section class="cs-section reveal">
 <p class="cs-section-label">Context</p>
 <div class="cs-cols">
-<div><h2 class="cs-h2">A two-sided platform for a high-stakes journey.</h2></div>
+<div><h2 class="cs-h2">One coordinator, an unmanageable amount of data.</h2></div>
 <div>
-<p class="cs-p">Medical tourism is booming, and cosmetic clinics were drowning in international enquiries they couldn't handle without hiring. AIDA was built to streamline patient triage, consultation and booking through an AI-powered WhatsApp experience — no app, no account, just a conversation.</p>
-<p class="cs-p">It's a two-sided product: <b>patients</b> get guided, conversational support across their whole journey, while <b>clinics</b> manage those conversations, appointments and escalations through a dedicated dashboard. My job was to design both sides so they add up to one trustworthy system.</p>
+<p class="cs-p">Medical tourism is booming, and cosmetic clinics were absorbing that growth on the shoulders of a handful of coordinators. Every overseas patient means a surgery date, a theatre slot, a surgeon's calendar, flights and recovery stays, a consultation to book — and a long, anxious conversation running in the background across time zones and languages.</p>
+<p class="cs-p">AIDA is a two-sided product: <b>patients</b> get guided, conversational support across their whole journey, while <b>clinics</b> run every conversation, booking and timeline from one place. My brief wasn't to add more tools — it was to take an overwhelming amount of data and make it feel calm and legible.</p>
 </div>
 </div>
 </section>
@@ -170,61 +169,59 @@ Back to portfolio</a>
 <!-- THE PROBLEM -->
 <section class="cs-section reveal">
 <p class="cs-section-label">The Problem</p>
-<h2 class="cs-h2">Complex journeys, fragmented across too many channels.</h2>
+<h2 class="cs-h2">The mess of data I was designing against.</h2>
+<p class="cs-p" style="max-width:720px">Every one of these lived in a different tool, spreadsheet or head — and all of it landed, at once, on one coordinator.</p>
 <div class="cards6">
-<div class="pcard"><div class="n">01</div><p>Clinics were struggling to manage a growing volume of international enquiries without adding headcount.</p></div>
-<div class="pcard"><div class="n">02</div><p>Patients needed trusted guidance — not just clinic listings — when making high-stakes decisions abroad.</p></div>
-<div class="pcard"><div class="n">03</div><p>Journeys were fragmented across channels, creating friction, uncertainty and language barriers.</p></div>
-<div class="pcard"><div class="n">04</div><p>AI could improve efficiency, but medical questions demand oversight and a human when confidence is low.</p></div>
-<div class="pcard"><div class="n">05</div><p>The product had to work within real constraints — WhatsApp-first, varied clinic tech maturity, a regulated space.</p></div>
-<div class="pcard"><div class="n">06</div><p>Opaque pricing and language gaps made clinic-to-patient communication genuinely hard.</p></div>
+<div class="pcard"><div class="n">Data stream 01</div><b>Travel &amp; logistics</b><p>Flights, transfers, hotels and recovery stays — every one tied to a surgery date that can still move.</p></div>
+<div class="pcard"><div class="n">Data stream 02</div><b>Operating-room occupancy</b><p>A limited number of theatre slots to schedule across several surgeons and procedures without collisions.</p></div>
+<div class="pcard"><div class="n">Data stream 03</div><b>Surgeon timelines</b><p>Each surgeon's consultation hours and operating days, shifting constantly as cases move.</p></div>
+<div class="pcard"><div class="n">Data stream 04</div><b>Coordinator timelines</b><p>Every patient at a different stage, each needing the right nudge at exactly the right moment.</p></div>
+<div class="pcard"><div class="n">Data stream 05</div><b>Consultation booking</b><p>Matching a patient to the right surgeon, at the right time, in the right language.</p></div>
+<div class="pcard"><div class="n">Data stream 06</div><b>Endless conversations</b><p>Hundreds of WhatsApp threads answered by hand, day and night — the coordinator as a human chatbot.</p></div>
 </div>
 </section>
 
-<!-- PROCESS -->
+<!-- THE DESIGN CHALLENGE -->
 <section class="cs-section reveal">
-<p class="cs-section-label">Process</p>
-<h2 class="cs-h2">Mapping the ecosystem before designing a single screen.</h2>
-<p class="cs-p" style="max-width:720px">I started by mapping the whole system — patient journeys, clinic workflows, AI decision points, escalation scenarios — before drawing any UI. Research with clinic partners set the shape of both products.</p>
-<div class="proc-diamonds">
-<div class="dia"><div class="dn">01 · Discover</div><div class="dt">Map the ecosystem</div><p>Patient journeys, clinic workflows, AI decision points and escalation scenarios, end to end.</p></div>
-<div class="dia"><div class="dn">02 · Patient side</div><div class="dt">WhatsApp-native journey</div><p>Enquiry, screening, education, photo assessment, pricing and booking — no extra app or account.</p></div>
-<div class="dia"><div class="dn">03 · Clinic side</div><div class="dt">The dashboard</div><p>Real-time visibility of AI conversations, escalations and context — with mobile access built in.</p></div>
-<div class="dia"><div class="dn">04 · Safety</div><div class="dt">Escalation framework</div><p>A confidence model that hands off to a human — with full context — the moment certainty drops.</p></div>
-</div>
-</section>
-
-<!-- THE DASHBOARD — centrepiece -->
-<section class="cs-section reveal">
-<p class="cs-section-label">The Dashboard · SaaS centrepiece</p>
-<h2 class="cs-h2">One screen where clinics trust AI with real patients.</h2>
-<p class="cs-p" style="max-width:760px">The clinic dashboard is where the whole promise holds together. It has to make an AI system <b>legible and controllable</b> — a clinician should be able to glance at it and know exactly which conversations are safe, which need them, and why. Everything is organised around confidence and handoff, not vanity metrics.</p>
-<div class="dfeatures">
-<div>
-<div class="dcard"><div class="db"><i></i><i></i><i></i></div><img src="aida-feat-queue2.jpg" alt="Live conversation queue with AI confidence and status"></div>
-<div class="dcap"><b>Live conversation queue</b><span>Every active patient chat with its AI confidence, channel and status — AI-handled, escalated, booked — updating in real time.</span></div>
-</div>
-<div>
-<div class="dcard"><div class="db"><i></i><i></i><i></i></div><img src="aida-feat-escalation.jpg" alt="Escalation panel with AI handoff summary"></div>
-<div class="dcap"><b>Escalation &amp; handoff</b><span>When confidence drops, the AI writes a summary of <i>why</i> it stepped back, surfaces the risk flags, and hands the clinician full context — one tap to take over.</span></div>
-</div>
-<div>
-<div class="dcard"><div class="db"><i></i><i></i><i></i></div><img src="aida-feat-context.jpg" alt="Patient context panel with photos and timeline"></div>
-<div class="dcap"><b>Patient context</b><span>Procedure, stage, budget, uploaded photos and a journey timeline — so a human never restarts a conversation the AI already began.</span></div>
-</div>
-<div>
-<div class="dcard"><div class="db"><i></i><i></i><i></i></div><img src="aida-feat-analytics.jpg" alt="Appointments and AI-vs-human analytics"></div>
-<div class="dcap"><b>Bookings &amp; oversight</b><span>Today's consultations alongside the metric that matters most to a clinic: how much the AI safely handled without a human.</span></div>
-</div>
-</div>
+<p class="cs-section-label">The Design Challenge</p>
+<h2 class="cs-h2">Make all of it feel like one calm screen.</h2>
+<p class="cs-p">The hard part was never adding features — it was subtraction. A clinic drowning in data doesn't need a denser dashboard; it needs to glance once and know what matters. I designed AIDA around a single principle: <b>less is more</b>.</p>
+<p class="cs-p">Muted pastel colour carries meaning without shouting — red for escalated, green for new, amber for awaiting. Glassmorphic surfaces let dense information sit lightly on the page instead of stacking into walls. Whitespace does the work heavy dividers used to. And AI runs underneath it all — triaging, scoring, drafting — so the human only ever sees the few things that genuinely need them.</p>
 <div class="chips">
-<span class="chip">Confidence-based escalation</span>
-<span class="chip">Context-preserving handoff</span>
-<span class="chip">Real-time queue</span>
-<span class="chip">Mobile-first clinic ops</span>
-<span class="chip">Modular design system</span>
+<span class="chip">Less is more</span>
+<span class="chip">Muted pastel palette</span>
+<span class="chip">Glassmorphism</span>
+<span class="chip">Whitespace as structure</span>
+<span class="chip">AI-triaged, human-approved</span>
 </div>
-<div class="cs-callout"><p>"The design brief wasn't a smarter chatbot — it was an AI a clinic would trust with a frightened patient at 11pm."</p></div>
+<div class="cs-callout"><p>"Clarity wasn't a screen I designed. It was everything I managed to take off the screen."</p></div>
+</section>
+
+<!-- COMMAND CENTRE — real overview screen -->
+<section class="cs-section reveal">
+<p class="cs-section-label">The Command Centre</p>
+<h2 class="cs-h2">One glance, the whole clinic.</h2>
+<p class="cs-p">The overview answers the coordinator's first question of the day — <b>what needs me?</b> Five calm tiles across the top count only what's actionable: conversations escalated for a human reply, new requests awaiting an offer, offers pending a patient's decision, post-op patients AIDA is monitoring, and bookings coming up. Underneath, three live columns — escalated chats, new requests, and upcoming bookings synced straight from the calendar — turn a day's worth of scattered data into a single readable page.</p>
+<div class="browserfig"><div class="bbar"><i></i><i></i><i></i><span class="u">app.aida.health · overview</span></div><img src="aida-overview.jpg" alt="AIDA overview dashboard — escalated, new requests, offers pending, post-op tracking, upcoming bookings, with live columns below"></div>
+<p class="cap"><b>Overview.</b> Muted pastel status colour, glassmorphic tiles and generous whitespace turn six data streams into one quiet, scannable screen.</p>
+</section>
+
+<!-- CONVERSATIONS — real screen -->
+<section class="cs-section reveal">
+<p class="cs-section-label">Conversations · replacing the coordinator</p>
+<h2 class="cs-h2">The chat the coordinator used to answer by hand.</h2>
+<p class="cs-p">This is where most of the chaos lived — long, high-stakes conversations across time zones and languages, running around the clock. AIDA now carries them. It drafts replies grounded in each patient's real context — procedure interest, an intent score, flagged drug allergies, prior aesthetic work — and the coordinator approves, adjusts, or takes over. Suggested next messages (typical recovery phases, risk statistics, pre-op prep) keep answers accurate, and a high-priority flag pulls a human in the instant confidence drops.</p>
+<div class="browserfig"><div class="bbar"><i></i><i></i><i></i><span class="u">app.aida.health · conversations</span></div><img src="aida-conversations.jpg" alt="AIDA conversation view — AI-assisted patient chat with medical context, intent score and suggested replies"></div>
+<p class="cap"><b>Conversations.</b> Patient context, medical flags and an intent score sit alongside the thread, so a human never restarts a conversation the AI already began.</p>
+</section>
+
+<!-- REQUESTS — real screen -->
+<section class="cs-section reveal">
+<p class="cs-section-label">Requests · triage</p>
+<h2 class="cs-h2">Every enquiry, scored and sorted.</h2>
+<p class="cs-p">Behind the conversations sits the pipeline. Each treatment request is scored by AI intent, tagged with procedure interest, flagged for anything that needs a second look, and sorted by exactly where it sits — awaiting an offer, or pending the patient's decision. The coordinator works a ranked, filterable list instead of a bottomless inbox, and turns a ready patient into an offer in a single click.</p>
+<div class="browserfig"><div class="bbar"><i></i><i></i><i></i><span class="u">app.aida.health · requests</span></div><img src="aida-requests.jpg" alt="AIDA treatment requests — patients with AI score, procedure tags, status and flags in a ranked list"></div>
+<p class="cap"><b>Requests.</b> AI score, status and flags replace an inbox with a prioritised queue — the coordinator always knows who to act on next.</p>
 </section>
 
 <!-- THE PIVOT + JOURNEY LAB -->
@@ -233,13 +230,13 @@ Back to portfolio</a>
 <div class="cs-cols" style="margin-bottom:8px">
 <div><h2 class="cs-h2">When complexity multiplied overnight.</h2></div>
 <div>
-<p class="cs-p">When we pivoted AIDA from a marketplace into two distinct products — a community platform and a clinic-facing AI patient agent — the complexity multiplied overnight. The agent was no longer just guiding discovery; it was triaging patients, handling medical disclosures, managing booking logic and post-op check-ins across borders.</p>
+<p class="cs-p">When we pivoted AIDA from a marketplace into two distinct products — a community platform and a clinic-facing AI patient agent — the data problem multiplied. The agent was no longer just guiding discovery; it was triaging patients, handling medical disclosures, and managing booking and post-op logic across borders.</p>
 <p class="cs-p">Every conversation branch now carried operational, ethical and clinical risk. We couldn't afford to "learn from production" when real patients and surgeons were involved.</p>
 </div>
 </div>
 <div class="labbox">
 <div class="lb">AIDA Journey Lab · internal simulation tool</div>
-<p>So I designed and built an internal simulation tool. It generates diverse patient personas, medical histories and intent patterns, letting us pressure-test conversation logic <b>before</b> release — mapping escalation triggers and branching failures, and redesigning around decision safety rather than conversational neatness. I built it with Claude Code and deployed it locally via Cursor, so the whole team could run scenarios without any infrastructure. A personal workaround became a shared team asset — it turned AIDA from a scripted chatbot into a resilient AI workflow engine clinics could trust with real patients, not just demos.</p>
+<p>So I designed and built an internal simulation tool. It generates diverse patient personas, medical histories and intent patterns, letting us pressure-test conversation logic <b>before</b> release — mapping escalation triggers and branching failures, and redesigning around decision safety rather than conversational neatness. I built it with Claude Code and ran it locally via Cursor, so the whole team could run scenarios without any infrastructure. A personal workaround became a shared team asset — it turned AIDA from a scripted chatbot into a resilient AI workflow engine clinics could trust with real patients, not just demos.</p>
 </div>
 <div class="chips">
 <span class="chip">Pivot across two products</span>
@@ -263,28 +260,27 @@ Back to portfolio</a>
 <p class="cs-section-label">What I Built</p>
 <h2 class="cs-h2">End-to-end product design across both sides.</h2>
 <div class="built">
-<div class="bcol"><h4>Patient experience</h4><ul>
-<li>WhatsApp-native patient journey</li>
-<li>AI triage &amp; structured intake</li>
-<li>Procedure education flows</li>
-<li>Photo upload &amp; assessment</li>
-<li>Pricing transparency &amp; booking</li>
-<li>Post-consultation follow-up</li>
+<div class="bcol"><h4>Clinic command centre</h4><ul>
+<li>Overview command dashboard</li>
+<li>Escalation &amp; handoff workflows</li>
+<li>AI-scored request pipeline</li>
+<li>Consultation &amp; OR-slot booking</li>
+<li>Surgeon &amp; coordinator timelines</li>
+<li>Post-op tracking</li>
 </ul></div>
-<div class="bcol"><h4>Clinic experience</h4><ul>
-<li>Real-time conversation dashboard</li>
-<li>Escalation management workflows</li>
-<li>Patient overview &amp; context panels</li>
-<li>Appointment &amp; booking management</li>
-<li>WhatsApp-integrated comms tools</li>
-<li>Mobile-first clinic operations</li>
+<div class="bcol"><h4>Conversations &amp; AI</h4><ul>
+<li>AI-drafted patient replies</li>
+<li>Context &amp; medical-flag panels</li>
+<li>Intent scoring &amp; prioritisation</li>
+<li>Suggested-reply system</li>
+<li>Confidence-based escalation</li>
 </ul></div>
 <div class="bcol"><h4>Design foundations</h4><ul>
-<li>Confidence-based escalation framework</li>
-<li>Modular design system</li>
-<li>Cross-platform component library</li>
-<li>AI conversation-flow architecture</li>
-<li>Rapid prototyping with Claude Code</li>
+<li>"Less is more" visual system</li>
+<li>Muted-pastel status language</li>
+<li>Glassmorphic component library</li>
+<li>Travel &amp; logistics views</li>
+<li>Built &amp; prototyped with Claude Code</li>
 </ul></div>
 </div>
 </section>
@@ -326,10 +322,10 @@ Back to portfolio</a>
 </div>
 <div class="nia-grid">
 <div class="nia-c"><h4>Marketplace, rebuilt</h4><p>Vetted-clinic discovery re-created on top of a validated, trusted model.</p></div>
-<div class="nia-c"><h4>Clinical partnership tooling</h4><p>The dashboard grows into a fuller operations layer for partner clinics.</p></div>
+<div class="nia-c"><h4>Clinical partnership tooling</h4><p>The command centre grows into a fuller operations layer for partner clinics.</p></div>
 <div class="nia-c"><h4>Always-on patient AI</h4><p>A guided companion through treatment, recovery and aftercare.</p></div>
 </div>
-<p class="cap" style="margin-top:20px">Nia carries AIDA's trust-and-safety principles forward into one connected ecosystem: discovery, partnership tooling and ongoing patient support.</p>
+<p class="cap" style="margin-top:20px">Nia carries AIDA's clarity-and-safety principles forward into one connected ecosystem: discovery, partnership tooling and ongoing patient support.</p>
 </section>
 
 </main>
