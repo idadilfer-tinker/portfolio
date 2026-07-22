@@ -73,6 +73,13 @@ body{background:var(--bg);color:var(--fg);font-family:var(--font-body);font-size
 /* product shots + animated demos */
 .shots{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:34px}
 .shots figcaption{font-size:12px;color:var(--fg3);margin-top:12px}
+.screens{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:36px}
+.pscreen{display:flex;flex-direction:column}
+.pscreen .dp-frame{padding:9px;border-radius:30px}
+.pscreen .dp-screen{height:404px;border-radius:22px}
+.pscreen .jf-demo{position:absolute;inset:0;height:100%;aspect-ratio:auto;border:none;border-radius:0}
+.pscreen .jf-demo .d-pad{padding-top:38px}
+.pcap{font-size:11.5px;color:var(--fg3);margin-top:14px;line-height:1.55}
 .jf-demo{position:relative;aspect-ratio:4/3;border-radius:12px;overflow:hidden;border:1px solid var(--border2);background:linear-gradient(158deg,#fdfcfa,#f3eee6);font-family:var(--jf-sans);color:var(--jf-ink);isolation:isolate}
 .jf-demo .aura{position:absolute;width:66%;height:66%;filter:blur(46px);border-radius:50%;opacity:.42;z-index:-1;animation:auraDrift 15s ease-in-out infinite}
 .jf-demo .aura.a1{top:-16%;right:-10%;background:radial-gradient(circle,#f7b657,transparent 66%)}
@@ -187,7 +194,7 @@ body{background:var(--bg);color:var(--fg);font-family:var(--font-body);font-size
 @media (prefers-reduced-motion:reduce){*{animation-duration:.01ms!important;transition-duration:.01ms!important}.reveal{opacity:1;transform:none}}
 @media(max-width:860px){
 .cs-cols,.dec-grid,.learns,.jf-brand,.cs-steps,.cs-cols-3,.shots,.product-live{grid-template-columns:1fr}
-.methods,.stories{grid-template-columns:1fr 1fr}.cs-metrics{grid-template-columns:1fr}
+.methods,.stories,.screens{grid-template-columns:1fr 1fr}.cs-metrics{grid-template-columns:1fr}
 .proc-diamonds{flex-direction:column}.cs-meta{grid-template-columns:1fr 1fr;gap:24px}}
 </style>
 </head>
@@ -201,11 +208,11 @@ Back to portfolio</a>
 </nav>
 
 <header class="cs-hero">
-<p class="cs-eyebrow hero-in">Case Study · Health-tech · Fertility · Product + Brand + Research</p>
+<p class="cs-eyebrow hero-in">Case Study · Fertility · Search &amp; Compare · Research + Product + Brand</p>
 <h1 class="cs-title hero-in">Journey Fertility —<br><em>your options, one simple search.</em></h1>
-<p class="cs-subtitle hero-in">Fertility care is high-stakes, deeply personal and strangely opaque. Journey replaces the fog — scattered information, hidden costs and cold sales funnels — with one calm place to search and compare clinics, kits and true all-in costs, at home or across borders. I led product design, research and the brand end to end.</p>
+<p class="cs-subtitle hero-in">Fertility care asks people to spend thousands and decide something life-shaping — on almost no clear information. I designed Journey as the warm, straight-talking guide I wished existed: one place to search clinics, compare kits and see the true all-in cost, at home or abroad. I led the research, the product and the brand.</p>
 <div class="cs-meta hero-in">
-<div><p class="cs-meta-label">Role</p><p class="cs-meta-value">Product, Brand &amp; Research</p></div>
+<div><p class="cs-meta-label">Role</p><p class="cs-meta-value">Research, Product &amp; Brand</p></div>
 <div><p class="cs-meta-label">Year</p><p class="cs-meta-value">2025</p></div>
 <div><p class="cs-meta-label">Type</p><p class="cs-meta-value">Fertility · search &amp; compare</p></div>
 <div><p class="cs-meta-label">Status</p><p class="cs-meta-value">Ongoing</p></div>
@@ -216,19 +223,19 @@ Back to portfolio</a>
 <figure class="figure" style="margin-top:0">
 <img src="jf-cover.jpg" alt="Journey Fertility — the product on mobile" loading="lazy">
 </figure>
-<p class="cap">The Journey product — search your fertility options and compare them without the anxiety.</p>
+<p class="cap">Journey on mobile — one calm search across every fertility option.</p>
 </div>
 
 <main class="cs-body">
 
 <!-- CONTEXT -->
 <section class="cs-section reveal">
-<p class="cs-section-label">Context</p>
+<p class="cs-section-label">The Problem</p>
 <div class="cs-cols">
-<div><h2 class="cs-h2">One of life's biggest decisions — and one of the hardest to navigate.</h2></div>
+<div><h2 class="cs-h2">The most expensive guess most people ever make.</h2></div>
 <div>
-<p class="cs-p">Fertility care is high-stakes, deeply personal, and strangely opaque. The information is scattered and clinical, prices swing wildly between clinics and countries with hidden extras buried in the fine print, and each option — testing, egg freezing, IVF, embryo freezing — tends to be researched in its own silo.</p>
-<p class="cs-p">People end up stitching answers together from forums, sales calls and spreadsheets, making months-long, life-shaping choices under real emotional and financial pressure. <b>Journey exists to replace that fog with a clear, honest map.</b></p>
+<p class="cs-p">Fertility care runs into thousands of pounds and reshapes a life — yet people choose almost blind. Quotes swing wildly between clinics and countries, the real total hides behind a tidy "from" price, and every route — a test, egg freezing, IVF, embryos — sits in its own lonely corner of the web.</p>
+<p class="cs-p">So the research happens at midnight: forum threads, pushy discovery calls, half-finished spreadsheets. <b>Journey's whole reason to exist is to turn that scramble into one clear, honest view.</b></p>
 </div>
 </div>
 </section>
@@ -236,35 +243,35 @@ Back to portfolio</a>
 <!-- RESEARCH -->
 <section class="cs-section reveal">
 <p class="cs-section-label">Research</p>
-<h2 class="cs-h2">Grounded in how people actually navigate fertility.</h2>
-<p class="cs-p" style="max-width:720px">Before any screens, I invested in understanding the journey itself — the questions people ask, the moments they get stuck, and how opaque, variable pricing quietly shapes the decisions they make. That work set the product's north star.</p>
+<h2 class="cs-h2">I started with people, long before pixels.</h2>
+<p class="cs-p" style="max-width:720px">My first weeks went into the decision itself — what people search for when they're scared, where they freeze, and how murky pricing quietly nudges enormous choices. Four ways I got close to it:</p>
 <div class="methods">
-<div class="method"><div class="mi">◑</div><h4>Journey mapping</h4><p>Mapped the real end-to-end path — from first worry to booking — to find where trust breaks and people stall.</p></div>
-<div class="method"><div class="mi">☰</div><h4>Landscape audit</h4><p>Combed existing clinics, directories and lead-gen funnels to see how information and pricing are really presented.</p></div>
-<div class="method"><div class="mi">£</div><h4>Price teardown</h4><p>Pulled apart "headline" prices to expose the add-ons, meds and extras that surface late and erode trust.</p></div>
-<div class="method"><div class="mi">♡</div><h4>Emotional framing</h4><p>Studied the tone people needed — warm and unhurried, not clinical — so the product meets anxiety with calm.</p></div>
+<div class="method"><div class="mi">◑</div><h4>Mapping the middle</h4><p>Traced the real route from first worry to first booking, flagging every spot where confidence quietly collapses.</p></div>
+<div class="method"><div class="mi">☰</div><h4>Reading the market</h4><p>Went clinic by clinic and directory by directory to hear how the category actually speaks to anxious people.</p></div>
+<div class="method"><div class="mi">£</div><h4>Following the money</h4><p>Took "from" prices apart into the meds, add-ons and storage fees that only ever appear at the very end.</p></div>
+<div class="method"><div class="mi">♡</div><h4>Feeling the tone</h4><p>Listened for the register people were missing — a steady friend, not a clipboard — and let it set the voice.</p></div>
 </div>
-<div class="cs-callout"><p>"Reduce anxiety by replacing scattered, salesy information with one honest, comparable view."</p></div>
+<div class="cs-callout"><p>"The brief that fell out of it: swap ten anxious browser tabs for one calm, comparable view."</p></div>
 </section>
 
 <!-- PROCESS -->
 <section class="cs-section reveal">
 <p class="cs-section-label">Process</p>
-<h2 class="cs-h2">Diverge to understand, converge to decide.</h2>
-<p class="cs-p" style="max-width:720px">A double-diamond shape: open wide on the problem and the messy real journey, then narrow hard on the few things that actually build trust — one search, honest costs, and genuine comparison.</p>
+<h2 class="cs-h2">Open wide on the worry. Close tight on the fix.</h2>
+<p class="cs-p" style="max-width:720px">Two loops. The first pulls the whole tangled problem apart; the second commits, hard, to the few things that genuinely earn trust — one search, honest money, real comparison.</p>
 <div class="proc-diamonds">
-<div class="dia"><div class="dn">01 · Discover</div><div class="dt">Map the journey</div><p>Understand the pathways, the anxieties and how pricing is really presented across the market.</p></div>
-<div class="dia"><div class="dn">02 · Define</div><div class="dt">Find the north star</div><p>Distil it to one idea: an honest, comparable view that lowers anxiety instead of selling.</p></div>
-<div class="dia"><div class="dn">03 · Develop</div><div class="dt">Design the core loop</div><p>Search → true cost → compare across locations, with a plain-language way in for every moment.</p></div>
-<div class="dia"><div class="dn">04 · Deliver</div><div class="dt">Ship &amp; brand</div><p>A calm product and the Journey identity — name, palette and voice — carried end to end.</p></div>
+<div class="dia"><div class="dn">01 · Discover</div><div class="dt">Sit with it</div><p>Learn the pathways, the fears, and how the market really frames a price.</p></div>
+<div class="dia"><div class="dn">02 · Define</div><div class="dt">Pick the fight</div><p>It all narrows to one promise: an honest, comparable view that steadies people instead of selling to them.</p></div>
+<div class="dia"><div class="dn">03 · Develop</div><div class="dt">Build the spine</div><p>Search → true cost → compare, with a plain-spoken door in for whoever's arriving, wherever they are.</p></div>
+<div class="dia"><div class="dn">04 · Deliver</div><div class="dt">Ship it warm</div><p>A calm product and the Journey identity — name, palette, voice — carried the whole way through.</p></div>
 </div>
 </section>
 
 <!-- THE IDEA -->
 <section class="cs-section reveal">
 <p class="cs-section-label">The Idea</p>
-<h2 class="cs-h2">Everything you need to understand, compare and plan — in one place.</h2>
-<p class="cs-p" style="max-width:720px">Journey brings the whole fertility landscape into a single, calm experience. You start with one simple search, understand what each path involves, see what it truly costs all-in, and compare providers — near home or across borders — before you ever pick up the phone.</p>
+<h2 class="cs-h2">Understand it, weigh it, plan it — in one place.</h2>
+<p class="cs-p" style="max-width:720px">Journey gathers the whole fertility landscape into one unhurried space. Ask a single question, learn what each route really involves, see the honest all-in figure, and set providers next to each other — down the road or across a border — before you ever pick up the phone.</p>
 <div class="jf-paths">
 <span class="jf-path"><b>01</b> Fertility testing</span>
 <span class="jf-path"><b>02</b> Egg freezing</span>
@@ -272,17 +279,17 @@ Back to portfolio</a>
 <span class="jf-path"><b>04</b> Embryo freezing</span>
 </div>
 <div class="cs-steps">
-<div class="cs-step"><div class="cs-step-num">1</div><div><h4>Search &amp; compare</h4><p>One search across every pathway and provider — no jargon gate, no cold sales funnel. Results are yours to explore at your own pace.</p></div></div>
-<div class="cs-step"><div class="cs-step-num">2</div><div><h4>See true, all-in costs</h4><p>The real number — treatment, add-ons, medication and the extras that usually surface late — shown transparently so options are actually comparable.</p></div></div>
-<div class="cs-step"><div class="cs-step-num">3</div><div><h4>Compare across countries</h4><p>Weigh clinics in different cities and countries side by side, so cost, quality and travel are a clear-eyed choice rather than a leap of faith.</p></div></div>
+<div class="cs-step"><div class="cs-step-num">1</div><div><h4>Ask once, see it all</h4><p>A single search across every route and provider — no jargon gate, no funnel. The results are yours to sit with, at your own pace.</p></div></div>
+<div class="cs-step"><div class="cs-step-num">2</div><div><h4>The number that usually hides</h4><p>Treatment, meds, add-ons, storage — the honest all-in cost shown up front, so two options can finally be compared like for like.</p></div></div>
+<div class="cs-step"><div class="cs-step-num">3</div><div><h4>Weigh it across borders</h4><p>Line up clinics in different cities and countries together, so travel and cost become a clear choice instead of a leap of faith.</p></div></div>
 </div>
 </section>
 
 <!-- THE PRODUCT -->
 <section class="cs-section reveal">
 <p class="cs-section-label">The Product</p>
-<h2 class="cs-h2">Search, compare, decide.</h2>
-<p class="cs-p" style="max-width:720px">The core loop: understand the options, see them priced honestly, and compare across locations — with warmth carried through every screen. Here it is running on mobile, and the key moments up close.</p>
+<h2 class="cs-h2">Search. Compare. Breathe out.</h2>
+<p class="cs-p" style="max-width:720px">The core loop on real screens — understand the routes, see them priced honestly, and compare across places, with the same warmth on every one.</p>
 
 <div class="product-live">
 <div class="device-phone">
@@ -292,12 +299,13 @@ Back to portfolio</a>
 </div>
 <div>
 <p class="plq">"Your fertility options. One simple search."</p>
-<p class="cs-p">The live product opens on a plain-language promise — navigate your fertility journey without the anxiety, with control — then hands you a single search across <b>500+ verified clinics worldwide</b>. No forms, no funnel: understand, compare, then decide.</p>
+<p class="cs-p">The live product opens on a promise in plain words — move through your fertility journey without the anxiety, in control — then drops you into one search across <b>500+ verified clinics worldwide</b>. No sign-up wall, no funnel: look, compare, decide when you're ready.</p>
 </div>
 </div>
 
-<div class="shots">
-<figure>
+<div class="screens">
+<div class="pscreen">
+<div class="dp-frame"><div class="dp-screen"><div class="dp-island"></div>
 <div class="jf-demo d-search" role="img" aria-label="Search and compare fertility options across clinics">
 <span class="aura a1"></span><span class="aura a2"></span>
 <div class="d-pad">
@@ -310,10 +318,12 @@ Back to portfolio</a>
 </div>
 </div>
 </div>
-<figcaption>Search &amp; compare — one entry point across clinics and kits.</figcaption>
-</figure>
+</div></div>
+<p class="pcap">Search — clinics and kits, side by side from a single query.</p>
+</div>
 
-<figure>
+<div class="pscreen">
+<div class="dp-frame"><div class="dp-screen"><div class="dp-island"></div>
 <div class="jf-demo d-costs" role="img" aria-label="True all-in cost breakdown with usually-hidden extras">
 <span class="aura a1"></span><span class="aura a3"></span>
 <div class="d-pad">
@@ -328,14 +338,16 @@ Back to portfolio</a>
 <div class="c-total"><span>All-in cost</span><span class="tv">£5,540</span></div>
 </div>
 </div>
-<figcaption>True all-in costs — the number that usually arrives too late, shown up front.</figcaption>
-</figure>
+</div></div>
+<p class="pcap">True cost — the fees that normally surface late, shown up front.</p>
+</div>
 
-<figure>
+<div class="pscreen">
+<div class="dp-frame"><div class="dp-screen"><div class="dp-island"></div>
 <div class="jf-demo d-geo" role="img" aria-label="Compare clinics across cities and countries by cost">
 <span class="aura a2"></span><span class="aura a3"></span>
 <div class="d-pad">
-<div class="d-brand">Journey · Compare locations</div>
+<div class="d-brand">Journey · Compare</div>
 <div class="g-list">
 <div class="g-row"><div class="g-loc"><span class="g-dot" style="background:#8f9fe0"></span>London</div><div class="g-track"><span class="g-fill" style="--w:94%;background:linear-gradient(90deg,#f7b657,#F4A28C)"></span><span class="g-price">£5,540</span></div></div>
 <div class="g-row"><div class="g-loc"><span class="g-dot" style="background:#c39ad8"></span>Barcelona</div><div class="g-track"><span class="g-fill" style="--w:70%;background:linear-gradient(90deg,#f7b657,#F4A28C)"></span><span class="g-price">£4,100</span></div></div>
@@ -344,10 +356,12 @@ Back to portfolio</a>
 <div class="g-tag">✦ Best value · Prague — comparable care, ~40% less</div>
 </div>
 </div>
-<figcaption>Compare across cities &amp; countries — location becomes an informed trade-off.</figcaption>
-</figure>
+</div></div>
+<p class="pcap">Compare — the same treatment across cities and countries.</p>
+</div>
 
-<figure>
+<div class="pscreen">
+<div class="dp-frame"><div class="dp-screen"><div class="dp-island"></div>
 <div class="jf-demo d-quiz" role="img" aria-label="Where are you right now — plain-language persona routing">
 <span class="aura a1"></span><span class="aura a2"></span>
 <div class="d-pad">
@@ -361,77 +375,78 @@ Back to portfolio</a>
 </div>
 </div>
 </div>
-<figcaption>"Where are you right now?" — a plain-language way in, instead of a wall of filters.</figcaption>
-</figure>
+</div></div>
+<p class="pcap">A human way in — "where are you right now?", not a filter wall.</p>
+</div>
 </div>
 </section>
 
 <!-- KEY DECISIONS -->
 <section class="cs-section reveal">
-<p class="cs-section-label">Key Design Decisions</p>
-<h2 class="cs-h2">The calls that made Journey feel trustworthy.</h2>
+<p class="cs-section-label">Design Decisions</p>
+<h2 class="cs-h2">Four calls that earned people's trust.</h2>
 <div class="dec-grid">
 <div class="dec-card">
-<p class="dc-q">Why lead with comparison instead of a single clinic?</p>
-<div class="dc-row"><b>The tension</b>Most fertility platforms are effectively lead-gen for one clinic or chain — helpful until incentives diverge from the patient's.</div>
-<div class="dc-row"><b>The call</b>Put comparison at the centre. People see options side by side, on their terms, before anyone sells to them.</div>
-<div class="dc-row oc"><b>Outcome</b>Trust as the product's foundation — the same reason the tone stays warm and unhurried.</div>
+<p class="dc-q">Comparison first — why not just recommend a clinic?</p>
+<div class="dc-row"><b>The tension</b>Most fertility sites are quietly a funnel for one clinic or chain — useful right up until their interests part ways with yours.</div>
+<div class="dc-row"><b>The call</b>Make comparison the whole point. Options sit side by side, on your terms, before anyone tries to sell.</div>
+<div class="dc-row oc"><b>Result</b>Trust becomes the foundation — and the reason the tone never rushes or pushes.</div>
 </div>
 <div class="dec-card">
-<p class="dc-q">Why insist on the true, all-in cost?</p>
-<div class="dc-row"><b>The tension</b>Headline prices are the norm; the real cost — meds, add-ons, extras — surfaces late and erodes trust.</div>
-<div class="dc-row"><b>The call</b>Show the honest, complete figure up front and make options genuinely comparable.</div>
-<div class="dc-row oc"><b>Outcome</b>Cost stops being a source of dread and becomes a clear input to the decision.</div>
+<p class="dc-q">Why fight for the true, all-in price?</p>
+<div class="dc-row"><b>The tension</b>"From" prices are the norm; the real total — meds, add-ons, storage — lands late and quietly breaks trust.</div>
+<div class="dc-row"><b>The call</b>Put the honest, complete figure up front, and make two options genuinely comparable.</div>
+<div class="dc-row oc"><b>Result</b>Money stops being the thing people dread and becomes a clear part of the decision.</div>
 </div>
 <div class="dec-card">
-<p class="dc-q">Why "Where are you right now?" instead of filters?</p>
-<div class="dc-row"><b>The tension</b>Everyone's journey is different, but filter-first UIs assume people already know the vocabulary.</div>
-<div class="dc-row"><b>The call</b>Let people choose the plain-language line that sounds like them; tailor the search behind the scenes.</div>
-<div class="dc-row oc"><b>Outcome</b>An entry point that meets uncertainty with warmth, not a wall of controls.</div>
+<p class="dc-q">A plain question instead of filters — why?</p>
+<div class="dc-row"><b>The tension</b>Every journey is different, but filter-first screens assume you already speak the language of fertility.</div>
+<div class="dc-row"><b>The call</b>Let people pick the sentence that sounds like them; do the clever filtering out of sight.</div>
+<div class="dc-row oc"><b>Result</b>A front door that answers uncertainty with warmth, not a wall of switches.</div>
 </div>
 <div class="dec-card">
-<p class="dc-q">Why make warmth the brand's core job?</p>
-<div class="dc-row"><b>The tension</b>The category defaults to clinical, cold and slightly shameful.</div>
-<div class="dc-row"><b>The call</b>A brand — name, soft gradient identity and unhurried voice — that treats fertility as something to feel at home with.</div>
-<div class="dc-row oc"><b>Outcome</b>An identity that carries the promise from first impression to every screen.</div>
+<p class="dc-q">Why hang so much on warmth?</p>
+<div class="dc-row"><b>The tension</b>The category leans clinical, cold, and faintly shaming.</div>
+<div class="dc-row"><b>The call</b>A brand — name, soft gradient light, unhurried voice — that treats fertility as something to feel at home with.</div>
+<div class="dc-row oc"><b>Result</b>One feeling that carries from the first glance to the last screen.</div>
 </div>
 </div>
 </section>
 
 <!-- MISTAKES & LEARNINGS -->
 <section class="cs-section reveal">
-<p class="cs-section-label">Mistakes &amp; Learnings</p>
-<h2 class="cs-h2">What I'd sharpen — and what it taught me.</h2>
-<p class="cs-p" style="max-width:720px"><span class="note">[ Drafted from how the work actually went — worth a pass to make sure each one is truthfully yours before this goes in front of a hiring manager. ]</span></p>
+<p class="cs-section-label">Reflections</p>
+<h2 class="cs-h2">Where I'd push it further.</h2>
+<p class="cs-p" style="max-width:720px"><span class="note">[ Drafted from how the work actually went — worth a quick pass to make sure each reads as truthfully yours. ]</span></p>
 <div class="learns">
 <div class="learn">
-<div class="lh"><span class="lnum">01</span><span class="lt">I scoped too many pathways at once</span></div>
-<div class="lrow"><b>What happened</b>Trying to hold testing, egg freezing, IVF and embryo freezing in one view early made the first designs feel broad but shallow.</div>
-<div class="lrow win"><b>What it taught me</b>Prove the core loop on one pathway first, then extend the pattern — depth earns trust faster than breadth.</div>
+<div class="lh"><span class="lnum">01</span><span class="lt">I reached for all four routes too soon</span></div>
+<div class="lrow"><b>What happened</b>Holding testing, egg freezing, IVF and embryos in one view early made the first designs feel wide but thin.</div>
+<div class="lrow win"><b>What it taught me</b>Prove the loop on one route, then repeat the pattern — depth wins trust faster than breadth.</div>
 </div>
 <div class="learn">
-<div class="lh"><span class="lnum">02</span><span class="lt">"True cost" was harder than a number</span></div>
-<div class="lrow"><b>What happened</b>Honest all-in pricing runs into messy, inconsistent real-world data — early mockups implied a precision the inputs couldn't back.</div>
-<div class="lrow win"><b>What it taught me</b>Design for ranges and clearly-labelled estimates, not false exactness — transparency includes being honest about uncertainty.</div>
+<div class="lh"><span class="lnum">02</span><span class="lt">"True cost" pushed back</span></div>
+<div class="lrow"><b>What happened</b>Honest all-in pricing collides with messy, uneven real-world data; early mockups implied a precision the numbers couldn't support.</div>
+<div class="lrow win"><b>What it taught me</b>Design for ranges and clearly-labelled estimates — honesty includes owning the uncertainty.</div>
 </div>
 <div class="learn">
-<div class="lh"><span class="lnum">03</span><span class="lt">I over-trusted filters at first</span></div>
-<div class="lrow"><b>What happened</b>The first entry point leaned on filters, which quietly assumed people already knew the vocabulary of fertility care.</div>
-<div class="lrow win"><b>What it taught me</b>Meet uncertainty with plain language — the "where are you right now?" router came out of watching people stall on controls.</div>
+<div class="lh"><span class="lnum">03</span><span class="lt">Filters crept in early</span></div>
+<div class="lrow"><b>What happened</b>The first way in leaned on filters, quietly assuming people already knew the words for what they needed.</div>
+<div class="lrow win"><b>What it taught me</b>Answer uncertainty in plain language — the "where are you right now?" door came straight out of watching people stall.</div>
 </div>
 <div class="learn">
-<div class="lh"><span class="lnum">04</span><span class="lt">Warmth needed guardrails</span></div>
-<div class="lrow"><b>What happened</b>Pushing "soft and reassuring" too far risked feeling vague in a category where people need concrete facts.</div>
-<div class="lrow win"><b>What it taught me</b>Warmth and precision aren't opposites — the tone carries the feeling, the numbers carry the trust.</div>
+<div class="lh"><span class="lnum">04</span><span class="lt">Warmth needed a backbone</span></div>
+<div class="lrow"><b>What happened</b>Pushed too far, "soft and reassuring" started to feel vague in a place where people need hard facts.</div>
+<div class="lrow win"><b>What it taught me</b>Warmth and precision aren't a trade — the tone holds the feeling, the numbers hold the trust.</div>
 </div>
 </div>
 </section>
 
 <!-- BRAND -->
 <section class="cs-section reveal">
-<p class="cs-section-label">Brand · a discipline I love</p>
-<h2 class="cs-h2">Warm, modern, and quietly reassuring.</h2>
-<p class="cs-p" style="max-width:720px">Brand is the part of the craft I love most, and on Journey I owned it end to end — the name, the wordmark, the palette and the voice. I designed the identity to disarm a fraught category: a soft, luminous gradient system, a clean humanist typeface, and a voice that's plain-spoken and kind.</p>
+<p class="cs-section-label">Brand &amp; Voice</p>
+<h2 class="cs-h2">Warm, where the whole category is cold.</h2>
+<p class="cs-p" style="max-width:720px">Brand is where I'm most at home, and on Journey I ran it end to end — name, wordmark, palette, voice. Fertility branding defaults to clinical and faintly shaming; I built the opposite. Soft, luminous light, a clean humanist type, and a voice that speaks to you like a sharp, kind friend rather than a brochure.</p>
 <div class="jf-brand">
 <div>
 <div class="jf-swatches" aria-label="Journey Fertility palette">
@@ -445,29 +460,29 @@ Back to portfolio</a>
 <div class="jf-blobwrap"><div class="jf-blob"></div></div>
 </div>
 <figure class="figure" style="margin-top:24px"><img src="jf-brand-cards.jpg" alt="Journey brand — gradient story cards, fertility on your terms" loading="lazy"></figure>
-<p class="cap">The brand's key visual — warm gradient cards that make an anxious, clinical category feel like something you can face on your own terms.</p>
+<p class="cap">The brand's signature — warm gradient cards that let a heavy, clinical subject feel like something you can meet on your own terms.</p>
 <div class="stories">
-<figure><img src="jf-story1.jpg" alt="Journey lifestyle story"><figcaption>Real stories, not stock reassurance.</figcaption></figure>
-<figure><img src="jf-story2.jpg" alt="Journey lifestyle story"><figcaption>Warm, human photography.</figcaption></figure>
-<figure><img src="jf-story3.jpg" alt="Journey lifestyle story"><figcaption>Calm over clinical.</figcaption></figure>
-<figure><img src="jf-story4.jpg" alt="Journey lifestyle story"><figcaption>Fertility, on your terms.</figcaption></figure>
+<figure><img src="jf-story1.jpg" alt="Journey lifestyle story"><figcaption>Real faces, not stock reassurance.</figcaption></figure>
+<figure><img src="jf-story2.jpg" alt="Journey lifestyle story"><figcaption>Light, air, and room to breathe.</figcaption></figure>
+<figure><img src="jf-story3.jpg" alt="Journey lifestyle story"><figcaption>Human first, clinical second.</figcaption></figure>
+<figure><img src="jf-story4.jpg" alt="Journey lifestyle story"><figcaption>Fertility, on your own terms.</figcaption></figure>
 </div>
 </section>
 
 <!-- OUTCOME -->
 <section class="cs-section reveal">
 <p class="cs-section-label">Outcome</p>
-<h2 class="cs-h2">The product, at a glance.</h2>
-<p class="cs-p" style="max-width:720px">Journey is a research-led search &amp; compare platform for fertility — clinics, kits and true costs in one honest view. The figures below are drawn from the product itself, not projected results.</p>
+<h2 class="cs-h2">Where it stands, in honest numbers.</h2>
+<p class="cs-p" style="max-width:720px">Journey is a research-led way to search and compare fertility — clinics, kits and true costs in one honest view. Every figure here comes straight from the product, not a projection.</p>
 <div class="cs-metrics">
-<div class="cs-metric"><div class="cs-metric-num">500+</div><div class="cs-metric-label">Verified clinics worldwide</div><div class="cs-metric-note">Searchable and comparable in one place</div></div>
-<div class="cs-metric"><div class="cs-metric-num">4</div><div class="cs-metric-label">Fertility pathways covered</div><div class="cs-metric-note">Testing · egg freezing · IVF · embryo freezing</div></div>
-<div class="cs-metric"><div class="cs-metric-num">1</div><div class="cs-metric-label">Simple search across them all</div><div class="cs-metric-note">Start with a question, not a form</div></div>
-<div class="cs-metric"><div class="cs-metric-num">£0</div><div class="cs-metric-label">Hidden extras in a compared price</div><div class="cs-metric-note">True, all-in costs made comparable</div></div>
-<div class="cs-metric"><div class="cs-metric-num">Global</div><div class="cs-metric-label">Cross-border comparison</div><div class="cs-metric-note">Cities &amp; countries weighed side by side</div></div>
-<div class="cs-metric"><div class="cs-metric-num">3</div><div class="cs-metric-label">Roles I held</div><div class="cs-metric-note">Research, product design and brand</div></div>
+<div class="cs-metric"><div class="cs-metric-num">500+</div><div class="cs-metric-label">Verified clinics, worldwide</div><div class="cs-metric-note">Searchable and comparable in one place</div></div>
+<div class="cs-metric"><div class="cs-metric-num">4</div><div class="cs-metric-label">Fertility routes in one place</div><div class="cs-metric-note">Testing · egg freezing · IVF · embryos</div></div>
+<div class="cs-metric"><div class="cs-metric-num">1</div><div class="cs-metric-label">Search across all of them</div><div class="cs-metric-note">A question to begin, never a form</div></div>
+<div class="cs-metric"><div class="cs-metric-num">£0</div><div class="cs-metric-label">Hidden extras in a compared price</div><div class="cs-metric-note">True, all-in costs, made comparable</div></div>
+<div class="cs-metric"><div class="cs-metric-num">Global</div><div class="cs-metric-label">Compared across borders</div><div class="cs-metric-note">Cities and countries, weighed together</div></div>
+<div class="cs-metric"><div class="cs-metric-num">3</div><div class="cs-metric-label">Hats I wore</div><div class="cs-metric-note">Research, product and brand</div></div>
 </div>
-<div class="cs-callout"><p>"Navigate your fertility journey without the anxiety — with control."</p></div>
+<div class="cs-callout"><p>"The goal, in five words: fertility, without the fog."</p></div>
 </section>
 
 </main>
