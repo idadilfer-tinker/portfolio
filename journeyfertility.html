@@ -218,7 +218,7 @@ body{background:var(--bg);color:var(--fg);font-family:var(--font-body);font-size
 .dl-bar i{width:9px;height:9px;border-radius:50%;background:#d7d0c6;flex:0 0 auto}
 .dl-bar .u{margin-left:10px;height:14px;flex:1;max-width:280px;background:#fff;border-radius:6px;border:1px solid #e3ddd3}
 .dl-view{position:absolute;inset:30px 0 0;overflow:hidden}
-.dl-view img{width:100%;display:block;animation:lpScroll 52s ease-in-out infinite alternate}
+.dl-view img{width:100%;display:block;animation:lpScroll 40s ease-in-out infinite alternate}
 .dl-foot{height:14px;background:linear-gradient(#17171a,#0a0a0c);border-radius:0 0 10px 10px;margin:0 4px}
 .dl-hinge{height:8px;width:16%;margin:0 auto;background:linear-gradient(#000,#242424);border-radius:0 0 7px 7px}
 @keyframes lpScroll{0%,4%{transform:translateY(0)}96%,100%{transform:translateY(calc(-100% + 390px))}}
@@ -260,8 +260,14 @@ Back to portfolio</a>
 </header>
 
 <div class="cs-hero" style="padding-top:0">
-<figure class="figure" style="margin-top:0"><img src="jf-cover.jpg" alt="Journey Fertility — the product"></figure>
-<p class="cap">Journey — one calm search across every fertility option. <span class="note">(Laptop scroll-through coming once the desktop screen is in.)</span></p>
+<div class="device-laptop">
+<div class="dl-lid"><div class="dl-screen">
+<div class="dl-bar"><i></i><i></i><i></i><span class="u"></span></div>
+<div class="dl-view"><img src="jf-desktop.jpg" alt="JourneyFertility — the live search & compare product, scrolling"></div>
+</div></div>
+<div class="dl-foot"></div><div class="dl-hinge"></div>
+</div>
+<p class="cap" style="margin-top:22px">The live JourneyFertility product — search and compare fertility clinics and their true, all-in costs, side by side. <span class="scrollhint">Scrolls on its own</span></p>
 </div>
 
 <main class="cs-body">
