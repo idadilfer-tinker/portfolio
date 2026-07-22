@@ -167,6 +167,30 @@ body{background:var(--bg);color:var(--fg);font-family:var(--font-body);font-size
 .stories figure{margin:0}
 .stories img{width:100%;display:block;border-radius:12px;border:1px solid var(--border2);aspect-ratio:3/4;object-fit:cover}
 .stories figcaption{font-size:11px;color:var(--fg3);margin-top:9px;line-height:1.4}
+/* brand design showcase */
+.bd-sub{font-size:9px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--fg3);margin:46px 0 18px}
+.bd-row{display:grid;grid-template-columns:1.1fr .9fr;gap:24px;align-items:stretch}
+.bd-logo{border-radius:16px;border:1px solid var(--border2);background:#F6F2EB;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;padding:48px 24px;min-height:230px}
+.bd-mark{width:46px;height:46px;border-radius:50%;background:linear-gradient(140deg,#f7b657,#F4A28C 55%,#8f9fe0);display:flex;align-items:center;justify-content:center;font-family:'Inter Tight',sans-serif;font-weight:700;font-size:22px;color:#fff}
+.bd-wordmark{font-family:'Inter Tight',sans-serif;font-weight:700;font-size:clamp(24px,3.2vw,38px);letter-spacing:-.02em;color:#33302E;line-height:1}
+.bd-wordmark .f{color:#E0714A}
+.bd-tagline{font-family:'Inter Tight',sans-serif;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:#8a827a}
+.bd-notes{border:1px solid var(--border2);border-radius:16px;padding:26px;background:rgba(255,255,255,.02);display:flex;flex-direction:column;justify-content:center}
+.bd-notes h4{font-size:13px;font-weight:600;color:var(--fg);margin-bottom:8px}
+.bd-notes p{font-size:13px;line-height:1.7;color:var(--fg2);margin-bottom:18px}
+.bd-notes p:last-child{margin-bottom:0}
+.bd-type .big{font-family:'Inter Tight',sans-serif;font-weight:600;font-size:24px;color:var(--fg);letter-spacing:-.01em;line-height:1.1}
+.bd-type .small{font-family:'Inter Tight',sans-serif;font-size:12.5px;color:var(--fg2);margin-top:6px}
+.bd-swatches{display:grid;grid-template-columns:repeat(6,1fr);gap:12px}
+.bd-swatch .sw{height:78px;border-radius:12px;border:1px solid var(--border2)}
+.bd-swatch .hx{font-size:11px;color:var(--fg2);margin-top:8px;font-family:'Inter Tight',sans-serif;letter-spacing:.02em}
+.bd-swatch .nm{font-size:10px;color:var(--fg3);margin-top:2px}
+.bd-photos{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.bd-photos img{width:100%;display:block;border-radius:12px;border:1px solid var(--border2);aspect-ratio:3/4;object-fit:cover}
+.bd-voice{border-left:2px solid var(--accent);padding:20px 26px;background:rgba(224,113,74,.05);border-radius:0 10px 10px 0;margin-top:38px}
+.bd-voice .vq{font-family:var(--font-display);font-style:italic;font-size:1.2rem;color:var(--fg);line-height:1.5}
+.bd-voice .vn{font-size:12.5px;color:var(--fg3);margin-top:8px}
+@media(max-width:860px){.bd-row{grid-template-columns:1fr}.bd-swatches{grid-template-columns:repeat(3,1fr)}.bd-photos{grid-template-columns:repeat(2,1fr)}}
 /* outcome band */
 .cs-metrics{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--border2);border-radius:12px;overflow:hidden;margin-top:36px}
 .cs-metric{padding:30px 26px;border-right:1px solid var(--border2)}
@@ -221,7 +245,7 @@ Back to portfolio</a>
 
 <div class="cs-hero" style="padding-top:0">
 <figure class="figure" style="margin-top:0">
-<img src="jf-cover.jpg" alt="Journey Fertility — the product on mobile" loading="lazy">
+<img src="jf-cover.jpg" alt="Journey Fertility — the product on mobile">
 </figure>
 <p class="cap">Journey on mobile — one calm search across every fertility option.</p>
 </div>
@@ -446,26 +470,55 @@ Back to portfolio</a>
 <section class="cs-section reveal">
 <p class="cs-section-label">Brand &amp; Voice</p>
 <h2 class="cs-h2">Warm, where the whole category is cold.</h2>
-<p class="cs-p" style="max-width:720px">Brand is where I'm most at home, and on Journey I ran it end to end — name, wordmark, palette, voice. Fertility branding defaults to clinical and faintly shaming; I built the opposite. Soft, luminous light, a clean humanist type, and a voice that speaks to you like a sharp, kind friend rather than a brochure.</p>
+<p class="cs-p" style="max-width:720px">Brand is where I'm most at home, and on Journey I ran it end to end — name, wordmark, palette, gradient system, photography and voice. Fertility branding defaults to clinical and faintly shaming; I built the opposite, then wrote it down as a small system so it holds together everywhere.</p>
+
+<p class="bd-sub">Logo &amp; wordmark</p>
+<div class="bd-row">
+<div class="bd-logo">
+<div class="bd-mark">J</div>
+<div class="bd-wordmark">Journey<span class="f">Fertility</span></div>
+<div class="bd-tagline">Fertility, on your terms</div>
+</div>
+<div class="bd-notes">
+<h4>The wordmark</h4>
+<p>One word, set in Inter Tight — <b>Journey</b> in ink, <b>Fertility</b> in the coral that runs through the whole system. It reads as a companion, not a clinic. The mark is a soft gradient disc: the same drifting light, distilled to a single dot.</p>
+<div class="bd-type"><div class="big">Aa — Inter Tight</div><div class="small">Display 600 · Body 400 — a clean humanist sans that stays calm at every size.</div></div>
+</div>
+</div>
+
+<p class="bd-sub">Colour</p>
+<div class="bd-swatches">
+<div class="bd-swatch"><div class="sw" style="background:#F4A28C"></div><div class="hx">#F4A28C</div><div class="nm">Coral</div></div>
+<div class="bd-swatch"><div class="sw" style="background:#ee6f49"></div><div class="hx">#EE6F49</div><div class="nm">Clay</div></div>
+<div class="bd-swatch"><div class="sw" style="background:#f7b657"></div><div class="hx">#F7B657</div><div class="nm">Amber</div></div>
+<div class="bd-swatch"><div class="sw" style="background:#8f9fe0"></div><div class="hx">#8F9FE0</div><div class="nm">Periwinkle</div></div>
+<div class="bd-swatch"><div class="sw" style="background:#c39ad8"></div><div class="hx">#C39AD8</div><div class="nm">Lilac</div></div>
+<div class="bd-swatch"><div class="sw" style="background:#F6F2EB"></div><div class="hx">#F6F2EB</div><div class="nm">Cream</div></div>
+</div>
+
+<p class="bd-sub">Gradient system</p>
 <div class="jf-brand">
-<div>
-<div class="jf-swatches" aria-label="Journey Fertility palette">
-<span style="background:#F4A28C"></span><span style="background:#ee6f49"></span><span style="background:#f7b657"></span><span style="background:#8f9fe0"></span><span style="background:#c39ad8"></span><span style="background:#efece5"></span>
-</div>
-<div class="jf-typeblock">
-<div class="tt">Journey Fertility</div>
-<div class="ts">Inter Tight · warm neutrals · luminous aura gradients</div>
-</div>
-</div>
 <div class="jf-blobwrap"><div class="jf-blob"></div></div>
+<div class="bd-notes">
+<h4>Luminous aura gradients</h4>
+<p>Soft, drifting light — coral into amber into periwinkle — is the system's signature. It carries warmth with no hard edges, and never repeats exactly, so the brand always feels alive rather than printed.</p>
 </div>
-<figure class="figure" style="margin-top:24px"><img src="jf-brand-cards.jpg" alt="Journey brand — gradient story cards, fertility on your terms" loading="lazy"></figure>
-<p class="cap">The brand's signature — warm gradient cards that let a heavy, clinical subject feel like something you can meet on your own terms.</p>
-<div class="stories">
-<figure><img src="jf-story1.jpg" alt="Journey lifestyle story"><figcaption>Real faces, not stock reassurance.</figcaption></figure>
-<figure><img src="jf-story2.jpg" alt="Journey lifestyle story"><figcaption>Light, air, and room to breathe.</figcaption></figure>
-<figure><img src="jf-story3.jpg" alt="Journey lifestyle story"><figcaption>Human first, clinical second.</figcaption></figure>
-<figure><img src="jf-story4.jpg" alt="Journey lifestyle story"><figcaption>Fertility, on your own terms.</figcaption></figure>
+</div>
+<figure class="figure" style="margin-top:20px"><img src="jf-brand-cards.jpg" alt="Journey brand — gradient story cards, fertility on your terms"></figure>
+<p class="cap">The gradient in use — story cards that let a heavy, clinical subject feel like something you can meet on your own terms.</p>
+
+<p class="bd-sub">Brand in use · photography</p>
+<div class="bd-photos">
+<img src="jf-photo1.jpg" alt="Journey brand photography — warm, sunlit">
+<img src="jf-photo2.jpg" alt="Journey brand photography — natural light">
+<img src="jf-story2.jpg" alt="Journey brand photography — calm and human">
+<img src="jf-photo3.jpg" alt="Journey brand photography — real people">
+</div>
+<p class="cap">A warm, sunlit photography world — real people and natural light, chosen so a clinical subject reads as human first.</p>
+
+<div class="bd-voice">
+<div class="vq">"A big decision deserves a clear head. No jargon, no pressure, no rush — just the honest picture, whenever you're ready."</div>
+<div class="vn">The Journey voice — plain-spoken, warm, and always on your side.</div>
 </div>
 </section>
 
