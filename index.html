@@ -609,21 +609,26 @@ header{
 .contact-hdg{font-family:var(--font-display);
   font-size:clamp(2rem,4.5vw,4rem);font-weight:300;font-style:italic;
   letter-spacing:-.02em;color:var(--fg);margin-bottom:36px}
-/* "hi" easter egg — plain text hi morphs into an illustrated waving hi every 3s */
-.hi-swap{position:relative;display:inline-block}
-.hi-txt{animation:hiTxtSwap 3s ease-in-out infinite}
-.hi-art{position:absolute;left:50%;bottom:-.05em;height:1.32em;width:auto;color:var(--fg);
-  opacity:0;pointer-events:none;font-style:normal;transform:translateX(-50%);
-  animation:hiArtSwap 3s ease-in-out infinite}
-.hi-arm{transform-box:view-box;transform-origin:38px 52px;animation:hiArmWave 1.15s ease-in-out infinite}
-@keyframes hiTxtSwap{0%,50%{opacity:1}58%{opacity:0}90%{opacity:0}97%,100%{opacity:1}}
-@keyframes hiArtSwap{
-  0%,50%{opacity:0;transform:translateX(-50%) scale(.86) rotate(-3deg)}
-  58%{opacity:1;transform:translateX(-50%) scale(1) rotate(0)}
-  90%{opacity:1;transform:translateX(-50%) scale(1) rotate(0)}
-  97%,100%{opacity:0;transform:translateX(-50%) scale(.86) rotate(-3deg)}}
-@keyframes hiArmWave{0%,100%{transform:rotate(3deg)}32%{transform:rotate(20deg)}64%{transform:rotate(-5deg)}}
-@media(prefers-reduced-motion:reduce){.hi-txt{animation:none;opacity:1}.hi-art{display:none}}
+/* "hi" easter egg — the dot of the i turns into a little waving hand every 3s */
+.hi-i{position:relative;display:inline-block}
+.hi-dot,.hi-wave{position:absolute;left:50%;top:.16em}
+.hi-dot{width:.13em;height:.13em;border-radius:50%;background:currentColor;
+  transform:translateX(-50%);animation:hiDotSwap 3s ease-in-out infinite}
+.hi-wave{font-style:normal;font-size:.42em;line-height:1;opacity:0;pointer-events:none;
+  transform:translate(-50%,-38%) scale(.6);transform-origin:60% 90%;
+  animation:hiWaveSwap 3s ease-in-out infinite}
+@keyframes hiDotSwap{0%,52%{opacity:1}60%{opacity:0}92%{opacity:0}98%,100%{opacity:1}}
+@keyframes hiWaveSwap{
+  0%,52%{opacity:0;transform:translate(-50%,-38%) scale(.6)}
+  60%{opacity:1;transform:translate(-50%,-58%) scale(1) rotate(0)}
+  64%{transform:translate(-50%,-58%) scale(1) rotate(16deg)}
+  70%{transform:translate(-50%,-58%) scale(1) rotate(-12deg)}
+  76%{transform:translate(-50%,-58%) scale(1) rotate(14deg)}
+  82%{transform:translate(-50%,-58%) scale(1) rotate(-8deg)}
+  88%{transform:translate(-50%,-58%) scale(1) rotate(0)}
+  92%{opacity:1;transform:translate(-50%,-58%) scale(1)}
+  98%,100%{opacity:0;transform:translate(-50%,-38%) scale(.6)}}
+@media(prefers-reduced-motion:reduce){.hi-dot{animation:none;opacity:1}.hi-wave{display:none}}
 .contact-btns{display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap}
 .contact-btn{display:inline-flex;align-items:center;gap:8px;
   border:1px solid var(--border);color:var(--fg);
@@ -1114,7 +1119,7 @@ footer{position:relative;z-index:1;border-top:1px solid var(--border2);padding:5
 
 <!-- ─── CONTACT ─── -->
 <section id="contact" class="contact reveal">
-  <h2 class="contact-hdg">Say <span class="hi-swap"><span class="hi-txt">hi</span><svg class="hi-art" viewBox="18 0 92 116" fill="none" stroke="currentColor" stroke-width="15" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M38 52 L38 108"/><path d="M38 68 C38 54 66 54 66 70 L66 108"/><g class="hi-arm"><path d="M38 52 C37 39 35 29 33 19"/><path d="M33 19 l-9 0" stroke-width="10"/><path d="M33 19 l-6 -8" stroke-width="10"/><path d="M33 19 l0 -11" stroke-width="10"/><path d="M33 19 l7 -7" stroke-width="10"/></g><path d="M88 62 L88 108"/><g class="hi-smiley" stroke="none"><circle cx="88" cy="35" r="14" fill="currentColor"/><circle cx="83.5" cy="32.5" r="2.3" fill="var(--bg)"/><circle cx="92.5" cy="32.5" r="2.3" fill="var(--bg)"/><path d="M83 40 q5 4.5 10 0" stroke="var(--bg)" stroke-width="2.6" fill="none" stroke-linecap="round"/></g></svg></span>.</h2>
+  <h2 class="contact-hdg">Say h<span class="hi-i">&#x131;<span class="hi-dot" aria-hidden="true"></span><span class="hi-wave" aria-hidden="true">&#x1F44B;</span></span>.</h2>
   <div class="contact-btns">
     <a href="https://www.linkedin.com/in/idadilfer/" target="_blank" rel="noopener" class="contact-btn">Say hi <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
   </div>
