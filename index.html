@@ -196,7 +196,10 @@ header{
   font-size:clamp(26px,3.4vw,44px);font-weight:400;line-height:1.05;
   letter-spacing:-.02em;color:var(--fg)}
 .ework:hover .ework-title{color:#fff}
-.ework-desc{font-size:15px;line-height:1.8;color:var(--fg2);
+.ework-outcome{position:relative;font-size:clamp(15px,1.5vw,18px);line-height:1.45;font-weight:500;
+  color:var(--fg);max-width:34ch;margin:16px 0 14px;padding-left:16px}
+.ework-outcome::before{content:'';position:absolute;left:0;top:5px;bottom:5px;width:2px;border-radius:2px;background:var(--accent)}
+.ework-desc{font-size:14px;line-height:1.75;color:var(--fg3);
   max-width:46ch;margin-bottom:22px}
 .ework-tags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:28px}
 .ework-tag{font-size:10px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;
@@ -1144,17 +1147,13 @@ window.addEventListener('resize',()=>{resize();mkPts()});
 
 // ── PROJECTS ──
 const projects=[
-  {n:'Oia',st:'live',d:'I led product design, research and the brand — name, voice and identity — for a luxury AI concierge where the entire interface is the agent. It matches patients to surgeons on verified results and negotiates the package on their behalf.',img:'https://heyoia.com/screens/why-oia-women.jpg'},
-  {n:'Connectd',st:'live',d:'Product design and research for a three-sided professional marketplace connecting founders, investors and advisors — where trust is the product.',img:'img02.png'},
-  {n:'Journey Fertility',st:'ongoing',d:'Product design and brand for a platform that helps women understand, plan and track their fertility options.',img:'journeyfertilitycover.jpg',embed:'journeyfertilitycover.html'},
-  {n:'Aida AI',st:'live',d:'Product and brand design for a two-sided medical-tourism platform — a clinic-side operations command centre plus a patient WhatsApp agent — turning a coordinator&rsquo;s mess of data into AI-driven clarity.',img:'aida-cover.png'},
-  {n:'Unilever Sustainability',st:'ongoing',d:'Product design for a crowdsourced platform empowering communities to drive Unilever’s sustainability initiatives.',img:'img08.png'},
-  {n:'Fidelity International',st:'live',d:'Product design for the core search experience of one of the world’s largest investment platforms — making financial discovery feel guided, not overwhelming.',img:'img03.png'},
-  {n:'VCCP Good Works',st:'live',d:'Led healthcare design strategy for Vitality, Pension Buddy and Cambridge Building Society — translating complex workflows into accessible digital experiences.',img:'img04.png'},
-  {n:'Sky',st:'live',d:'Real-time speech sentiment analysis tool for CBT practitioners and patients.',img:'img05.png'},
-  {n:'PD Kins',st:'live',d:'A multifunctional platform to support Parkinsons patients and caregivers.',img:'img06.png'},
-  {n:'Bite Club',st:'live',d:'A community based product test and review platform with giveaways.',img:'img07.png'},
-  {n:'Early Birds Nest',st:'soon',d:'Generate AI interviews with early adopters.',img:'https://media2.giphy.com/media/mfZm6zOBZX6asFK85P/giphy.gif'},
+  {n:'Oia',st:'live',o:'A 0→1 AI concierge, shipped live — where the interface itself is the agent.',d:'I led product design, research and the brand — name, voice and identity — for a luxury AI concierge that matches patients to surgeons on verified results and negotiates the package on their behalf.',img:'https://heyoia.com/screens/why-oia-women.jpg'},
+  {n:'Connectd',st:'live',o:'Founder onboarding drop-off cut 58% → 19%, on a platform powering £50M+ in funding connections.',d:'Product design and research for a three-sided professional marketplace connecting founders, investors and advisors — where trust is the product.',img:'img02.png'},
+  {n:'Journey Fertility',st:'ongoing',o:'Ten anxious browser tabs turned into one honest, comparable view across 500+ clinics.',d:'Product design and brand for a platform that helps women understand, plan and compare their fertility options on true, all-in cost.',img:'journeyfertilitycover.jpg',embed:'journeyfertilitycover.html'},
+  {n:'Aida AI',st:'live',o:'Patient drop-off cut 61% → 28% and clinic response time down ~40%.',d:'Product and brand design for a two-sided medical-tourism platform — a clinic-side operations command centre plus a patient WhatsApp agent — turning a coordinator&rsquo;s mess of data into AI-driven clarity.',img:'aida-cover.png'},
+  {n:'Unilever Sustainability',st:'ongoing',o:'A crowdsourced platform rallying communities around real sustainability action.',d:'Product design for a crowdsourced platform empowering communities to drive Unilever’s sustainability initiatives.',img:'img08.png'},
+  {n:'Fidelity International',st:'live',o:'Search-to-result conversion nearly doubled, 35% → 67%; time-to-fund cut from 4 minutes to 90 seconds.',d:'Product design for the core search experience of one of the world’s largest investment platforms — making financial discovery feel guided, not overwhelming.',img:'img03.png'},
+  {n:'VCCP Good Works',st:'live',o:'A 40% mobile bounce eliminated and WCAG 2.1 AA hit across three regulated platforms.',d:'Led design across Walby, Pension Buddy and Cambridge Building Society — translating complex, regulated workflows into accessible digital experiences.',img:'img04.png'},
 ];
 const stBadge={
   live:'<span class="label green">Live</span>',
@@ -1203,6 +1202,7 @@ projects.forEach((p, i) => {
     <div class="ework-body">
       <span class="ework-num">Work ${num}</span>
       <div class="ework-head"><h3 class="ework-title">${p.n}</h3>${stBadge[p.st]}</div>
+      ${p.o ? `<p class="ework-outcome">${p.o}</p>` : ''}
       <p class="ework-desc">${p.d}</p>
       ${tags ? `<div class="ework-tags">${tags}</div>` : ''}
       <span class="ework-link">${hasCase ? 'View case study' : 'View details'}
