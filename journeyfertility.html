@@ -245,6 +245,21 @@ body{background:var(--bg);color:var(--fg);font-family:var(--font-body);font-size
 </style>
 </head>
 <body>
+<div id="cs-loader" aria-hidden="true"><span class="cs-ring"></span></div>
+<style id="cs-loader-style">
+#cs-loader{position:fixed;inset:0;z-index:9999;background:var(--bg,#18171A);display:flex;align-items:center;justify-content:center;transition:opacity .45s ease}
+#cs-loader.done{opacity:0;pointer-events:none}
+#cs-loader .cs-ring{width:34px;height:34px;border-radius:50%;border:2px solid rgba(255,255,255,.12);border-top-color:var(--accent,#D97757);animation:csSpin .8s linear infinite}
+@keyframes csSpin{to{transform:rotate(360deg)}}
+@media (prefers-reduced-motion:reduce){#cs-loader .cs-ring{animation:none;border-top-color:rgba(255,255,255,.28)}}
+</style>
+<script>
+(function(){var l=document.getElementById('cs-loader');if(!l)return;var done=false;function hide(){if(done)return;done=true;l.classList.add('done');setTimeout(function(){if(l&&l.parentNode)l.parentNode.removeChild(l);},520);}
+function ready(){setTimeout(hide,200);}
+if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',ready);}else{ready();}
+window.addEventListener('load',hide);setTimeout(hide,2600);})();
+</script>
+
 
 <nav class="back-nav">
 <a href="https://idadilfer-tinker.github.io/portfolio/" class="back-link">
@@ -269,7 +284,7 @@ Back to portfolio</a>
 <div class="device-laptop">
 <div class="dl-lid"><div class="dl-screen">
 <div class="dl-bar"><i></i><i></i><i></i><span class="u"></span></div>
-<div class="dl-view"><img src="jf-desktop.jpg" alt="JourneyFertility — the live search & compare product, scrolling"></div>
+<div class="dl-view"><img decoding="async" src="jf-desktop.jpg" alt="JourneyFertility — the live search & compare product, scrolling"></div>
 </div></div>
 <div class="dl-foot"></div><div class="dl-hinge"></div>
 </div>
@@ -344,7 +359,7 @@ Back to portfolio</a>
 <div class="product-live">
 <div class="device-phone">
 <div class="dp-frame"><div class="dp-screen"><div class="dp-island"></div>
-<img src="jf-screen-mobile.jpg" alt="Journey Fertility — the live mobile product">
+<img decoding="async" src="jf-screen-mobile.jpg" alt="Journey Fertility — the live mobile product">
 </div></div>
 </div>
 <div>
@@ -530,15 +545,15 @@ Back to portfolio</a>
 <p>Soft, drifting light — coral into amber into periwinkle — is the system's signature. It carries warmth with no hard edges, and never repeats exactly, so the brand always feels alive rather than printed.</p>
 </div>
 </div>
-<figure class="figure" style="margin-top:20px"><img src="jf-brand-cards.jpg" alt="Journey brand — gradient story cards, fertility on your terms"></figure>
+<figure class="figure" style="margin-top:20px"><img decoding="async" src="jf-brand-cards.jpg" alt="Journey brand — gradient story cards, fertility on your terms"></figure>
 <p class="cap">The gradient in use — story cards that let a heavy, clinical subject feel like something you can meet on your own terms.</p>
 
 <p class="bd-sub">Brand in use · photography</p>
 <div class="bd-photos">
-<img src="jf-photo1.jpg" alt="Journey brand photography — warm, sunlit">
-<img src="jf-photo2.jpg" alt="Journey brand photography — natural light">
-<img src="jf-story2.jpg" alt="Journey brand photography — calm and human">
-<img src="jf-photo3.jpg" alt="Journey brand photography — real people">
+<img decoding="async" src="jf-photo1.jpg" alt="Journey brand photography — warm, sunlit">
+<img decoding="async" src="jf-photo2.jpg" alt="Journey brand photography — natural light">
+<img decoding="async" src="jf-story2.jpg" alt="Journey brand photography — calm and human">
+<img decoding="async" src="jf-photo3.jpg" alt="Journey brand photography — real people">
 </div>
 <p class="cap">A warm, sunlit photography world — real people and natural light, chosen so a clinical subject reads as human first.</p>
 

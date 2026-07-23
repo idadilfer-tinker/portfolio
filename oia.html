@@ -181,6 +181,21 @@ body{background:var(--bg);color:var(--fg);font-family:var(--font-body);font-size
 </style>
 </head>
 <body>
+<div id="cs-loader" aria-hidden="true"><span class="cs-ring"></span></div>
+<style id="cs-loader-style">
+#cs-loader{position:fixed;inset:0;z-index:9999;background:var(--bg,#18171A);display:flex;align-items:center;justify-content:center;transition:opacity .45s ease}
+#cs-loader.done{opacity:0;pointer-events:none}
+#cs-loader .cs-ring{width:34px;height:34px;border-radius:50%;border:2px solid rgba(255,255,255,.12);border-top-color:var(--accent,#D97757);animation:csSpin .8s linear infinite}
+@keyframes csSpin{to{transform:rotate(360deg)}}
+@media (prefers-reduced-motion:reduce){#cs-loader .cs-ring{animation:none;border-top-color:rgba(255,255,255,.28)}}
+</style>
+<script>
+(function(){var l=document.getElementById('cs-loader');if(!l)return;var done=false;function hide(){if(done)return;done=true;l.classList.add('done');setTimeout(function(){if(l&&l.parentNode)l.parentNode.removeChild(l);},520);}
+function ready(){setTimeout(hide,200);}
+if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',ready);}else{ready();}
+window.addEventListener('load',hide);setTimeout(hide,2600);})();
+</script>
+
 
 <nav class="back-nav">
 <a href="https://idadilfer-tinker.github.io/portfolio/" class="back-link">
@@ -207,7 +222,7 @@ Back to portfolio</a>
 <div class="device-laptop">
 <div class="dl-lid"><div class="dl-screen">
 <div class="dl-bar"><i></i><i></i><i></i><span class="u"></span></div>
-<div class="dl-view"><img src="oia-surgeon-compare-desktop.jpg" alt="Oia — surgeon comparison with the concierge agent"></div>
+<div class="dl-view"><img decoding="async" src="oia-surgeon-compare-desktop.jpg" alt="Oia — surgeon comparison with the concierge agent"></div>
 </div></div>
 <div class="dl-foot"></div><div class="dl-hinge"></div>
 </div>
@@ -283,7 +298,7 @@ Back to portfolio</a>
 <div class="device-laptop">
 <div class="dl-lid"><div class="dl-screen">
 <div class="dl-bar"><i></i><i></i><i></i><span class="u"></span></div>
-<div class="dl-view"><img src="oia-surgeon-select-desktop.jpg" alt="The Path to Artistry — SmartMatch surgeon selection"></div>
+<div class="dl-view"><img decoding="async" src="oia-surgeon-select-desktop.jpg" alt="The Path to Artistry — SmartMatch surgeon selection"></div>
 </div></div><div class="dl-foot"></div><div class="dl-hinge"></div>
 </div>
 </div>
@@ -298,7 +313,7 @@ Back to portfolio</a>
 <div class="feature rev">
 <div class="feat-media">
 <div class="device-phone"><div class="dp-frame"><div class="dp-island"></div><div class="dp-screen">
-<img src="oia-surgeon-compare-mobile.jpg" alt="Oia on mobile — comparison and chat"></div></div></div>
+<img decoding="async" src="oia-surgeon-compare-mobile.jpg" alt="Oia on mobile — comparison and chat"></div></div></div>
 </div>
 <div class="feat-text">
 <div class="feat-num">02</div>
@@ -311,7 +326,7 @@ Back to portfolio</a>
 <div class="feature">
 <div class="feat-media">
 <div class="device-phone"><div class="dp-frame"><div class="dp-island"></div><div class="dp-screen">
-<img src="oia-journey-mobile.jpg" alt="Your Journey — the planned itinerary"></div></div></div>
+<img decoding="async" src="oia-journey-mobile.jpg" alt="Your Journey — the planned itinerary"></div></div></div>
 </div>
 <div class="feat-text">
 <div class="feat-num">03</div>
@@ -332,15 +347,15 @@ Back to portfolio</a>
 <p style="margin-top:6px">· <b>Three questions, maximum</b> — goal, stage, priorities. Enough to personalise, not enough to fatigue.<br>· <b>Plain language over clinical terms</b> — "Where are you right now?" not "treatment status."<br>· <b>End on the payoff</b> — the final screen introduces Oia and reveals matches, so effort becomes reward immediately.</p></div>
 </div>
 <div class="onb-video">
-<video src="oia-onboarding.mp4" autoplay loop muted playsinline poster="oia-onb-1.jpg"></video>
+<video data-defer preload="none" data-src="oia-onboarding.mp4" loop muted playsinline poster="oia-onb-1.jpg"></video>
 </div>
 <p class="cap" style="text-align:center;margin-left:auto;margin-right:auto">A user moving through the full flow — goal, stage, priorities, and meeting Oia. <span class="note">(Auto-playing walkthrough.)</span></p>
 <div class="onb-row">
-<figure class="onb-cell"><img src="oia-onb-1.jpg" alt="Welcome screen" loading="lazy"><figcaption>Welcome — a calm, branded first touch.</figcaption></figure>
-<figure class="onb-cell"><img src="oia-onb-2.jpg" alt="Goal selection" loading="lazy"><figcaption>Goal — what brings you to Oia.</figcaption></figure>
-<figure class="onb-cell"><img src="oia-onb-3.jpg" alt="Journey stage" loading="lazy"><figcaption>Stage — meeting you where you are.</figcaption></figure>
-<figure class="onb-cell"><img src="oia-onb-4.jpg" alt="Priorities" loading="lazy"><figcaption>Priorities — what Oia weighs when matching.</figcaption></figure>
-<figure class="onb-cell"><img src="oia-onb-5.jpg" alt="Meet Oia" loading="lazy"><figcaption>Meet Oia — the handoff to your concierge.</figcaption></figure>
+<figure class="onb-cell"><img decoding="async" src="oia-onb-1.jpg" alt="Welcome screen" loading="lazy"><figcaption>Welcome — a calm, branded first touch.</figcaption></figure>
+<figure class="onb-cell"><img decoding="async" src="oia-onb-2.jpg" alt="Goal selection" loading="lazy"><figcaption>Goal — what brings you to Oia.</figcaption></figure>
+<figure class="onb-cell"><img decoding="async" src="oia-onb-3.jpg" alt="Journey stage" loading="lazy"><figcaption>Stage — meeting you where you are.</figcaption></figure>
+<figure class="onb-cell"><img decoding="async" src="oia-onb-4.jpg" alt="Priorities" loading="lazy"><figcaption>Priorities — what Oia weighs when matching.</figcaption></figure>
+<figure class="onb-cell"><img decoding="async" src="oia-onb-5.jpg" alt="Meet Oia" loading="lazy"><figcaption>Meet Oia — the handoff to your concierge.</figcaption></figure>
 </div>
 </section>
 
@@ -402,7 +417,7 @@ Back to portfolio</a>
 </div>
 <div class="brand-grid">
 <div>
-<div class="brand-logo"><img src="oia-logo.jpg" alt="OIA wordmark" loading="lazy"></div>
+<div class="brand-logo"><img decoding="async" src="oia-logo.jpg" alt="OIA wordmark" loading="lazy"></div>
 <div class="swatches" aria-label="Oia palette">
 <span style="background:#B0472B"></span><span style="background:#C15A38"></span><span style="background:#E0916F"></span><span style="background:#E8DFD3"></span><span style="background:#FBFAF7"></span>
 </div>
@@ -470,5 +485,26 @@ Back to portfolio</a>
 const obs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');obs.unobserve(e.target);}});},{threshold:.08});
 document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
 </script>
+
+<script>
+/* Defer videos: load & play only when scrolled into view */
+(function(){
+  var vids=[].slice.call(document.querySelectorAll('video[data-defer]'));
+  if(!vids.length)return;
+  if(!('IntersectionObserver' in window)){vids.forEach(function(v){var s=v.getAttribute('data-src');if(s){v.src=s;} v.play&&v.play().catch(function(){});});return;}
+  var io=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      var v=e.target;
+      if(e.isIntersecting){
+        var s=v.getAttribute('data-src');
+        if(s&&!v.src){v.src=s;}
+        var p=v.play&&v.play();if(p&&p.catch)p.catch(function(){});
+      } else { v.pause&&v.pause(); }
+    });
+  },{rootMargin:'200px 0px',threshold:0.1});
+  vids.forEach(function(v){io.observe(v);});
+})();
+</script>
+
 </body>
 </html>

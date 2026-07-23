@@ -121,6 +121,21 @@ body{background:var(--bg);color:var(--fg);font-family:var(--font-body);font-size
 </style>
 </head>
 <body>
+<div id="cs-loader" aria-hidden="true"><span class="cs-ring"></span></div>
+<style id="cs-loader-style">
+#cs-loader{position:fixed;inset:0;z-index:9999;background:var(--bg,#18171A);display:flex;align-items:center;justify-content:center;transition:opacity .45s ease}
+#cs-loader.done{opacity:0;pointer-events:none}
+#cs-loader .cs-ring{width:34px;height:34px;border-radius:50%;border:2px solid rgba(255,255,255,.12);border-top-color:var(--accent,#D97757);animation:csSpin .8s linear infinite}
+@keyframes csSpin{to{transform:rotate(360deg)}}
+@media (prefers-reduced-motion:reduce){#cs-loader .cs-ring{animation:none;border-top-color:rgba(255,255,255,.28)}}
+</style>
+<script>
+(function(){var l=document.getElementById('cs-loader');if(!l)return;var done=false;function hide(){if(done)return;done=true;l.classList.add('done');setTimeout(function(){if(l&&l.parentNode)l.parentNode.removeChild(l);},520);}
+function ready(){setTimeout(hide,200);}
+if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',ready);}else{ready();}
+window.addEventListener('load',hide);setTimeout(hide,2600);})();
+</script>
+
 
 <nav class="back-nav">
 <a href="https://idadilfer-tinker.github.io/portfolio/" class="back-link">
@@ -145,7 +160,7 @@ Back to portfolio</a>
 <div class="device-laptop">
 <div class="dl-lid"><div class="dl-screen">
 <div class="dl-bar"><i></i><i></i><i></i><span class="u"></span></div>
-<div class="dl-view"><img src="aida-overview.jpg" alt="AIDA clinic overview — escalated conversations, new requests, post-op tracking and upcoming bookings on one screen"></div>
+<div class="dl-view"><img decoding="async" src="aida-overview.jpg" alt="AIDA clinic overview — escalated conversations, new requests, post-op tracking and upcoming bookings on one screen"></div>
 </div></div>
 <div class="dl-foot"></div><div class="dl-hinge"></div>
 </div>
@@ -202,7 +217,7 @@ Back to portfolio</a>
 <p class="cs-section-label">The Command Centre</p>
 <h2 class="cs-h2">One glance, the whole clinic.</h2>
 <p class="cs-p">The overview answers the coordinator's first question of the day — <b>what needs me?</b> Five calm tiles across the top count only what's actionable: conversations escalated for a human reply, new requests awaiting an offer, offers pending a patient's decision, post-op patients AIDA is monitoring, and bookings coming up. Underneath, three live columns — escalated chats, new requests, and upcoming bookings synced straight from the calendar — turn a day's worth of scattered data into a single readable page.</p>
-<div class="browserfig"><div class="bbar"><i></i><i></i><i></i><span class="u">app.aida.health · overview</span></div><img src="aida-overview.jpg" alt="AIDA overview dashboard — escalated, new requests, offers pending, post-op tracking, upcoming bookings, with live columns below"></div>
+<div class="browserfig"><div class="bbar"><i></i><i></i><i></i><span class="u">app.aida.health · overview</span></div><img decoding="async" src="aida-overview.jpg" alt="AIDA overview dashboard — escalated, new requests, offers pending, post-op tracking, upcoming bookings, with live columns below"></div>
 <p class="cap"><b>Overview.</b> Muted pastel status colour, glassmorphic tiles and generous whitespace turn six data streams into one quiet, scannable screen.</p>
 </section>
 
@@ -211,7 +226,7 @@ Back to portfolio</a>
 <p class="cs-section-label">Conversations · replacing the coordinator</p>
 <h2 class="cs-h2">The chat the coordinator used to answer by hand.</h2>
 <p class="cs-p">This is where most of the chaos lived — long, high-stakes conversations across time zones and languages, running around the clock. AIDA now carries them. It drafts replies grounded in each patient's real context — procedure interest, an intent score, flagged drug allergies, prior aesthetic work — and the coordinator approves, adjusts, or takes over. Suggested next messages (typical recovery phases, risk statistics, pre-op prep) keep answers accurate, and a high-priority flag pulls a human in the instant confidence drops.</p>
-<div class="browserfig"><div class="bbar"><i></i><i></i><i></i><span class="u">app.aida.health · conversations</span></div><img src="aida-conversations.jpg" alt="AIDA conversation view — AI-assisted patient chat with medical context, intent score and suggested replies"></div>
+<div class="browserfig"><div class="bbar"><i></i><i></i><i></i><span class="u">app.aida.health · conversations</span></div><img decoding="async" src="aida-conversations.jpg" alt="AIDA conversation view — AI-assisted patient chat with medical context, intent score and suggested replies"></div>
 <p class="cap"><b>Conversations.</b> Patient context, medical flags and an intent score sit alongside the thread, so a human never restarts a conversation the AI already began.</p>
 </section>
 
@@ -220,7 +235,7 @@ Back to portfolio</a>
 <p class="cs-section-label">Requests · triage</p>
 <h2 class="cs-h2">Every enquiry, scored and sorted.</h2>
 <p class="cs-p">Behind the conversations sits the pipeline. Each treatment request is scored by AI intent, tagged with procedure interest, flagged for anything that needs a second look, and sorted by exactly where it sits — awaiting an offer, or pending the patient's decision. The coordinator works a ranked, filterable list instead of a bottomless inbox, and turns a ready patient into an offer in a single click.</p>
-<div class="browserfig"><div class="bbar"><i></i><i></i><i></i><span class="u">app.aida.health · requests</span></div><img src="aida-requests.jpg" alt="AIDA treatment requests — patients with AI score, procedure tags, status and flags in a ranked list"></div>
+<div class="browserfig"><div class="bbar"><i></i><i></i><i></i><span class="u">app.aida.health · requests</span></div><img decoding="async" src="aida-requests.jpg" alt="AIDA treatment requests — patients with AI score, procedure tags, status and flags in a ranked list"></div>
 <p class="cap"><b>Requests.</b> AI score, status and flags replace an inbox with a prioritised queue — the coordinator always knows who to act on next.</p>
 </section>
 
@@ -251,7 +266,7 @@ Back to portfolio</a>
 <p class="cs-section-label">The Patient Side</p>
 <h2 class="cs-h2">A whole journey, inside a conversation.</h2>
 <p class="cs-p" style="max-width:760px">On the patient side there's no app and no account — just WhatsApp. The AI guides people from first enquiry through screening, procedure education, photo assessment, pricing and booking, then follows up after. Testing showed people preferred no extra download, and that visual guidance dramatically lifted confidence during photo uploads.</p>
-<figure class="figure"><video src="aida_recording.mp4" autoplay loop muted playsinline poster="aida-clinic-view.png"></video></figure>
+<figure class="figure"><video data-defer preload="none" data-src="aida_recording.mp4" loop muted playsinline poster="aida-clinic-view.png"></video></figure>
 <p class="cap">The patient experience in motion — a guided, WhatsApp-native conversation that never asks someone to leave the app they already use.</p>
 </section>
 
@@ -306,7 +321,7 @@ Back to portfolio</a>
 <div><h2 class="cs-h2">Where it started.</h2></div>
 <div><p class="cs-p">The original AIDA was a patient-facing marketplace — a place to find, compare and contact cosmetic clinics. The pivot transformed it into a two-sided AI platform, shifting the product from discovery to guided care.</p></div>
 </div>
-<figure class="figure"><img src="aida-journey-lab.webp" alt="AIDA before the pivot — the marketplace product"></figure>
+<figure class="figure"><img decoding="async" src="aida-journey-lab.webp" alt="AIDA before the pivot — the marketplace product"></figure>
 <p class="cap">The earlier marketplace product — the foundation the guided-care platform was built on.</p>
 </section>
 
@@ -342,5 +357,26 @@ Get in touch
 const obs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');obs.unobserve(e.target);}});},{threshold:.08});
 document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
 </script>
+
+<script>
+/* Defer videos: load & play only when scrolled into view */
+(function(){
+  var vids=[].slice.call(document.querySelectorAll('video[data-defer]'));
+  if(!vids.length)return;
+  if(!('IntersectionObserver' in window)){vids.forEach(function(v){var s=v.getAttribute('data-src');if(s){v.src=s;} v.play&&v.play().catch(function(){});});return;}
+  var io=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      var v=e.target;
+      if(e.isIntersecting){
+        var s=v.getAttribute('data-src');
+        if(s&&!v.src){v.src=s;}
+        var p=v.play&&v.play();if(p&&p.catch)p.catch(function(){});
+      } else { v.pause&&v.pause(); }
+    });
+  },{rootMargin:'200px 0px',threshold:0.1});
+  vids.forEach(function(v){io.observe(v);});
+})();
+</script>
+
 </body>
 </html>
