@@ -75,6 +75,12 @@ body{background:var(--bg);color:var(--fg);font-family:var(--font-body);font-size
 .browserfig .bbar i{width:10px;height:10px;border-radius:50%;background:#cfcabf;flex:0 0 auto}
 .browserfig .bbar .u{margin-left:14px;height:19px;flex:1;max-width:360px;background:#fff;border-radius:6px;border:1px solid #dcd8d0;display:flex;align-items:center;padding:0 11px;font-size:10px;color:#a29d94;letter-spacing:.02em;white-space:nowrap;overflow:hidden}
 .browserfig img{width:100%;display:block}
+.flowcanvas{margin:30px auto 0;max-width:500px;height:600px;border-radius:14px;overflow:hidden;border:1px solid var(--border2);background:#fff;box-shadow:0 30px 70px rgba(0,0,0,.42);position:relative}
+.flowcanvas img{width:100%;display:block;animation:flowScroll 36s ease-in-out infinite alternate}
+@keyframes flowScroll{0%,4%{transform:translateY(0)}96%,100%{transform:translateY(calc(-100% + 600px))}}
+.flowhint{display:inline-flex;align-items:center;gap:7px;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--fg3)}
+.flowhint::before{content:'';width:12px;height:18px;border:1.5px solid var(--fg3);border-radius:6px;display:inline-block}
+@media (prefers-reduced-motion:reduce){.flowcanvas img{animation:none}}
 /* principle chips */
 .chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:32px}
 .chip{font-size:11px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;background:rgba(var(--sage),.10);color:var(--accent2);padding:8px 14px;border-radius:6px;border:1px solid rgba(var(--sage),.22)}
@@ -250,14 +256,19 @@ Back to portfolio</a>
 </div>
 </div>
 <div class="labbox">
-<div class="lb">AIDA Journey Lab · internal simulation tool</div>
-<p>So I designed and built an internal simulation tool. It generates diverse patient personas, medical histories and intent patterns, letting us pressure-test conversation logic <b>before</b> release — mapping escalation triggers and branching failures, and redesigning around decision safety rather than conversational neatness. I built it with Claude Code and ran it locally via Cursor, so the whole team could run scenarios without any infrastructure. A personal workaround became a shared team asset — it turned AIDA from a scripted chatbot into a resilient AI workflow engine clinics could trust with real patients, not just demos.</p>
+<div class="lb">AIDA Journey Lab · a conversational-design lab I built</div>
+<p>Designing an agent means designing the <b>conversation</b>, not the screens. So I built the AIDA Journey Lab — a visual environment for designing and testing agentic AI personas. On one canvas I mapped every turn of the patient journey: the WhatsApp opening, AIDA's responses, the patient's choices, and the medical decision gates that keep the persona safe — sex-at-birth eligibility, age, BMI, smoker status, medical conditions, pregnancy — each branching to the right response, a clinician escalation or a doctor review. I chat-tested the persona's dialogue against diverse patient histories, tuned its tone and guardrails, then exported the validated flow straight to Claude Code to build. It's how I designed AIDA's conversation <b>and</b> trained its behaviour — turning a scripted chatbot into a clinically-safe agent before a single real patient was involved.</p>
 </div>
+<div class="browserfig"><div class="bbar"><i></i><i></i><i></i><span class="u">AIDA Journey Lab · conversational-design canvas</span></div><img src="aida-journey-lab-tool.jpg" alt="AIDA Journey Lab — node canvas for designing the agent's conversation, decisions and escalations"></div>
+<p class="cap"><b>The lab I built.</b> Every patient step, AI response and medical decision gate on one canvas — with live chat-testing and one-click export to Claude Code.</p>
+<div class="flowcanvas"><img src="aida-journey-flow.jpg" alt="AIDA end-to-end patient journey flowchart, from first WhatsApp message to post-procedure care"></div>
+<p class="cap" style="text-align:center"><b>The end-to-end journey I designed</b> — first WhatsApp message to post-procedure care. <span class="flowhint">Scrolls on its own</span></p>
 <div class="chips">
-<span class="chip">Pivot across two products</span>
-<span class="chip">WhatsApp-native AI conversation design</span>
-<span class="chip">Built with Claude Code + Cursor</span>
-<span class="chip">Clinical teams pressure-tested pre-release</span>
+<span class="chip">Conversational-design lab (self-built)</span>
+<span class="chip">Persona &amp; dialogue design</span>
+<span class="chip">Medical decision gates &amp; escalation</span>
+<span class="chip">Chat-tested pre-release</span>
+<span class="chip">Export → Claude Code</span>
 </div>
 </section>
 
