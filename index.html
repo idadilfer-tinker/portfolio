@@ -231,6 +231,32 @@ header{
   .ework-desc{max-width:none}
 }
 
+/* ─── STICKY STACKED PANELS (Recent Work) ─── */
+/* Each project pins to the top; the next rises up over it like a dealt card.
+   Desktop + motion-safe only — mobile & reduced-motion keep a normal list. */
+@media (min-width:761px) and (prefers-reduced-motion:no-preference){
+  .editorial-list{padding-top:0}
+  .editorial-list .ework{
+    position:sticky;top:0;
+    min-height:100svh;
+    align-content:center;
+    padding:clamp(56px,9vh,104px) var(--gutter);
+    margin:0 calc(-1 * var(--gutter));
+    background:var(--bg);
+    border-top:1px solid rgba(255,255,255,.09);
+    border-radius:32px 32px 0 0;
+    box-shadow:0 -30px 60px -14px rgba(0,0,0,.62);
+  }
+  .editorial-list .ework::before{ /* subtle grab-handle to signal a liftable layer */
+    content:'';position:absolute;top:14px;left:50%;transform:translateX(-50%);
+    width:44px;height:4px;border-radius:4px;background:rgba(255,255,255,.14);
+  }
+  .editorial-list .ework:first-child{
+    border-top:none;box-shadow:none;border-radius:0;
+  }
+  .editorial-list .ework:first-child::before{display:none}
+}
+
 /* ─── FEATURED HEADING ─── */
 .feat-hdg{position:relative;z-index:1;padding:0;overflow:hidden;border-top:1px solid var(--border)}
 .feat-hdg h2{
@@ -1163,7 +1189,7 @@ const stBadge={
 const ct=document.getElementById('ct');
 
 // Editorial rows + "See more" toggle
-const EWORK_VISIBLE = 3; // rows shown before "See more"
+const EWORK_VISIBLE = 99; // all shown — sticky stacked-panel scroll (no "See more")
 const caseStudyPages = {
   'Oia':'oia.html',
   'Journey Fertility':'journeyfertility.html',
