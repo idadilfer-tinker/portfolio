@@ -1099,21 +1099,9 @@ footer{position:relative;z-index:1;border-top:1px solid var(--border2);padding:5
 
 <!-- ─── CONTACT ─── -->
 <section id="contact" class="contact reveal">
-  <h2 class="contact-hdg">Say hi or stay and play snake here.</h2>
-  <div class="contact-btns" style="margin-bottom:48px">
+  <h2 class="contact-hdg">Say hi.</h2>
+  <div class="contact-btns">
     <a href="https://www.linkedin.com/in/idadilfer/" target="_blank" rel="noopener" class="contact-btn">Say hi <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-  </div>
-
-  <!-- Snake game -->
-  <div style="display:flex;flex-direction:column;align-items:center;gap:16px">
-    <div id="snakeWrap" style="position:relative;cursor:pointer">
-      <canvas id="snakeCanvas" width="400" height="400" style="border-radius:12px;border:1px solid rgba(255,255,255,0.08);background:#111012;display:block"></canvas>
-      <div id="snakeOverlay" style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;border-radius:12px;background:rgba(17,16,18,0.85)">
-        <div style="font-family:'Tinos',serif;font-size:2rem;font-style:italic;color:#F2EEE8;margin-bottom:8px">Click to play</div>
-        <div style="font-size:12px;color:#7A7570;letter-spacing:.1em;text-transform:uppercase">Click anywhere on the grid to steer</div>
-      </div>
-    </div>
-    <div id="snakeScore" style="font-size:12px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:#7A7570">Score: 0</div>
   </div>
 </section>
 
@@ -1198,9 +1186,9 @@ const projects=[
   {n:'Connectd',st:'live',o:'Founder onboarding drop-off cut 58% → 19%, on a platform powering £50M+ in funding connections.',d:'Product design and research for a three-sided professional marketplace connecting founders, investors and advisors — where trust is the product.',img:'img02.png'},
   {n:'Journey Fertility',st:'ongoing',o:'Ten anxious browser tabs turned into one honest, comparable view across 500+ clinics.',d:'Product design and brand for a platform that helps women understand, plan and compare their fertility options on true, all-in cost.',img:'journeyfertilitycover.jpg',embed:'journeyfertilitycover.html'},
   {n:'Aida AI',st:'live',o:'Patient drop-off cut 61% → 28% and clinic response time down ~40%.',d:'Product and brand design for a two-sided medical-tourism platform — a clinic-side operations command centre plus a patient WhatsApp agent — turning a coordinator&rsquo;s mess of data into AI-driven clarity.',img:'aida-cover.png'},
-  {n:'Unilever Sustainability',st:'ongoing',o:'A crowdsourced platform rallying communities around real sustainability action.',d:'Product design for a crowdsourced platform empowering communities to drive Unilever’s sustainability initiatives.',img:'img08.png'},
   {n:'Fidelity International',st:'live',o:'Search-to-result conversion nearly doubled, 35% → 67%; time-to-fund cut from 4 minutes to 90 seconds.',d:'Product design for the core search experience of one of the world’s largest investment platforms — making financial discovery feel guided, not overwhelming.',img:'img03.png'},
   {n:'VCCP Good Works',st:'live',o:'A 40% mobile bounce eliminated and WCAG 2.1 AA hit across three regulated platforms.',d:'Led design across Walby, Pension Buddy and Cambridge Building Society — translating complex, regulated workflows into accessible digital experiences.',img:'img04.png'},
+  {n:'Unilever Sustainability',st:'ongoing',o:'A crowdsourced platform rallying communities around real sustainability action.',d:'Ongoing freelance product design for a crowdsourced platform empowering communities to drive Unilever’s sustainability initiatives.',img:'img08.png'},
 ];
 const stBadge={
   live:'<span class="label green">Live</span>',
@@ -1720,102 +1708,7 @@ function initLilacChaser() {
 setTimeout(initLilacChaser, 300);
 
 
-// ── SNAKE GAME ──
-(function(){
-  const canvas = document.getElementById('snakeCanvas');
-  if (!canvas) return;
-  const ctx = canvas.getContext('2d');
-  const W = canvas.width, H = canvas.height;
-  const CELL = 20, COLS = W/CELL, ROWS = H/CELL;
-  const SPEED = 220;
-  let snake, dir, nextDir, food, score, running, gameLoop;
 
-  function drawGrid(){
-    ctx.strokeStyle = 'rgba(255,255,255,0.04)';
-    ctx.lineWidth = 0.5;
-    for(let x=0;x<=W;x+=CELL){ctx.beginPath();ctx.moveTo(x,0);ctx.lineTo(x,H);ctx.stroke();}
-    for(let y=0;y<=H;y+=CELL){ctx.beginPath();ctx.moveTo(0,y);ctx.lineTo(W,y);ctx.stroke();}
-  }
-
-  function placeFood(){
-    do { food={x:Math.floor(Math.random()*COLS),y:Math.floor(Math.random()*ROWS)}; }
-    while(snake.some(s=>s.x===food.x&&s.y===food.y));
-  }
-
-  function startGame(){
-    snake=[{x:5,y:10},{x:4,y:10},{x:3,y:10}];
-    dir={x:1,y:0}; nextDir={x:1,y:0};
-    score=0; running=true;
-    document.getElementById('snakeScore').textContent='Score: 0';
-    const overlay = document.getElementById('snakeOverlay');
-    if (overlay) overlay.style.display = 'none';
-    placeFood();
-    clearInterval(gameLoop);
-    gameLoop=setInterval(tick,SPEED);
-  }
-
-  function tick(){
-    dir=nextDir;
-    const head={x:snake[0].x+dir.x, y:snake[0].y+dir.y};
-    if(head.x<0||head.x>=COLS||head.y<0||head.y>=ROWS||snake.some(s=>s.x===head.x&&s.y===head.y)){
-      running=false; clearInterval(gameLoop);
-      const overlay = document.getElementById('snakeOverlay');
-      if (overlay) { overlay.querySelector('div').textContent='Click to restart'; overlay.style.display='flex'; }
-      return;
-    }
-    snake.unshift(head);
-    if(head.x===food.x&&head.y===food.y){
-      score++; document.getElementById('snakeScore').textContent='Score: '+score; placeFood();
-    } else { snake.pop(); }
-    render();
-  }
-
-  function render(){
-    ctx.fillStyle='#111012'; ctx.fillRect(0,0,W,H);
-    drawGrid();
-    snake.forEach((s,i)=>{
-      ctx.fillStyle=i===0?'#F2EEE8':'#D97757';
-      ctx.fillRect(s.x*CELL+1,s.y*CELL+1,CELL-2,CELL-2);
-    });
-    ctx.fillStyle='#00B8A0';
-    ctx.fillRect(food.x*CELL+2,food.y*CELL+2,CELL-4,CELL-4);
-  }
-
-  function handleClick(e){
-    const r=canvas.getBoundingClientRect();
-    const cx=(e.clientX||e.touches[0].clientX)-r.left;
-    const cy=(e.clientY||e.touches[0].clientY)-r.top;
-    const dx=cx-W/2, dy=cy-H/2;
-    let nd;
-    if(Math.abs(dx)>Math.abs(dy)) nd=dx>0?{x:1,y:0}:{x:-1,y:0};
-    else nd=dy>0?{x:0,y:1}:{x:0,y:-1};
-    if(!running){ startGame(); return; }
-    if(!(nd.x===-dir.x&&nd.y===-dir.y)){ nextDir=nd; e.preventDefault(); }
-  }
-
-  canvas.addEventListener('click', handleClick);
-  canvas.addEventListener('touchstart', e => { e.preventDefault(); handleClick(e); }, {passive:false});
-  document.getElementById('snakeWrap').addEventListener('click', e => {
-    if(e.target === canvas) return;
-    if(!running) startGame();
-  });
-
-  document.addEventListener('keydown', e => {
-    const map = {
-      ArrowUp:{x:0,y:-1}, ArrowDown:{x:0,y:1},
-      ArrowLeft:{x:-1,y:0}, ArrowRight:{x:1,y:0},
-      w:{x:0,y:-1}, s:{x:0,y:1}, a:{x:-1,y:0}, d:{x:1,y:0}
-    };
-    const nd = map[e.key];
-    if (!nd) return;
-    e.preventDefault();
-    if (!running) { startGame(); return; }
-    if (!(nd.x===-dir.x&&nd.y===-dir.y)) nextDir=nd;
-  });
-
-  ctx.fillStyle='#111012'; ctx.fillRect(0,0,W,H);
-  drawGrid();
-})();
 
 
 const obs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');obs.unobserve(e.target)}})},{threshold:.06});
