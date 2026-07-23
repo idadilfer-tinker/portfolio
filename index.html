@@ -257,6 +257,27 @@ header{
   .editorial-list .ework:first-child::before{display:none}
 }
 
+/* ─── SITE-WIDE STACKED PANELS ─── */
+/* Every major section rises over the last as you scroll — one cohesive stack.
+   Desktop + motion-safe only; mobile & reduced-motion keep the normal page. */
+@media (min-width:761px) and (prefers-reduced-motion:no-preference){
+  .ticker{display:none} /* hide marquee strips for a seamless stack */
+  #about, #ai-design, #library, .experiments, .bonus, #contact{
+    position:sticky;top:0;
+    min-height:100vh;
+    display:flex;flex-direction:column;justify-content:center;
+    background:var(--bg);
+    border-top:1px solid rgba(255,255,255,.09);
+    border-radius:32px 32px 0 0;
+    box-shadow:0 -30px 60px -14px rgba(0,0,0,.62);
+    z-index:1;
+  }
+  #about::after, #ai-design::after, #library::after, .experiments::after, .bonus::after, #contact::after{
+    content:'';position:absolute;top:14px;left:50%;transform:translateX(-50%);
+    width:44px;height:4px;border-radius:4px;background:rgba(255,255,255,.14);z-index:3;
+  }
+}
+
 /* ─── FEATURED HEADING ─── */
 .feat-hdg{position:relative;z-index:1;padding:0;overflow:hidden;border-top:1px solid var(--border)}
 .feat-hdg h2{
@@ -926,7 +947,7 @@ footer{position:relative;z-index:1;border-top:1px solid var(--border2);padding:5
       <em><span class="egg-word" data-egg="owner">Owner.</span></em> <span class="egg-word" data-egg="builder">Builder.</span>
     </h1>
     <p class="hero-sub">
-      Multidisciplinary product &amp; brand designer, midweight-to-lead, across health-tech, fintech, SaaS and marketplaces. Currently designing AIDA and open to new roles — including founder / founding designer and FTC.
+      Multidisciplinary designer, across health-tech, fintech, SaaS and gaming. Currently designing AIDA AI and open to new roles — including founder / founding designer and FTC.
     </p>
     <p class="areas-lbl">Areas of Work</p>
     <div class="areas">
