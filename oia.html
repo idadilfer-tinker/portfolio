@@ -216,6 +216,19 @@ body{background:var(--bg);color:var(--fg);font-family:var(--font-body);font-size
 .sf-body{padding:18px 20px;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:11.5px;line-height:1.9;color:var(--fg2)}
 .sf-body .h{color:var(--accent2)}
 .sf-body .c{color:var(--fg3)}
+/* ── hero mobile journey row ── */
+.mobrow{display:flex;gap:16px;align-items:flex-end;justify-content:center;margin-top:8px}
+.mobcell{flex:1;min-width:0;max-width:212px}
+.mobcell img{width:100%;display:block;border-radius:16px;border:1px solid var(--border2);box-shadow:0 26px 60px rgba(0,0,0,.45)}
+.mobcell.up{transform:translateY(-18px)}
+.moblab{margin-top:12px;font-size:11px;line-height:1.5;color:var(--fg3);letter-spacing:.02em;text-align:center}
+.moblab b{display:block;color:var(--fg2);font-weight:600;font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;margin-bottom:2px}
+.moblab b i{font-style:normal;color:var(--accent2);margin-right:5px}
+@media(max-width:860px){
+  .mobrow{overflow-x:auto;justify-content:flex-start;padding-bottom:14px;scroll-snap-type:x mandatory}
+  .mobcell{flex:0 0 190px;max-width:190px;scroll-snap-align:center}
+  .mobcell.up{transform:none}
+}
 </style>
 </head>
 <body>
@@ -258,15 +271,15 @@ Back to portfolio</a>
 <p class="cs-role"><b>My role:</b> product, brand and research were mine end to end, including the agent's knowledge, voice and boundaries. Clinical truth came from the surgeons and coordinators I iterated with.</p>
 </header>
 
-<div class="cs-hero" style="padding-top:0;text-align:center">
-<div class="device-laptop">
-<div class="dl-lid"><div class="dl-screen">
-<div class="dl-bar"><i></i><i></i><i></i><span class="u"></span></div>
-<div class="dl-view"><img decoding="async" src="oia-surgeon-compare-desktop.jpg" alt="Oia — surgeon comparison with the concierge agent"></div>
-</div></div>
-<div class="dl-foot"></div><div class="dl-hinge"></div>
+<div class="cs-hero" style="padding-top:0">
+<div class="mobrow">
+  <div class="mobcell"><img decoding="async" src="oia-mob-meet.jpg" alt="Meet Oia — the concierge conversation, understanding what the patient wants"><p class="moblab"><b><i>01</i>Meet Oia</b>Tell her what you want — no forms.</p></div>
+  <div class="mobcell up"><img decoding="async" src="oia-mob-matches.jpg" alt="Your matches — accredited surgeons compared on verified results and price"><p class="moblab"><b><i>02</i>Your matches</b>Verified, compared, negotiated.</p></div>
+  <div class="mobcell"><img decoding="async" src="oia-mob-trip.jpg" alt="Madrid Journey — flights, hotel, surgery and check-ins in one itinerary"><p class="moblab"><b><i>03</i>Your trip</b>Planned end to end for you.</p></div>
+  <div class="mobcell up"><img decoding="async" src="oia-mob-kit.jpg" alt="Recovery kit — surgeon-selected items delivered to the hotel"><p class="moblab"><b><i>04</i>Recovery kit</b>Delivered before she arrives.</p></div>
+  <div class="mobcell"><img decoding="async" src="oia-mob-postop.jpg" alt="Recovery snapshot — daily post-op tracking with the surgical team"><p class="moblab"><b><i>05</i>Recovery</b>Tracked daily, surgeon on hand.</p></div>
 </div>
-<p class="cap" style="margin-left:auto;margin-right:auto"><b>The whole product in one screen.</b> The concierge conversation drives everything on the right — here, a side-by-side surgeon comparison Oia assembled from the patient's own words. <span class="note">(Scrolls on its own — hover to read.)</span></p>
+<p class="cap" style="margin:26px auto 0;text-align:center"><b>The whole journey, phone-native.</b> From first hello to recovery tracking — one conversation drives all of it.</p>
 </div>
 
 <main class="cs-body">
