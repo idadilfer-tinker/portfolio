@@ -180,6 +180,42 @@ body{background:var(--bg);color:var(--fg);font-family:var(--font-body);font-size
 .proc-diamonds{flex-direction:column}.cs-meta{grid-template-columns:1fr 1fr;gap:24px}}
 .cs-role{font-size:13.5px;line-height:1.65;color:var(--fg3);font-style:italic;margin-top:18px;max-width:740px}
 .cs-role b{color:var(--fg2);font-weight:500;font-style:normal}
+/* ── OIA BEHAVIOUR ── */
+.obeh-grid{display:grid;grid-template-columns:minmax(0,420px) 1fr;gap:44px;align-items:start;margin-top:38px}
+@media(max-width:860px){.obeh-grid{grid-template-columns:1fr}}
+.oiachat{border-radius:18px;overflow:hidden;border:1px solid var(--border2);background:#F7F1E9;box-shadow:0 30px 70px rgba(0,0,0,.45)}
+.oc-hd{background:#FBF7F1;padding:13px 16px;display:flex;align-items:center;gap:10px;border-bottom:1px solid #EADFD2}
+.oc-av{width:30px;height:30px;border-radius:50%;background:#C15A38;display:flex;align-items:center;justify-content:center;color:#fff;font-family:var(--font-display);font-style:italic;font-size:15px}
+.oc-nm{font-size:13px;font-weight:600;color:#4a3a30}
+.oc-st{font-size:10.5px;color:#a08b7a}
+.oc-body{padding:18px 14px 22px;display:flex;flex-direction:column;gap:9px}
+.oc-msg{position:relative;max-width:88%;padding:9px 13px;border-radius:12px;font-size:12.8px;line-height:1.55;color:#3a3028}
+.oc-in{background:#fff;align-self:flex-start;border-top-left-radius:4px;box-shadow:0 1px 2px rgba(80,50,30,.1)}
+.oc-out{background:#EFD9CD;align-self:flex-end;border-top-right-radius:4px;box-shadow:0 1px 2px rgba(80,50,30,.1)}
+.matchcard{margin-top:8px;background:#FBF7F1;border:1px solid #EADFD2;border-radius:10px;padding:11px 12px}
+.matchcard .mc-nm{font-size:12px;font-weight:600;color:#4a3a30;display:flex;align-items:center;gap:8px}
+.matchcard .mc-nm i{width:22px;height:22px;border-radius:50%;background:linear-gradient(140deg,#d9a68b,#b57553);flex:0 0 auto}
+.matchcard .mc-why{font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#C15A38;margin:8px 0 4px}
+.matchcard .mc-row{font-size:11px;color:#6d5c4e;line-height:1.6;padding-left:14px;position:relative}
+.matchcard .mc-row::before{content:'·';position:absolute;left:4px;color:#C15A38}
+.mk{position:absolute;top:-8px;right:-9px;width:19px;height:19px;border-radius:50%;background:var(--accent2);color:#18171A;font-size:10.5px;font-weight:700;display:flex;align-items:center;justify-content:center;font-family:var(--font-body);box-shadow:0 0 0 3px #F7F1E9}
+.oc-out .mk{left:-9px;right:auto}
+.obeh-notes{display:flex;flex-direction:column;border-left:1px solid var(--border);padding-left:0}
+.on{display:flex;gap:16px;padding:17px 0 17px 22px;border-bottom:1px solid var(--border2)}
+.on:last-child{border-bottom:none}
+.on .n{flex:0 0 auto;width:22px;height:22px;border-radius:50%;border:1px solid var(--accent2);color:var(--accent2);font-size:11px;font-weight:600;display:flex;align-items:center;justify-content:center;margin-top:2px}
+.on b{display:block;font-size:13.5px;color:var(--fg);font-weight:600;margin-bottom:4px}
+.on p{font-size:13px;line-height:1.65;color:var(--fg2)}
+
+.soulrow{display:grid;grid-template-columns:1fr minmax(0,460px);gap:44px;align-items:center;margin-top:56px}
+@media(max-width:860px){.soulrow{grid-template-columns:1fr}}
+.soulfile{border-radius:14px;overflow:hidden;border:1px solid var(--border);background:#141317;box-shadow:0 30px 70px rgba(0,0,0,.45)}
+.sf-hd{display:flex;align-items:center;gap:8px;padding:11px 15px;background:#1D1C20;border-bottom:1px solid var(--border2)}
+.sf-hd i{width:10px;height:10px;border-radius:50%;background:#2e2c31}
+.sf-hd span{margin-left:8px;font-size:11px;color:var(--fg3);font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
+.sf-body{padding:18px 20px;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:11.5px;line-height:1.9;color:var(--fg2)}
+.sf-body .h{color:var(--accent2)}
+.sf-body .c{color:var(--fg3)}
 </style>
 </head>
 <body>
@@ -381,6 +417,56 @@ Back to portfolio</a>
 <div class="dc-row oc"><b>Outcome</b>Trust becomes the product's spine, not a badge.</div>
 </div>
 </div>
+</section>
+
+<section class="cs-section reveal">
+<p class="cs-section-label">The Behaviour · anatomy of a conversation</p>
+<h2 class="cs-h2">Four turns. Four design decisions.</h2>
+<p class="cs-p">Oia's interface <b>is</b> the conversation — so this is what the design actually looks like. Not a screen: a judgment call per reply. Every Oia line below is <b>verbatim from the worked-example library I wrote for her</b> — the hardest questions patients actually ask, answered the way she's designed to answer them.</p>
+
+<div class="obeh-grid">
+  <div class="oiachat">
+    <div class="oc-hd"><div class="oc-av">o</div><div><div class="oc-nm">Oia</div><div class="oc-st">your concierge</div></div></div>
+    <div class="oc-body">
+      <div class="oc-msg oc-out">honestly I don't even know what's possible… I just know what I see in the mirror</div>
+      <div class="oc-msg oc-in">That's a completely normal place to start — most people begin with a feeling, not a plan. No decision needed today; I can share a little about what's involved, and I'm here whenever you want a next step.<span class="mk">1</span></div>
+      <div class="oc-msg oc-out">could you show me some before &amp; afters first?</div>
+      <div class="oc-msg oc-in">I'd love to show you real results — and I won't show you stand-ins. Our consent-signed before-and-afters come directly from your matched clinics once it's your turn, so everything you see is real and relevant to you.<span class="mk">2</span></div>
+      <div class="oc-msg oc-out">will it actually look like the photo I sent? can you promise that?</div>
+      <div class="oc-msg oc-in">I can't promise a specific result — and I'd be wary of anyone who did. What I can do is stack the odds: I match you to surgeons whose real before-and-afters already look like what you showed me.<span class="mk">3</span></div>
+      <div class="oc-msg oc-out">ok… but which surgeon would <i>you</i> pick?</div>
+      <div class="oc-msg oc-in">I'll help you choose well, but I won't pick for you — this is your face and your decision, and my job is to make it clear, not to steer it. Shall I put your matches side by side?<span class="mk">4</span></div>
+    </div>
+  </div>
+  <div class="obeh-notes">
+    <div class="on"><div class="n">1</div><div><b>Start from the feeling, not the procedure</b><p>Patients arrive with a discomfort, not a treatment name — so Oia never assumes one. Her pacing is a hard rule I wrote, not a style: 2–3 sentences, one idea per message, acknowledge the feeling before the facts.</p></div></div>
+    <div class="on"><div class="n">2</div><div><b>Never fabricate — even a "helpful" stand-in</b><p>The obvious move is showing example results. Oia's rule is stricter: no invented cases, prices, or counts — a figure is only speakable if it's literally true right now. Declining to show fake examples <i>is</i> the trust design.</p></div></div>
+    <div class="on"><div class="n">3</div><div><b>Never promise an outcome</b><p>She stacks the odds with evidence — surgeons whose real results already resemble the patient's goal — and hands the "how close" question to the consultation, where it belongs. Realism over reassurance, every time.</p></div></div>
+    <div class="on"><div class="n">4</div><div><b>Won't pick, won't push</b><p>The decision stays with the patient — Oia makes it clearer, never steers it. And the same rule runs in reverse: if a patient hesitates, she slows down. She succeeds when patients make good decisions — including the decision to wait.</p></div></div>
+  </div>
+</div>
+
+<div class="soulrow">
+  <div>
+    <h2 class="cs-h2" style="font-size:clamp(1.4rem,2.6vw,2rem)">Her soul is a design file.</h2>
+    <p class="cs-p">Oia's behaviour isn't a prompt buried in code. Her identity, voice, hard lines and worked examples live in <b>Markdown files I write</b> — versioned like any design system. Editing a file retrains her; non-engineers can tune her behaviour without touching code. The dialogue above isn't copy I wrote for this page — it's the product itself.</p>
+    <p class="cs-p" style="font-size:14px;color:var(--fg3)">The same thinking became AIDA's Journey Lab: behaviour as a designed, versioned, testable artefact.</p>
+  </div>
+  <div class="soulfile">
+    <div class="sf-hd"><i></i><i></i><i></i><span>SOUL.md · who Oia is</span></div>
+    <div class="sf-body">
+      <span class="h">## What you never do — hard lines</span><br>
+      - <b>Never give medical advice.</b> <span class="c">Tracking is yours; judgement is the surgeon's.</span><br>
+      - <b>Never promise outcomes.</b> <span class="c">"Realistic" is the operative word.</span><br>
+      - <b>Never push a hesitant patient.</b> <span class="c">It is always fine to not proceed.</span><br>
+      - <b>Never fabricate.</b> <span class="c">If you don't know, say the team will confirm.</span><br>
+      <span class="h">## Voice &amp; tone</span><br>
+      - <b>Warm, calm, personal.</b> <span class="c">Short messages. One question at a time.</span><br>
+      - <b>Honest about what you are.</b> <span class="c">Openly an AI — that's the superpower.</span>
+    </div>
+  </div>
+</div>
+<div class="cs-callout"><p>"Oia's most carefully designed sentence is the one where she declines to have an opinion."</p></div>
 </section>
 
 <!-- MISTAKES & LEARNINGS -->
