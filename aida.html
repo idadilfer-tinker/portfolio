@@ -124,6 +124,83 @@ body{background:var(--bg);color:var(--fg);font-family:var(--font-body);font-size
 .cards6{grid-template-columns:1fr}.built{grid-template-columns:1fr}.built .bcol{border-right:none;border-bottom:1px solid var(--border2)}
 .cs-metrics{grid-template-columns:1fr}.cs-metric{border-right:none;border-top:1px solid var(--border2)}
 .proc-diamonds{flex-direction:column}.cs-meta{grid-template-columns:1fr 1fr;gap:24px}}
+/* ── BEHAVIOUR SECTION ── */
+.beh-grid{display:grid;grid-template-columns:minmax(0,420px) 1fr;gap:44px;align-items:start;margin-top:38px}
+@media(max-width:860px){.beh-grid{grid-template-columns:1fr}}
+
+/* whatsapp-style phone panel */
+.wachat{border-radius:18px;overflow:hidden;border:1px solid var(--border2);background:#EFE7DC;box-shadow:0 30px 70px rgba(0,0,0,.45)}
+.wachat .wa-hd{background:#F6F1E8;padding:13px 16px;display:flex;align-items:center;gap:10px;border-bottom:1px solid #E0D8CB}
+.wachat .wa-av{width:30px;height:30px;border-radius:50%;background:#88a795;display:flex;align-items:center;justify-content:center;color:#fff;font-size:12px;font-weight:600;font-family:var(--font-body)}
+.wachat .wa-nm{font-size:13px;font-weight:600;color:#33403a}
+.wachat .wa-st{font-size:10.5px;color:#8d998f}
+.wa-body{padding:18px 14px 22px;display:flex;flex-direction:column;gap:9px;background:
+  radial-gradient(circle at 20% 10%,rgba(136,167,149,.07),transparent 50%),#EFE7DC}
+.wa-msg{position:relative;max-width:86%;padding:9px 13px;border-radius:11px;font-size:12.8px;line-height:1.55;color:#2e2c28}
+.wa-in{background:#fff;align-self:flex-start;border-top-left-radius:3px;box-shadow:0 1px 2px rgba(60,50,30,.12)}
+.wa-out{background:#D9E8DC;align-self:flex-end;border-top-right-radius:3px;box-shadow:0 1px 2px rgba(60,50,30,.12)}
+.wa-photo{align-self:flex-end;width:120px;height:88px;border-radius:11px;border-top-right-radius:3px;background:linear-gradient(140deg,#cbbfae,#b3a globa) ;background:linear-gradient(140deg,#cbbfae,#b3a794);display:flex;align-items:center;justify-content:center;color:#7d7261;font-size:10px;box-shadow:0 1px 2px rgba(60,50,30,.12)}
+.wa-guide{margin-top:7px;background:#F4F8F4;border:1px solid #DCE8DE;border-radius:8px;padding:8px 10px;display:flex;gap:9px;align-items:center}
+.wa-guide .gph{width:44px;height:44px;border-radius:7px;background:linear-gradient(140deg,#9DBEAC,#7fa38e);flex:0 0 auto;display:flex;align-items:center;justify-content:center;color:#fff;font-size:8.5px;text-align:center;line-height:1.25}
+.wa-guide span{font-size:11px;color:#5c6a5f;line-height:1.4}
+.wa-time{font-size:9px;color:#a49b8d;align-self:center;letter-spacing:.06em;margin:3px 0}
+/* numbered markers */
+.mk{position:absolute;top:-8px;right:-9px;width:19px;height:19px;border-radius:50%;background:var(--accent);color:#18171A;font-size:10.5px;font-weight:700;display:flex;align-items:center;justify-content:center;font-family:var(--font-body);box-shadow:0 0 0 3px #EFE7DC}
+.wa-out .mk,.mk.l{left:-9px;right:auto}
+/* annotation notes */
+.beh-notes{display:flex;flex-direction:column;gap:0;border-left:1px solid var(--border);padding-left:0}
+.bn{display:flex;gap:16px;padding:17px 0 17px 22px;border-bottom:1px solid var(--border2)}
+.bn:last-child{border-bottom:none}
+.bn .n{flex:0 0 auto;width:22px;height:22px;border-radius:50%;border:1px solid var(--accent);color:var(--accent);font-size:11px;font-weight:600;display:flex;align-items:center;justify-content:center;margin-top:2px}
+.bn b{display:block;font-size:13.5px;color:var(--fg);font-weight:600;margin-bottom:4px;letter-spacing:.01em}
+.bn p{font-size:13px;line-height:1.65;color:var(--fg2)}
+
+
+/* library card in chat */
+.libcard{margin-top:7px;background:#F4F8F4;border:1px solid #DCE8DE;border-radius:8px;padding:9px 11px;display:flex;gap:10px;align-items:center}
+.libcard .lc-th{display:flex;gap:3px;flex:0 0 auto}
+.libcard .lc-th i{width:15px;height:26px;border-radius:4px;background:linear-gradient(140deg,#9DBEAC,#7fa38e)}
+.libcard .lc-th i:nth-child(2){background:linear-gradient(140deg,#c9b8a4,#b3a794)}
+.libcard .lc-th i:nth-child(3){background:linear-gradient(140deg,#8fae9d,#6f927f)}
+.libcard b{display:block;font-size:11px;color:#33403a;font-weight:600;line-height:1.3}
+.libcard span{font-size:10px;color:#8d998f}
+/* dashboard strip under chat */
+.dashstrip{position:relative;margin-top:10px;background:#141317;border:1px solid var(--border);border-radius:11px;padding:11px 14px;display:flex;gap:9px;align-items:center;flex-wrap:wrap}
+.dashstrip .ds-l{font-size:9px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--fg3)}
+.dashstrip .ds-t{font-size:10.5px;color:var(--accent);background:rgba(var(--sage),.1);border:1px solid rgba(var(--sage),.22);padding:3px 9px;border-radius:100px;white-space:nowrap}
+.dashstrip .mk.d{position:absolute;top:-8px;right:-7px;left:auto;box-shadow:0 0 0 3px var(--bg)}
+/* form snippet */
+.formsnip{background:#221F24;border:1px solid var(--border);border-radius:9px;padding:14px 15px}
+.formsnip b{display:block;font-size:12px;color:var(--fg2);font-weight:600}
+.formsnip > span{display:block;font-size:10px;color:var(--fg3);margin:2px 0 11px}
+.formsnip .fld{font-size:11.5px;color:var(--fg3);border:1px dashed rgba(255,255,255,.13);border-radius:6px;padding:7px 10px;margin-top:6px;line-height:1.45}
+.formsnip .fld em{font-style:normal;color:#5e5a55}
+
+/* failure case */
+.failcols{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:36px}
+@media(max-width:760px){.failcols{grid-template-columns:1fr}}
+.failcard{border:1px solid var(--border2);border-radius:14px;overflow:hidden;background:rgba(255,255,255,.02)}
+.failcard .fh{padding:13px 18px;font-size:10px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;border-bottom:1px solid var(--border2);display:flex;align-items:center;gap:8px}
+.failcard.v1 .fh{color:#D08F7E}.failcard.v2 .fh{color:var(--accent)}
+.failcard .fh i{width:6px;height:6px;border-radius:50%;background:currentColor}
+.failcard .fbody{padding:16px 18px 18px;display:flex;flex-direction:column;gap:8px}
+.fmsg{max-width:95%;padding:8px 12px;border-radius:10px;font-size:12px;line-height:1.55;background:#26242A;color:var(--fg2);align-self:flex-start;border-top-left-radius:3px}
+.failcard.v2 .fmsg{background:rgba(var(--sage),.14);color:var(--fg)}
+.fnote{padding:13px 18px;border-top:1px solid var(--border2);font-size:12.5px;line-height:1.6;color:var(--fg3)}
+.fnote b{color:var(--fg2);font-weight:500}
+.fstat{display:flex;gap:34px;margin-top:26px}
+.fstat div b{font-family:var(--font-display);font-size:2rem;color:var(--accent);display:block;line-height:1.1}
+.fstat div span{font-size:11.5px;color:var(--fg3);letter-spacing:.04em}
+
+/* escalation rules */
+.esc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:36px}
+@media(max-width:860px){.esc-grid{grid-template-columns:1fr}}
+.esc{padding:20px;border:1px solid var(--border2);border-radius:12px;background:rgba(255,255,255,.02)}
+.esc .et{font-size:9px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--fg3);margin-bottom:9px}
+.esc b{display:block;font-size:13.5px;color:var(--fg);font-weight:600;margin-bottom:6px;line-height:1.4}
+.esc p{font-size:12.5px;line-height:1.6;color:var(--fg2)}
+.esc .h{display:inline-flex;align-items:center;gap:6px;margin-top:10px;font-size:10.5px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--accent)}
+.esc .h svg{width:11px;height:11px}
 </style>
 </head>
 <body>
@@ -272,6 +349,80 @@ Back to portfolio</a>
 <span class="chip">Chat-tested pre-release</span>
 <span class="chip">Export → Claude Code</span>
 </div>
+</section>
+
+<section class="cs-section reveal">
+<p class="cs-section-label">The Behaviour · designing how the agent thinks</p>
+<h2 class="cs-h2">Every reply is a designed decision.</h2>
+<p class="cs-p">The patient never sees a dashboard — they see one message at a time. The clinician has no time to read every chat — they see what it distils into. So the real design surface is the agent's <b>judgment</b>: diagnosing what each patient is optimising for, earning trust it can prove, and writing the result to a clinician who has minutes, not hours. One designed exchange, annotated.</p>
+
+<div class="beh-grid">
+  <!-- phone -->
+  <div class="phonecol">
+  <div class="wachat">
+    <div class="wa-hd"><div class="wa-av">A</div><div><div class="wa-nm">AIDA</div><div class="wa-st">online</div></div></div>
+    <div class="wa-body">
+      <div class="wa-time">TODAY 14:02</div>
+      <div class="wa-msg wa-out">hi — I'm looking into surgery abroad, the prices vary so much 😅</div>
+      <div class="wa-msg wa-in">They really do — and the right choice depends on what matters most to <i>you</i>. Some patients are optimising for budget, others for a specific surgeon's track record. Which is closer to you?<span class="mk">1</span></div>
+      <div class="wa-msg wa-out">honestly the surgeon. anyone can post nice photos online…</div>
+      <div class="wa-msg wa-in">That's the right instinct — social results are hard to verify. These are real outcomes from patients who chose to share them, verified by the clinic:
+        <div class="libcard"><div class="lc-th"><i></i><i></i><i></i></div><div><b>Patient library · verified results</b><span>12 consented outcomes · this procedure · this surgeon</span></div></div>
+      <span class="mk">2</span></div>
+      <div class="wa-msg wa-in">Want me to check you're medically eligible while you browse? A few quick questions — about 2 minutes.<span class="mk">3</span></div>
+      <div class="wa-msg wa-out">ok let's do it</div>
+    </div>
+  </div>
+  <div class="dashstrip"><span class="ds-l">→ written to the clinic dashboard</span><span class="ds-t">Intent: surgeon-quality</span><span class="ds-t">Stage: eligibility</span><span class="ds-t">Summary: auto-drafted</span><span class="mk d">4</span></div>
+  </div>
+  <!-- annotations -->
+  <div class="beh-notes">
+    <div class="bn"><div class="n">1</div><div><b>Diagnose intent before informing</b><p>A price-shopper and a surgeon-seeker send the same first message. The agent's first designed move is finding out which one it's talking to — and the entire journey, tone and content adapt to the answer.</p></div></div>
+    <div class="bn"><div class="n">2</div><div><b>Trust with receipts, not claims</b><p>Patients' only proof of a surgeon used to be social media — full of fake reviews. So we built a patient library: real outcomes, shared with each patient's consent, verified by the clinic. The agent doesn't reassure; it shows.</p></div></div>
+    <div class="bn"><div class="n">3</div><div><b>One small ask, timeboxed</b><p>Every stage opens with what's next and how long it takes. Momentum is designed, not hoped for — the conversation's success is measured at the patient's thumb.</p></div></div>
+    <div class="bn"><div class="n">4</div><div><b>Every message designs two screens</b><p>Clinicians juggle dozens of cases with very little time. So each exchange distils into their dashboard as intent, stage and an auto-drafted summary — I was designing the clinician's next 10 seconds as much as the patient's next reply.</p></div></div>
+  </div>
+</div>
+</section>
+
+<section class="cs-section reveal">
+<p class="cs-section-label">What we replaced · the failure that shaped the design</p>
+<h2 class="cs-h2">The long form that lost 6 in 10 patients.</h2>
+<p class="cs-p">Before the agent, coordinators sent patients <b>long medical forms</b> — accurate, complete, and completed alone. Patients stalled mid-form and vanished; by the photo step, <b>61% never finished</b>. The fix wasn't a better form. It was recognising that a form is a monologue — and rebuilding the same questions as a staged, guided conversation with help at every step.</p>
+<div class="failcols">
+  <div class="failcard v1"><div class="fh"><i></i>Before — the coordinator's form</div>
+    <div class="fbody">
+      <div class="formsnip">
+        <b>Patient Assessment Form</b>
+        <span>Section 3 of 7 · Medical history</span>
+        <div class="fld">Current medications <em>(list all)</em></div>
+        <div class="fld">Previous surgeries &amp; complications</div>
+        <div class="fld">Chronic conditions <em>(describe)</em></div>
+        <div class="fld">Attach 3 photos per guidelines (front / side / top). Incomplete submissions cannot be evaluated.</div>
+      </div>
+    </div>
+    <div class="fnote"><b>Why it failed:</b> sent as one link, filled out alone, no help mid-way and a warning at the end. It reads like paperwork — patients felt processed, not cared for, at the exact moment they needed reassurance.</div>
+  </div>
+  <div class="failcard v2"><div class="fh"><i></i>After — the same questions, as a conversation</div>
+    <div class="fbody"><div class="fmsg">Next: a few quick health questions so the medical team can assess what's possible. I'll go one at a time — about 2 minutes ✅</div><div class="fmsg">Any current medications? Even vitamins count.</div><div class="fmsg">Great. Now the first photo — front view. Hold your phone at eye level, like this: [example]</div></div>
+    <div class="fnote"><b>Why it works:</b> identical information, opposite experience — one ask at a time, an example instead of a spec, reassurance between steps, and a human reachable at any point.</div>
+  </div>
+</div>
+<div class="fstat">
+  <div><b>61% → 28%</b><span>drop-off at the photo step, before → after</span></div>
+</div>
+</section>
+
+<section class="cs-section reveal">
+<p class="cs-section-label">Guardrails · where the agent stops</p>
+<h2 class="cs-h2">Knowing when not to be an AI.</h2>
+<p class="cs-p">The most important behaviours I designed are the ones where AIDA <b>hands over</b>. Every rule below was mapped as a decision gate in the Journey Lab and chat-tested before release — because in a medical product, the agent's confidence is a safety feature, not a personality trait.</p>
+<div class="esc-grid">
+  <div class="esc"><div class="et">Medical red flag</div><b>Screening gate triggers</b><p>Age, BMI, smoker status, pregnancy, listed conditions — any flag stops the script.</p><div class="h">doctor review<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div></div>
+  <div class="esc"><div class="et">Emotional signal</div><b>Distress or hesitation</b><p>Fear, second thoughts, "I'm not sure I should do this" — the agent stops persuading, acknowledges, and brings in a human.</p><div class="h">human coordinator<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div></div>
+  <div class="esc"><div class="et">Post-op symptom</div><b>Pain, swelling, bleeding</b><p>Any symptom language after the procedure escalates immediately. The agent never triages a complication.</p><div class="h">clinic, immediately<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div></div>
+</div>
+<div class="cs-callout"><p>"The hardest part of designing an agent isn't making it sound human. It's deciding when it must stop acting like one."</p></div>
 </section>
 
 <!-- PATIENT SIDE -->
